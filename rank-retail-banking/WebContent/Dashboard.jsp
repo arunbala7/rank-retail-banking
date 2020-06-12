@@ -11,7 +11,7 @@
 		//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
 	if (workGroup == null)
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("index.jsp"); 
 	%>
 	<c:choose>
 		<c:when test="${workGroup =='cashier'}">
