@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class User
  */
 @WebServlet("/User")
-public class User extends HttpServlet {
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
