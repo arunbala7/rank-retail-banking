@@ -29,6 +29,12 @@
     <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
+  	<% //SESSION CHECK (LOGGED IN OR NOT)  	
+  	String workGroup=(String)session.getAttribute("workGroup");
+  	if(workGroup!=null){
+  		response.sendRedirect("Dashboard.jsp");  		
+  		}		
+  	%>
     <div class="limiter">
       <div
         class="container-login100"
@@ -40,7 +46,7 @@
             style="font-size: 30px; color: crimson;"
             >R.A.N.K Retail Banking</span
           ><br />
-          <form class="login100-form validate-form">
+          <form class="login100-form validate-form" method="post"  action="UserController">
             <span
               class="login100-form-title p-b-49"
               style="
@@ -59,7 +65,7 @@
               <input
                 class="input100"
                 type="text"
-                name="username"
+                name="userName"
                 placeholder="Type your username"
               />
               <span class="focus-input100" data-symbol="&#xf206;"></span>
@@ -73,7 +79,7 @@
               <input
                 class="input100"
                 type="password"
-                name="pass"
+                name="password"
                 placeholder="Type your password"
               />
               <span class="focus-input100" data-symbol="&#xf190;"></span>
