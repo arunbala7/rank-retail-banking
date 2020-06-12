@@ -1,1 +1,1 @@
-# rank-rental-banking
+# rank-retail-banking
