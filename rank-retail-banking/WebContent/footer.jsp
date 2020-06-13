@@ -27,8 +27,8 @@ body {
   <div id="page-content">
   </div>
   <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
-      <small>Copyright &copy; R.A.N.K Retail Banking</small>
+    <div class="container text-center" style="color:white;">
+      <small>Copyright &copy; R.A.N.K Retail Banking</font></small>
     </div>
   </footer>
 </body>

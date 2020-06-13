@@ -52,6 +52,12 @@
         $(thisAlert).removeClass('alert-validate');
     }
     
+    function Validate() {
+        var thisAlert = this.parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+    
     
 
 })(jQuery);

@@ -116,6 +116,11 @@ input:focus:-ms-input-placeholder {
   color: transparent;
 }
 
+.mybtn {
+display:inline-block;
+/**other codes**/
+}
+
 textarea:focus::-webkit-input-placeholder {
   color: transparent;
 }

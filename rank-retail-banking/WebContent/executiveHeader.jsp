@@ -39,7 +39,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="#" class="nav-item nav-link active">Home</a>
+					<a href="Dashboard.jsp" class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
@@ -48,16 +48,16 @@
 						style="background-color: #222831; border: 2px solid #222831;">Customer
 						Management</button>
 					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="#" class="dropdown-item btn btn-outline-light">Create
+						<a href="ExecutiveController?action=createCustomer" class="dropdown-item btn btn-outline-light">Create
 							Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Update
+						<a href="ExecutiveController?action=udateCustomer" class="dropdown-item btn btn-outline-light">Update
 							Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Delete
+						<a href="ExecutiveController?action=deleteCustomer" class="dropdown-item btn btn-outline-light">Delete
 							Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">View
+						<a href="ExecutiveController?action=customerStatus" class="dropdown-item btn btn-outline-light">View
 							Customer Status</a>
 					</div>
 				</div>
@@ -68,13 +68,13 @@
 						style="background-color: #222831; border: 2px solid #222831;">Account
 						Management</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="#" class="dropdown-item btn btn-outline-light">Create
+						<a href="ExecutiveController?action=createAccount" class="dropdown-item btn btn-outline-light">Create
 							Account</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Delete
+						<a href="ExecutiveController?action=deleteAccount" class="dropdown-item btn btn-outline-light">Delete
 							Account</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">View
+						<a href="ExecutiveController?action=viewAccounts" class="dropdown-item btn btn-outline-light">View
 							All Account</a>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Search</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="#" class="dropdown-item  btn btn-outline-light">View
+						<a href="ExecutiveController?action=viewCustomers" class="dropdown-item  btn btn-outline-light">View
 							Customer Details</a>
 					</div>
 				</div>
