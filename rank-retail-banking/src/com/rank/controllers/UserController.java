@@ -18,26 +18,42 @@ import com.rank.services.Login;
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName=(String)request.getParameter("userName");
-		String password=(String)request.getParameter("password");
-		User newUser=new User(userName,password);
-		Login userLogin=new Login();
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String userName = (String) request.getParameter("userName");
+		String password = (String) request.getParameter("password");
+		User newUser = new User(userName, password);
+		Login userLogin = new Login();
 		String workGroup;
 		try {
 			workGroup = userLogin.isValidUser(newUser);
-			if(workGroup!=null)
-			{	HttpSession session=request.getSession();
+			if (workGroup != null) {
+				HttpSession session = request.getSession();
 				session.setAttribute("workGroup", workGroup);
+				session.setAttribute("userName", userName);
 				response.sendRedirect("Dashboard.jsp");
-			}
-			else {
+			} else {
 				response.sendRedirect("index.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = (String) request.getParameter("action");
+		if (action.contentEquals("logout")) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("workGroup");
+			session.removeAttribute("userName");
+			session.invalidate();
+			response.sendRedirect("index.jsp");
+		}
+		doPost(request, response);
+
 	}
 
 }

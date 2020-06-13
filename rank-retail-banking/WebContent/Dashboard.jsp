@@ -7,12 +7,7 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
-	<%
-		//SESSION CHECK (LOGGED IN OR NOT)  	
-	String workGroup = (String) session.getAttribute("workGroup");
-	if (workGroup == null)
-		response.sendRedirect("index.jsp"); 
-	%>
+	<!-- Adding Header Based on the user  -->
 	<c:choose>
 		<c:when test="${workGroup =='cashier'}">
 			<%@ include file="cashierHeader.jsp"%>
@@ -21,6 +16,6 @@
 			<%@ include file="executiveHeader.jsp"%>
 		</c:otherwise>
 	</c:choose>
-
+	 Welcome ${userName}
 </body>
 </html>
