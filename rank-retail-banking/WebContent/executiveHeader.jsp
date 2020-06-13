@@ -6,15 +6,14 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Dashboard</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="css/bootstrap.min.js"></script>
+<link rel="stylesheet" href="CSS and JS/css/bootstrap.min.css">
+<link rel="stylesheet" href="CSS and JS/css/font-awesome.min.css">
+<script src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script src="CSS and JS/js/popper.min.js"></script>
+<script src="CSS and JS/js/bootstrap.min.js"></script>
 <style type="text/css">
-.bs-example {
-	margin: 20px;
+.btn-group {
+	padding: 4px;
 }
 </style>
 </head>
@@ -32,19 +31,66 @@
 	%>
 	<div class="bs-example">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<a href="#" class="navbar-brand">Brand</a>
+			<a href="#" class="navbar-brand" style="font-weight: bold;">R.A.N.K</a>
 			<button type="button" class="navbar-toggler" data-toggle="collapse"
 				data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<div class="navbar-nav">
-					<a href="#" class="nav-item nav-link active">Home</a> <a href="#"
-						class="nav-item nav-link">About</a> <a href="#"
-						class="nav-item nav-link">Products</a>
+				<div class="navbar-nav btn-group">
+					<a href="#" class="nav-item nav-link active">Home</a>
+
 				</div>
-				<form class="form-inline ml-auto" action="UserController" method="get">
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-toggle="dropdown"
+						style="background-color: #222831; border: 2px solid #222831;">Customer
+						Management</button>
+					<div class="dropdown-menu" style="background-color: #dddddd;">
+						<a href="#" class="dropdown-item btn btn-outline-light">Create
+							Customer</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item btn btn-outline-light">Update
+							Customer</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item btn btn-outline-light">Delete
+							Customer</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item btn btn-outline-light">View
+							Customer Status</a>
+					</div>
+				</div>
+
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-toggle="dropdown"
+						style="background-color: #222831; border: 2px solid #222831;">Account
+						Management</button>
+					<div class="dropdown-menu" style="background-color: #dddddd">
+						<a href="#" class="dropdown-item btn btn-outline-light">Create
+							Account</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item btn btn-outline-light">Delete
+							Account</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item btn btn-outline-light">View
+							All Account</a>
+					</div>
+				</div>
+
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-toggle="dropdown"
+						style="background-color: #222831; border: 2px solid #222831;">Search</button>
+					<div class="dropdown-menu" style="background-color: #dddddd">
+						<a href="#" class="dropdown-item  btn btn-outline-light">View
+							Customer Details</a>
+					</div>
+				</div>
+
+				<form class="form-inline ml-auto" action="UserController"
+					method="get">
 					<input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>
 				</form>
