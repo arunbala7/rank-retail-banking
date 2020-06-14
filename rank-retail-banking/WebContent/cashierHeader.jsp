@@ -40,7 +40,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="#" class="nav-item nav-link active">Home</a>
+					<a href="../Dashboard.jsp" class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
