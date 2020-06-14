@@ -75,9 +75,12 @@ public class ExecutiveController extends HttpServlet {
 					short age= (short) Period.between(date, LocalDate.now()).getYears();
 					Customer customer=new Customer(ssn,name,address,"Customer Created Successfully",dob,"Active",age);
 					System.out.println(customer.toString());
+					if(CustomerService.createCustomer(customer)) {
 					response.setContentType("text/plain");
-					if(CustomerService.createCustomer(customer)) response.getWriter().write("success");
-				} catch (Exception e) {}					
+					response.getWriter().write("success");
+					}
+					}
+				 catch (Exception e) {}					
 				break;
 			case "updateCustomer":
 				

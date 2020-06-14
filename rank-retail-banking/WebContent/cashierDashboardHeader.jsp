@@ -40,7 +40,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="../Dashboard.jsp" class="nav-item nav-link active">Home</a>
+					<a href="#" class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 
-				<form class="form-inline ml-auto" action="../UserController"
+				<form class="form-inline ml-auto" action="UserController"
 					method="get">
 					<input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>

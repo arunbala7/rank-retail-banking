@@ -89,7 +89,7 @@
 					</div>
 				</div>
 
-				<form class="form-inline ml-auto" action="UserController"
+				<form class="form-inline ml-auto" action="../UserController"
 					method="get">
 					<input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>

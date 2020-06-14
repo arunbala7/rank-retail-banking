@@ -44,6 +44,7 @@ $(document).ready(function() {
 					check = false;
 				}
 			}
+			
 			if(check){
 			var name = "";
 			var ssn = "";
