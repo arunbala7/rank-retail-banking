@@ -38,6 +38,44 @@ public class BankingDAO {
 		ps.setString(6, customer.getStatus());
 		ps.setString(7, customer.getMessage());
 		int row= ps.executeUpdate();
+		DBConnection.closeConnection();
+		ps.close();
+		if(row==1) return true;
+		return false;
+	}
+	
+
+	public Customer getCustomer(Long id) throws Exception {
+		Customer customer=new Customer();
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT customer_name, customer_ssn, customer_address, customer_age FROM customer WHERE customer_id = ?;";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);		
+		ResultSet rsResultSet = ps.executeQuery();
+		if (rsResultSet.next())
+			{
+			customer.setName(rsResultSet.getString("customer_name"));
+			customer.setId(id);
+			customer.setSsn(rsResultSet.getInt("customer_ssn"));
+			customer.setAddress(rsResultSet.getString("customer_address"));
+			customer.setAge(rsResultSet.getShort("customer_age"));   
+			}
+		DBConnection.closeConnection();
+		ps.close();	
+		return customer;
+	}
+
+	public boolean updateCustomer(Customer customer) throws Exception {
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "UPDATE customer SET customer_name = ?, customer_address= ?, customer_age = ?, customer_messages = 'CUSTOMER DETAILS UPDATED', customer_update_datetime=now()  WHERE customer_id = ?;";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setString(1, customer.getName());
+		ps.setString(2, customer.getAddress());
+		ps.setShort(3, customer.getAge());
+		ps.setLong(4, customer.getId());
+		int row= ps.executeUpdate();		
+		DBConnection.closeConnection();
+		ps.close();
 		if(row==1) return true;
 		return false;
 	}

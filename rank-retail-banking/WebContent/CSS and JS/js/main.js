@@ -1,5 +1,5 @@
 
-(function ($) {
+$(document).ready(function() {
     "use strict";
 //   [ Focus input ]
     $('.input100').each(function(){
@@ -60,4 +60,12 @@
     
     
 
-})(jQuery);
+});
+
+
+$(document).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        $('#login').click();    
+    }
+});

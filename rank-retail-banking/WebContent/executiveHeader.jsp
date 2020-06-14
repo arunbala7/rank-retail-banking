@@ -51,7 +51,7 @@
 						<a href="../ExecutiveController?action=createCustomer" class="dropdown-item btn btn-outline-light">Create
 							Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="../ExecutiveController?action=udateCustomer" class="dropdown-item btn btn-outline-light">Update
+						<a href="../ExecutiveController?action=updateCustomer" class="dropdown-item btn btn-outline-light">Update
 							Customer</a>
 						<div class="dropdown-divider"></div>
 						<a href="../ExecutiveController?action=deleteCustomer" class="dropdown-item btn btn-outline-light">Delete
