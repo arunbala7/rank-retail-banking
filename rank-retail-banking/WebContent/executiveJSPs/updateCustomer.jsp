@@ -19,6 +19,8 @@
 <link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript"
+	src="../CSS and JS/js/sweetalert.min.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -80,7 +82,12 @@ $(document).ready(function() {
 		            		}
 		            },
 		            error:function(){
-			              alert('error');
+		            	swal({
+		            		  title: "Failed",
+		            		  text: "No Response from the server! Try Again",
+		            		  icon: "error",
+		            		  button: "Okay",
+		            		});
 			            }
 		         }
 		    );
@@ -119,11 +126,22 @@ $(document).ready(function() {
 	            cache:false,
 	            async: false,
 	            success:function(data){
-	               alert(data);
-	               window.location.reload();
+	            	swal({
+	            		  title: "Success",
+	            		  text: "Customer Updated Successfully!",
+	            		  icon: "success",
+	            		  button: "Okay",
+	            		}).then((value) => {
+	            			window.location.reload();
+	            		});	               
 	            },
 	            error:function(){
-		              alert('error');
+	            	swal({
+	            		  title: "Failed",
+	            		  text: "No Response from the server! Try Again",
+	            		  icon: "error",
+	            		  button: "Okay",
+	            		});
 		            }
 	            
 	         }

@@ -19,6 +19,8 @@
 <link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript"
+	src="../CSS and JS/js/sweetalert.min.js"></script>
 <script>
 $(document).ready(function() {
 		"use strict";
@@ -66,11 +68,23 @@ $(document).ready(function() {
 	            cache:false,
 	            async: false,
 	            success:function(data){
-	               alert(data);
-	               $('#reset').click();
+	            	swal({
+	            		  title: "Success",
+	            		  text: "Customer Created Successfully with the ID:"+data,
+	            		  icon: "success",
+	            		  button: "Okay",
+	            		}).then((value) => {
+	            			$('#reset').click();
+	            		});
+	               
 	            },
 	            error:function(){
-	              alert('error');
+	            	swal({
+	            		  title: "Failed",
+	            		  text: "No Response from the server! Try Again",
+	            		  icon: "error",
+	            		  button: "Okay",
+	            		});
 	            }
 	         }
 	    );

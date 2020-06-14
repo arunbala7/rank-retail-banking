@@ -80,9 +80,10 @@ public class ExecutiveController extends HttpServlet {
 				short age = (short) Period.between(date, LocalDate.now()).getYears();
 				Customer customer = new Customer(ssn, name, address, "CUSTOMER CREATED SUCCESSFULLY", dob, "Active",
 						age);
-				if (CustomerService.createCustomer(customer)) {
+				String custId=CustomerService.createCustomer(customer);
+				if (custId!=null) {
 					response.setContentType("text/plain");
-					response.getWriter().write("success");
+					response.getWriter().write(custId);
 				} else {
 					response.getWriter().write("failed");
 				}

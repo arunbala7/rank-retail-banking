@@ -25,11 +25,12 @@ public class BankingDAO {
 		return workGroup;
 	}
 
-	public boolean createCustomer(Customer customer) throws Exception {
+	public String createCustomer(Customer customer) throws Exception {
+		String custId=null;
 		Connection con = (Connection) DBConnection.getConnection();
 		String query = "INSERT INTO customer (`customer_ssn`, `customer_name`, `customer_address`, `customer_dob`, `customer_age`,`customer_status`,`customer_messages`,`customer_create_datetime`,`customer_update_datetime`)"
 				+ "VALUES (?,?,?,?,?,?,?,now(),now());";
-		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, customer.getSsn());
 		ps.setString(2, customer.getName());
 		ps.setString(3, customer.getAddress());
@@ -37,11 +38,13 @@ public class BankingDAO {
 		ps.setShort(5, customer.getAge());
 		ps.setString(6, customer.getStatus());
 		ps.setString(7, customer.getMessage());
-		int row= ps.executeUpdate();
+		ps.executeUpdate();
+		ResultSet rs = ps.getGeneratedKeys();
+		if(rs.next())
+		custId=rs.getLong(1)+"";
 		DBConnection.closeConnection();
 		ps.close();
-		if(row==1) return true;
-		return false;
+		return custId;
 	}
 	
 
