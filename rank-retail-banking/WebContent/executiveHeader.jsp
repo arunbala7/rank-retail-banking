@@ -30,7 +30,7 @@
 	response.setHeader("Expires", "0");//Proxies
 	%>
 	<div class="bs-example">
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 			<a href="#" class="navbar-brand" style="font-weight: bold;">R.A.N.K</a>
 			<button type="button" class="navbar-toggler" data-toggle="collapse"
 				data-target="#navbarCollapse">
