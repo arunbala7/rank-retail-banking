@@ -21,6 +21,16 @@
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function() {
+	
+		$("#reset1").click(function(){
+			$("#id").val("");
+		});
+		
+		$("#reset").click(function(){
+			$("#name").val("");
+			$("#age").val("");
+			$("#address").val("");
+		});
 		"use strict";
 		//   [ Focus input ]
 		$('.input100').each(function() {
@@ -209,7 +219,7 @@ $(document).ready(function() {
 			 <br /> <br />
 				<div style="display: none;" class="btn-group before-id">
 					<center>
-						<button type="reset" class="btn btn-primary active" id="reset">Reset</button>
+						<button class="btn btn-primary active" id="reset">Reset</button>
 						&ensp; <input type="submit" class="btn btn-primary active"
 							id="submitForm" value="Update" />
 					</center>
