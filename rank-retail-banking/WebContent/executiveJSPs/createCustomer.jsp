@@ -67,7 +67,7 @@ $(document).ready(function() {
 	            async: false,
 	            success:function(data){
 	               alert(data);
-	               location.reload(true);
+	               $('#reset').click();
 	            },
 	            error:function(){
 	              alert('error');

@@ -6,11 +6,11 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="CSS and JS/css/bootstrap.min.css">
-<link rel="stylesheet" href="CSS and JS/css/font-awesome.min.css">
-<script src="CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script src="CSS and JS/js/popper.min.js"></script>
-<script src="CSS and JS/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../CSS and JS/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS and JS/css/font-awesome.min.css">
+<script src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script src="../CSS and JS/js/popper.min.js"></script>
+<script src="../CSS and JS/js/bootstrap.min.js"></script>
 <style type="text/css">
 .btn-group {
 	padding: 4px;

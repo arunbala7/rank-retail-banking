@@ -9,7 +9,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+<link rel="icon" type="image/png" href="CSS and JS/images/icons/favicon.ico" />
 <link rel="stylesheet" type="text/css"
 	href="CSS and JS/vendor/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
@@ -19,8 +19,6 @@
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
 <script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
-<!--  <script type="text/javascript" src="CSS and JS/js/main.js"></script>-->
-
 </head>
 </head>
 <body>
@@ -44,8 +42,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
-	<!--  <script type="text/javascript" src="CSS and JS/js/main.js"></script>-->
-
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

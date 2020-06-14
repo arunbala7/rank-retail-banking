@@ -74,7 +74,6 @@ public class ExecutiveController extends HttpServlet {
 					date = (LocalDate)DateTime.returnDate(dob);
 					short age= (short) Period.between(date, LocalDate.now()).getYears();
 					Customer customer=new Customer(ssn,name,address,"Customer Created Successfully",dob,"Active",age);
-					System.out.println(customer.toString());
 					if(CustomerService.createCustomer(customer)) {
 					response.setContentType("text/plain");
 					response.getWriter().write("success");
