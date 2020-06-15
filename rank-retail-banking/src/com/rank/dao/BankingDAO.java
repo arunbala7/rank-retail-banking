@@ -19,9 +19,9 @@ public class BankingDAO {
 		String query = "SELECT work_group FROM users WHERE user_name ='" + user.getUserName() + "' AND password='"
 				+ user.getPassword() + "'";
 		Statement st = con.createStatement();
-		ResultSet rsResultSet = st.executeQuery(query);
-		if (rsResultSet.next())
-			workGroup = rsResultSet.getString("work_group");
+		ResultSet rs = st.executeQuery(query);
+		if (rs.next())
+			workGroup = rs.getString("work_group");
 		DBConnection.closeConnection();
 		st.close();
 		return workGroup;
@@ -30,9 +30,14 @@ public class BankingDAO {
 	public String createCustomer(Customer customer) throws Exception {
 		String custId=null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "INSERT INTO customer (`customer_ssn`, `customer_name`, `customer_address`, `customer_dob`, `customer_age`,`customer_status`,`customer_messages`,`customer_create_datetime`,`customer_update_datetime`)"
+		String query="SELECT * FROM customer WHERE `customer_ssn`= ?;";
+		PreparedStatement ps=(PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, customer.getSsn());
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) return null;
+		query = "INSERT INTO customer (`customer_ssn`, `customer_name`, `customer_address`, `customer_dob`, `customer_age`,`customer_status`,`customer_messages`,`customer_create_datetime`,`customer_update_datetime`)"
 				+ "VALUES (?,?,?,?,?,?,?,now(),now());";
-		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 		ps.setInt(1, customer.getSsn());
 		ps.setString(2, customer.getName());
 		ps.setString(3, customer.getAddress());
@@ -41,7 +46,7 @@ public class BankingDAO {
 		ps.setString(6, customer.getStatus());
 		ps.setString(7, customer.getMessage());
 		ps.executeUpdate();
-		ResultSet rs = ps.getGeneratedKeys();
+		rs = ps.getGeneratedKeys();
 		if(rs.next())
 		custId=rs.getLong(1)+"";
 		DBConnection.closeConnection();
@@ -116,13 +121,19 @@ public class BankingDAO {
 	public String createAccount(Account account) throws Exception {
 		String accountNumber=null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "INSERT INTO account ( `customer_id`, `account_type`,`account_status`,`account_message`,`account_balance`,`account_create_datetime`,`account_update_datetime`)" + "VALUES (?, ?,'ACTIVE','ACCOUNT CREATED SUCCESSFULLY',?,now(),now());";
-		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		String query="SELECT * FROM account WHERE `account_type`= ? AND `customer_id`=?;";
+		PreparedStatement ps=(PreparedStatement) con.prepareStatement(query);
+		ps.setString(1, account.getType());
+		ps.setLong(2, account.getCustomerId());
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) return null;
+		query = "INSERT INTO account ( `customer_id`, `account_type`,`account_status`,`account_message`,`account_balance`,`account_create_datetime`,`account_update_datetime`)" + "VALUES (?, ?,'ACTIVE','ACCOUNT CREATED SUCCESSFULLY',?,now(),now());";
+		ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 		ps.setLong(1, account.getCustomerId());
 		ps.setString(2, account.getType());
 		ps.setLong(3, account.getBalance());
 		ps.executeUpdate();
-		ResultSet rs = ps.getGeneratedKeys();
+		rs = ps.getGeneratedKeys();
 		if(rs.next())
 			accountNumber=rs.getLong(1)+"";
 		System.out.print(accountNumber);

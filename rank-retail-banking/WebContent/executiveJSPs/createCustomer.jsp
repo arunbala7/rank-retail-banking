@@ -79,7 +79,7 @@ $(document).ready(function() {
 	            		});
 	            	}else{
 	            		swal({
-		            		  title: "Account Not Created!",
+		            		  title: "Customer Not Created, Duplication of Social Security Number!",
 		            		  text: "Try Again",
 		            		  icon: "error",
 		            		  button: "Okay",

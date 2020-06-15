@@ -31,6 +31,9 @@ $(document).ready(function() {
 			$("#name").val("");
 			$("#age").val("");
 			$("#address").val("");
+			$(".after-id").css("display", "block");
+        	$(".before-id").css("display", "none");
+        	$('#id').attr('readonly', false); 
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -97,7 +100,7 @@ $(document).ready(function() {
 		  });
 		
 
-		$('.validate-form').on('submit', function(e) {
+		$('#submitForm').click(function(e) {
 			var check = true;
 
 			for (var i = 0; i < input.length; i++) {
@@ -136,7 +139,7 @@ $(document).ready(function() {
 		            		});
 		            	}else{
 		            		swal({
-			            		  title: "Account Not Created!",
+			            		  title: "Account Not Created, Customer Already has a "+accountType+" Account!",
 			            		  text: "Try Again",
 			            		  icon: "error",
 			            		  button: "Okay",
@@ -234,14 +237,14 @@ $(document).ready(function() {
 						placeholder="Enter the address..." id="amount" name="amount" />
 					<span class="focus-input100"></span>
 				</div>
-				<center>
+			</form>
+			<center>
 					<div style="display: none;" class="btn-group before-id">
 						<button class="btn btn-primary active" id="reset">Reset</button>
-						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Create Account" />
+						&ensp; <button class="btn btn-primary active"
+							id="submitForm"  >Create Account</button>
 					</div>
 				</center>
-			</form>
 		</div>
 	</div>
 
