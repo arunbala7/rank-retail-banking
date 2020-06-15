@@ -75,7 +75,6 @@ public class ExecutiveController extends HttpServlet {
 				String name = (String) request.getParameter("name");
 				int ssn = Integer.parseInt(request.getParameter("ssn"));
 				String dob = (String) request.getParameter("dob");
-				System.out.println(dob);
 				String address = (String) request.getParameter("address");
 				LocalDate date;
 				date = (LocalDate) DateTime.returnDate(dob);

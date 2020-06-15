@@ -196,7 +196,7 @@ $(document).ready(function() {
 				
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Customer Id">
-					<span class="label-input100">Customer ID</span> <input
+					<span class="label-input100">Customer ID</span> <input autocomplete="off" 
 						class="input100 form-control" type="text" id="id" maxLength="10" name="customerId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
@@ -210,7 +210,7 @@ $(document).ready(function() {
 				</div>			
 				
 				
-			<form class="login100-form validate-form " id="customerForm">
+			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a valid Name">
 					<span class="label-input100">Name</span> <input

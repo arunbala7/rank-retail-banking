@@ -33,8 +33,11 @@ public class UserController extends HttpServlet {
 				session.setAttribute("workGroup", workGroup);
 				session.setAttribute("userName", userName);
 				response.sendRedirect("Dashboard.jsp");
+				
 			} else {
-				response.sendRedirect("index.jsp");
+				response.setContentType("text/plain");
+				response.setCharacterEncoding("UTF-8"); 
+				response.getWriter().write("failed");;				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

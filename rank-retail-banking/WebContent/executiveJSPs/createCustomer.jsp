@@ -130,7 +130,7 @@ $(document).ready(function() {
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Create Customer</span><br />
-			<form class="login100-form validate-form " id="customerForm">
+			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a valid Name">
 					<span class="label-input100">Name</span> <input
