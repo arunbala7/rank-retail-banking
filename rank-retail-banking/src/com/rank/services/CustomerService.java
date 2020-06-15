@@ -19,6 +19,11 @@ public class CustomerService {
 		BankingDAO dao=new BankingDAO();
 		return dao.updateCustomer(customer);
 	}
+
+	public static boolean deleteCustomer(Long id) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.deleteCustomer(id);
+	}
 	
 	
 }

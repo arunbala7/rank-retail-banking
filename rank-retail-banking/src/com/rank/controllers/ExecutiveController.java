@@ -41,7 +41,7 @@ public class ExecutiveController extends HttpServlet {
 			response.sendRedirect("executiveJSPs/updateCustomer.jsp");
 			break;
 		case "deleteCustomer":
-
+			response.sendRedirect("executiveJSPs/deleteCustomer.jsp");
 			break;
 		case "customerStatus":
 
@@ -70,18 +70,20 @@ public class ExecutiveController extends HttpServlet {
 
 		switch (action) {
 		case "createCustomer":
-			String name = (String) request.getParameter("name");
-			int ssn = Integer.parseInt(request.getParameter("ssn"));
-			String dob = (String) request.getParameter("dob");
-			String address = (String) request.getParameter("address");
-			LocalDate date;
+
 			try {
+				String name = (String) request.getParameter("name");
+				int ssn = Integer.parseInt(request.getParameter("ssn"));
+				String dob = (String) request.getParameter("dob");
+				System.out.println(dob);
+				String address = (String) request.getParameter("address");
+				LocalDate date;
 				date = (LocalDate) DateTime.returnDate(dob);
 				short age = (short) Period.between(date, LocalDate.now()).getYears();
 				Customer customer = new Customer(ssn, name, address, "CUSTOMER CREATED SUCCESSFULLY", dob, "Active",
 						age);
-				String custId=CustomerService.createCustomer(customer);
-				if (custId!=null) {
+				String custId = CustomerService.createCustomer(customer);
+				if (custId != null) {
 					response.setContentType("text/plain");
 					response.getWriter().write(custId);
 				} else {
@@ -91,13 +93,14 @@ public class ExecutiveController extends HttpServlet {
 			}
 			break;
 		case "updateCustomer":
-			String type = (String) request.getParameter("actionType");
-			if (type.contentEquals("fetch")) {
-				Long id = Long.parseLong(request.getParameter("customerId"));
-				Customer customer = null;
-				try {
-					customer = CustomerService.getCustomer(id);
+			try {
+				String type = (String) request.getParameter("actionType");
+				if (type.contentEquals("fetch")) {
 
+					Long id = Long.parseLong(request.getParameter("customerId"));
+					Customer customer = null;
+
+					customer = CustomerService.getCustomer(id);
 					response.setContentType("application/json");
 					if (customer.getId() != 0) {
 						String customerJson = this.gson.toJson(customer);
@@ -105,19 +108,22 @@ public class ExecutiveController extends HttpServlet {
 					} else {
 						response.getWriter().print("{}");
 					}
-				} catch (Exception e) {
-				}
-			} else {
-				String name1 = (String) request.getParameter("name");
-				String address1 = (String) request.getParameter("address");
-				short age1 = Short.parseShort(request.getParameter("age"));
-				long id1 = Long.parseLong(request.getParameter("id"));
-				Customer updateCustomer = new Customer();
-				updateCustomer.setAddress(address1);
-				updateCustomer.setAge(age1);
-				updateCustomer.setId(id1);
-				updateCustomer.setName(name1);
-				try {
+
+				} else {
+
+					String name = (String) request.getParameter("name");
+					String address = (String) request.getParameter("address");
+					String dob = (String) request.getParameter("dob");
+					LocalDate date = (LocalDate) DateTime.returnDate(dob);
+					short age = (short) Period.between(date, LocalDate.now()).getYears();
+					long id = Long.parseLong(request.getParameter("id"));
+					Customer updateCustomer = new Customer();
+					updateCustomer.setAddress(address);
+					updateCustomer.setDob(dob);
+					updateCustomer.setAge(age);
+					updateCustomer.setId(id);
+					updateCustomer.setName(name);
+					
 					response.setContentType("text/plain");
 					if (CustomerService.updateCustomer(updateCustomer)) {
 						response.getWriter().write("success");
@@ -125,13 +131,40 @@ public class ExecutiveController extends HttpServlet {
 						response.getWriter().write("failed");
 					}
 
-				} catch (Exception e) {
 				}
-
+			} catch (Exception e) {
 			}
 
 			break;
 		case "deleteCustomer":
+			try {
+				String type = (String) request.getParameter("actionType");
+				if (type.contentEquals("fetch")) {
+
+					Long id = Long.parseLong(request.getParameter("customerId"));
+					Customer customer = null;
+
+					customer = CustomerService.getCustomer(id);
+					response.setContentType("application/json");
+					if (customer.getId() != 0) {
+						String customerJson = this.gson.toJson(customer);
+						response.getWriter().print(customerJson);
+					} else {
+						response.getWriter().print("{}");
+					}
+
+				}else {
+					
+					Long id=Long.parseLong(request.getParameter("id"));
+					response.setContentType("text/plain");
+					if (CustomerService.deleteCustomer(id)) {
+						response.getWriter().write("success");
+					} else {
+						response.getWriter().write("failed");
+					}
+					
+				}
+			} catch (Exception e) {}
 
 			break;
 		case "customerStatus":

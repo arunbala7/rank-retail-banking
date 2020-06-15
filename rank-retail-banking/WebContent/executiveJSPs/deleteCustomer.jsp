@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Update Customer</title>
+<title>Delete Customer</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -29,9 +29,9 @@ $(document).ready(function() {
 		});
 		
 		$("#reset").click(function(){
-			$("#name").val("");
-			$("#age").val("");
-			$("#address").val("");
+			$(".after-id").css("display", "block");
+        	$(".before-id").css("display", "none");
+        	$('#id').attr('readonly', false); 
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -53,7 +53,7 @@ $(document).ready(function() {
 			}else{
 				var customerId="";
 				customerId=$("#id").val();
-				var action= 'updateCustomer';
+				var action= 'deleteCustomer';
 				var actionType= 'fetch';
 				var obj={customerId,
 		            	action,
@@ -76,7 +76,10 @@ $(document).ready(function() {
 		            	$('#dob').val(data.dob);
 		            	$(".after-id").css("display", "none");
 		            	$(".before-id").css("display", "block");
-		            	$('#ssno').attr('readonly', true); 
+		            	$('#ssno').attr('readonly', true);
+		            	$('#name').attr('readonly', true);
+		            	$('#address').attr('readonly', true);
+		            	$('#dob').attr('readonly', true);
 		            		}else{
 		            			swal({
 				            		  title: "Failed",
@@ -112,45 +115,53 @@ $(document).ready(function() {
 			}
 			
 			if(check){
-				var id="";
-			var name = "";
-			var dob = "";
-			var address = "";
-			var action = "updateCustomer";
-			var actionType="update";
+			var id="";
+			var action = "deleteCustomer";
+			var actionType="delete";
 			e.preventDefault();
-			name = $("#name").val();
-			dob = $("#dob").val();
-			address = $("#address").val();
 			id=$("#id").val();
-			var obj={name,dob,address,actionType,action,id };		
-			$.ajax({
-	            url:'../ExecutiveController',
-	            data:obj,
-	            type:'post',
-	            cache:false,
-	            async: false,
-	            success:function(data){
-	            	swal({
-	            		  title: "Success",
-	            		  text: "Customer Updated Successfully!",
-	            		  icon: "success",
-	            		  button: "Okay",
-	            		}).then((value) => {
-	            			window.location.reload();
-	            		});	               
-	            },
-	            error:function(){
-	            	swal({
-	            		  title: "Failed",
-	            		  text: "No Response from the server! Try Again",
-	            		  icon: "error",
-	            		  button: "Okay",
-	            		});
-		            }
-	            
-	         }
-	    );
+			var obj={actionType,action,id };
+			swal({
+				  title: "Confirm Delete",
+				  text: "Once deleted, you will not be able to recover!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+				  
+					$.ajax({
+					            url:'../ExecutiveController',
+					            data:obj,
+					            type:'post',
+					            cache:false,
+					            async: false,
+					            success:function(data){
+					            	swal({
+					            		  title: "Success",
+					            		  text: "Customer Deleted Successfully!",
+					            		  icon: "success",
+					            		  button: "Okay",
+					            		}).then((value) => {
+					            			window.location.reload();
+					            		});	               
+					            },
+					            error:function(){
+					            	swal({
+					            		  title: "Failed",
+					            		  text: "No Response from the server! Try Again",
+					            		  icon: "error",
+					            		  button: "Okay",
+					            		});
+						            }
+					            
+					         }
+					    );
+				  } else {
+				    swal("Customer Not Deleted");
+				  }
+				});
 			}
 			return false;
 		});
@@ -192,7 +203,7 @@ $(document).ready(function() {
 		style="background-image: url('../CSS and JS/images/other.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
-				style="font-size: 30px; color: crimson;">Update Customer</span><br />
+				style="font-size: 30px; color: crimson;">Delete Customer</span><br />
 				
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Customer Id">
@@ -242,9 +253,9 @@ $(document).ready(function() {
 			 <br /> <br />
 				<div style="display: none;" class="btn-group before-id">
 					<center>
-						<button class="btn btn-primary active" id="reset">Reset</button>
+						<input type="reset" class="btn btn-primary active" id="reset" value="Cancel">
 						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Update" />
+							id="submitForm" value="Delete" />
 					</center>
 				</div>
 
