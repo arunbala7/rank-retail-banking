@@ -28,7 +28,7 @@ body {
   </div>
   <footer id="sticky-footer" class="py-2 bg-dark text-white-50 fixed-bottom">
     <div class="container text-center" style="color:white;">
-      <small>Copyright &copy; R.A.N.K Retail Banking</font></small>
+      <small>Copyright &copy; R.A.N.K Retail Banking</small>
     </div>
   </footer>
 </body>
