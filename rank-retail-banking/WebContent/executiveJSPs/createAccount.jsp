@@ -20,6 +20,7 @@
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -28,12 +29,7 @@ $(document).ready(function() {
 		});
 		
 		$("#reset").click(function(){
-			$("#name").val("");
-			$("#age").val("");
-			$("#address").val("");
-			$(".after-id").css("display", "block");
-        	$(".before-id").css("display", "none");
-        	$('#id').attr('readonly', false); 
+			$("#amount").val(""); 
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -170,6 +166,26 @@ $(document).ready(function() {
 		function validate(input) {
 			if ($(input).val().trim() == '')
 				return false;
+			switch ($(input).attr("name")) {
+		    case "name":
+		      return validate_name($(input).val().trim());
+		    case "ssn":
+		      return validate_ssno($(input).val().trim());
+		    case "dob":
+		      return validate_dob($(input).val().trim());
+		    case "address":
+		      return validate_address($(input).val().trim());
+		    case "customerId":
+		      return validate_customer_id($(input).val().trim());
+		    case "accountId":
+		      return validate_account_number($(input).val().trim());
+		    case "transactionId":
+		      return validate_transaction_id($(input).val().trim());
+		    case "depositAmount":
+		      return validate_depositAmount($(input).val().trim());
+			default:
+			  return;
+		  }
 		}
 
 		function showValidate(input) {
@@ -201,7 +217,7 @@ $(document).ready(function() {
 				style="font-size: 30px; color: crimson;">Create Account</span><br />
 
 			<div class="wrap-input100 validate-input m-b-23"
-				data-validate="Enter a Customer Id">
+				data-validate="Enter a Valid Customer Id">
 				<span class="label-input100">Customer ID</span> <input
 					autocomplete="off" class="input100 form-control" type="text"
 					id="id" maxLength="10" name="customerId"
@@ -251,5 +267,6 @@ $(document).ready(function() {
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript"
 		src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 </body>
 </html>

@@ -185,7 +185,6 @@ public class ExecutiveController extends HttpServlet {
 					String accountType=(String)request.getParameter("accountType");
 					Long amount=Long.parseLong(request.getParameter("amount"));
 					Account account=new Account(id,amount,accountType);
-					//System.out.println(account.toString());
 					String accountNumber = CustomerService.createAccount(account);
 					if (accountNumber != null) {
 						response.setContentType("text/plain");

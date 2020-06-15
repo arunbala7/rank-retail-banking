@@ -136,7 +136,6 @@ public class BankingDAO {
 		rs = ps.getGeneratedKeys();
 		if(rs.next())
 			accountNumber=rs.getLong(1)+"";
-		System.out.print(accountNumber);
 		query="INSERT INTO transactions (`account_number`, `transactions_descripton`,`transactions_date_time`,`transactions_amount`)VALUES (?,'DEPOSIT', now(),?);";
 		ps = (PreparedStatement) con.prepareStatement(query);
 		ps.setLong(1, Long.parseLong(accountNumber));

@@ -21,12 +21,14 @@
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript"
 	src="../CSS and JS/js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
 	
 		$("#reset1").click(function(){
 			$("#id").val("");
 		});
+			
 		
 		$("#reset").click(function(){
 			$("#name").val("");
@@ -165,6 +167,26 @@ $(document).ready(function() {
 		function validate(input) {
 			if ($(input).val().trim() == '')
 				return false;
+			switch ($(input).attr("name")) {
+		    case "name":
+		      return validate_name($(input).val().trim());
+		    case "ssn":
+		      return validate_ssno($(input).val().trim());
+		    case "dob":
+		      return validate_dob($(input).val().trim());
+		    case "address":
+		      return validate_address($(input).val().trim());
+		    case "customerId":
+		      return validate_customer_id($(input).val().trim());
+		    case "accountId":
+		      return validate_account_number($(input).val().trim());
+		    case "transactionId":
+		      return validate_transaction_id($(input).val().trim());
+		    case "depositAmount":
+		      return validate_depositAmount($(input).val().trim());
+			default:
+			  return;
+		  }
 		}
 
 		function showValidate(input) {
@@ -194,13 +216,14 @@ $(document).ready(function() {
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Update Customer</span><br />
-				
+				<form autocomplete="off" class="login100-form validate-form " id="Form">
 				<div class="wrap-input100 validate-input m-b-23"
-					data-validate="Enter a Customer Id">
+					data-validate="Enter a Valid Customer Id">
 					<span class="label-input100">Customer ID</span> <input autocomplete="off" 
 						class="input100 form-control" type="text" id="id" maxLength="10" name="customerId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
+				</form>
 				<center>
 				<div  class="btn-group after-id">					
 						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
@@ -211,28 +234,28 @@ $(document).ready(function() {
 				
 			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a valid Name">
+					data-validate="Enter a Valid Name">
 					<span class="label-input100">Name</span> <input
 						class="input100 form-control" type="text" id="name" name="name"
 						placeholder="Enter the name..." /> <span class="focus-input100"></span>
 				</div>
 
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
-					data-validate="Enter a valid SSN">
+					data-validate="Enter a Valid SSN">
 					<span class="label-input100" id="ssn">Social Security Number</span>
 					<input class="input100 form-inline form-control" type="text"
 						id="ssno" name="ssn" maxLength="9" placeholder="Enter the ssn..." />
 					<span class="focus-input100"></span>
 				</div>
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a valid DOB">
+					data-validate="Enter a Valid DOB">
 					<span class="label-input100 ">Date of Birth</span> <input
 						class="input100 form-control" type="date" id="dob" name="dob" />
 					<span class="focus-input100"></span>
 				</div>
 
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a Address">
+					data-validate="Enter a Valid Address">
 					<span class="label-input100">Address</span> <input
 						class="input100 form-control" type="text"
 						placeholder="Enter the address..." id="address" name="address" />
@@ -253,5 +276,6 @@ $(document).ready(function() {
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript"
 		src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 </body>
 </html>
