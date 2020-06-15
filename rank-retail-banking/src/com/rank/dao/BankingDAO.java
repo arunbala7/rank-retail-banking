@@ -116,7 +116,7 @@ public class BankingDAO {
 	public String createAccount(Account account) throws Exception {
 		String accountNumber=null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "INSERT INTO account ( `customer_id`, `account_type`,`account_balance`,`account_create_datetime`) VALUES (?,?,?,now());";
+		String query = "INSERT INTO account ( `customer_id`, `account_type`,`account_status`,`account_message`,`account_balance`,`account_create_datetime`,`account_update_datetime`)" + "VALUES (?, ?,'ACTIVE','ACCOUNT CREATED SUCCESSFULLY',?,now(),now());";
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 		ps.setLong(1, account.getCustomerId());
 		ps.setString(2, account.getType());
@@ -129,7 +129,7 @@ public class BankingDAO {
 		query="INSERT INTO transactions (`account_number`, `transactions_descripton`,`transactions_date_time`,`transactions_amount`)VALUES (?,'DEPOSIT', now(),?);";
 		ps = (PreparedStatement) con.prepareStatement(query);
 		ps.setLong(1, Long.parseLong(accountNumber));
-		ps.setLong(3, account.getBalance());
+		ps.setLong(2, account.getBalance());
 		ps.executeUpdate();
 		DBConnection.closeConnection();
 		ps.close();
