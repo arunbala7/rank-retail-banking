@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Update Customer</title>
+<title>View Customer</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -29,10 +29,9 @@ $(document).ready(function() {
 		});
 		
 		$("#reset").click(function(){
-			$("#name").val("");
-			$("#age").val("");
-			$("#address").val("");
-			$("#dob").val("");
+			$(".after-id").css("display", "block");
+        	$(".before-id").css("display", "none");
+        	$('#id').attr('readonly', false); 
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -54,7 +53,7 @@ $(document).ready(function() {
 			}else{
 				var customerId="";
 				customerId=$("#id").val();
-				var action= 'updateCustomer';
+				var action= 'viewCustomer';
 				var actionType= 'fetch';
 				var obj={customerId,
 		            	action,
@@ -77,7 +76,10 @@ $(document).ready(function() {
 		            	$('#dob').val(data.dob);
 		            	$(".after-id").css("display", "none");
 		            	$(".before-id").css("display", "block");
-		            	$('#ssno').attr('readonly', true); 
+		            	$('#ssno').attr('readonly', true);
+		            	$('#name').attr('readonly', true);
+		            	$('#address').attr('readonly', true);
+		            	$('#dob').attr('readonly', true);
 		            		}else{
 		            			swal({
 				            		  title: "Failed",
@@ -99,8 +101,7 @@ $(document).ready(function() {
 		    );
 			}
 		   
-		  });
-		
+		  });		
 
 		$('.validate-form').on('submit', function(e) {
 			var check = true;
@@ -112,47 +113,6 @@ $(document).ready(function() {
 				}
 			}
 			
-			if(check){
-				var id="";
-			var name = "";
-			var dob = "";
-			var address = "";
-			var action = "updateCustomer";
-			var actionType="update";
-			e.preventDefault();
-			name = $("#name").val();
-			dob = $("#dob").val();
-			address = $("#address").val();
-			id=$("#id").val();
-			var obj={name,dob,address,actionType,action,id };		
-			$.ajax({
-	            url:'../ExecutiveController',
-	            data:obj,
-	            type:'post',
-	            cache:false,
-	            async: false,
-	            success:function(data){
-	            	swal({
-	            		  title: "Success",
-	            		  text: "Customer Updated Successfully!",
-	            		  icon: "success",
-	            		  button: "Okay",
-	            		}).then((value) => {
-	            			window.location.reload();
-	            		});	               
-	            },
-	            error:function(){
-	            	swal({
-	            		  title: "Failed",
-	            		  text: "No Response from the server! Try Again",
-	            		  icon: "error",
-	            		  button: "Okay",
-	            		});
-		            }
-	            
-	         }
-	    );
-			}
 			return false;
 		});
 
@@ -193,7 +153,7 @@ $(document).ready(function() {
 		style="background-image: url('../CSS and JS/images/other.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
-				style="font-size: 30px; color: crimson;">Update Customer</span><br />
+				style="font-size: 30px; color: crimson;">View Customer</span><br />
 				
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Customer Id">
@@ -204,10 +164,10 @@ $(document).ready(function() {
 				<center>
 				<div  class="btn-group after-id">					
 						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-						&ensp; <button class="btn btn-primary active" id="customerId">Find Customer</button>					
-				</div>	
-				</center>
-				
+						&ensp; <button class="btn btn-primary active"
+							id="customerId"  />Find Customer</button>					
+				</div>
+				</center>				
 				
 			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
@@ -239,10 +199,8 @@ $(document).ready(function() {
 					<span class="focus-input100"></span>
 				</div>
 				<center>
-				<div style="display: none;" class="btn-group before-id">
-						<button class="btn btn-primary active" id="reset">Reset</button>
-						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Update" />
+				<div  style="display: none;" class="btn-group before-id">
+						<input type="reset"  class="btn btn-primary active" id="reset" value="Back">
 				</div>
 				</center>
 

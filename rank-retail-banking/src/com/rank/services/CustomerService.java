@@ -1,5 +1,7 @@
 package com.rank.services;
 
+import com.rank.beans.Account;
+import com.rank.beans.Combined;
 import com.rank.beans.Customer;
 import com.rank.dao.BankingDAO;
 
@@ -24,6 +26,25 @@ public class CustomerService {
 		BankingDAO dao=new BankingDAO();
 		return dao.deleteCustomer(id);
 	}
-	
+
+	public static boolean isCustomer(Long id) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.isCustomer(id);
+	}
+
+	public static String createAccount(Account account) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.createAccount(account);
+	}
+
+	public static Combined getAccount(Long accountId) throws Exception {
+		BankingDAO dao=new BankingDAO();		
+		return dao.getAccount(accountId);
+	}
+
+	public static boolean deleteAccount(Long id) throws Exception {
+		BankingDAO dao=new BankingDAO();	
+		return dao.deleteAccount(id);
+	}	
 	
 }

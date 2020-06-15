@@ -4,7 +4,7 @@
 <style>
 html,
 body {
-  height: 100%;
+  height: 10%;
 }
 
 #page-content {
@@ -26,7 +26,7 @@ body {
 <body class="d-flex flex-column">
   <div id="page-content">
   </div>
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <footer id="sticky-footer" class="py-2 bg-dark text-white-50 fixed-bottom">
     <div class="container text-center" style="color:white;">
       <small>Copyright &copy; R.A.N.K Retail Banking</font></small>
     </div>

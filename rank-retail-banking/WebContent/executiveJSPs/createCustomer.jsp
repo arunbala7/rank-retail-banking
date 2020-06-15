@@ -68,6 +68,7 @@ $(document).ready(function() {
 	            cache:false,
 	            async: false,
 	            success:function(data){
+	            	if(data!=="failed"){
 	            	swal({
 	            		  title: "Success",
 	            		  text: "Customer Created Successfully with the ID:"+data,
@@ -76,6 +77,14 @@ $(document).ready(function() {
 	            		}).then((value) => {
 	            			$('#reset').click();
 	            		});
+	            	}else{
+	            		swal({
+		            		  title: "Account Not Created!",
+		            		  text: "Try Again",
+		            		  icon: "error",
+		            		  button: "Okay",
+		            		});
+	            	}
 	               
 	            },
 	            error:function(){
@@ -161,17 +170,14 @@ $(document).ready(function() {
 				</div>
 				<input type="hidden" id="action" name="action"
 					value="createCustomer" /> <br /> <br />
-				<div class="btn-group">
-					<center>
+				<div class="btn-group d-flex justify-content-center">
 						<button type="reset" class="btn btn-primary active" id="reset">Reset</button>
 						&ensp; <input type="submit" class="btn btn-primary active"
 							id="submitForm" value="Create" />
-					</center>
 				</div>
 
 			</form>
 		</div>
-	</div>
 	</div>
 
 	<%@ include file="../footer.jsp"%>

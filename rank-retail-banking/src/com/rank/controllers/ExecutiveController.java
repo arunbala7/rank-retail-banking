@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.rank.beans.Account;
+import com.rank.beans.Combined;
 import com.rank.beans.Customer;
 import com.rank.services.CustomerService;
 import com.rank.util.DateTime;
@@ -47,16 +49,16 @@ public class ExecutiveController extends HttpServlet {
 
 			break;
 		case "createAccount":
-
+			response.sendRedirect("executiveJSPs/createAccount.jsp");	
 			break;
 		case "deleteAccount":
-
+			response.sendRedirect("executiveJSPs/deleteAccount.jsp");
 			break;
 		case "viewAccounts":
 
 			break;
-		case "viewCustomers":
-
+		case "viewCustomer":
+			response.sendRedirect("executiveJSPs/viewCustomer.jsp");
 			break;
 		default:
 			response.sendRedirect("Dashboard.jsp");
@@ -121,8 +123,7 @@ public class ExecutiveController extends HttpServlet {
 					updateCustomer.setDob(dob);
 					updateCustomer.setAge(age);
 					updateCustomer.setId(id);
-					updateCustomer.setName(name);
-					
+					updateCustomer.setName(name);					
 					response.setContentType("text/plain");
 					if (CustomerService.updateCustomer(updateCustomer)) {
 						response.getWriter().write("success");
@@ -167,18 +168,82 @@ public class ExecutiveController extends HttpServlet {
 
 			break;
 		case "customerStatus":
-
 			break;
-		case "createAccount":
-
+		case "createAccount":	
+			try {
+				String type = (String) request.getParameter("actionType");
+				if (type.contentEquals("check")) {
+					Long id = Long.parseLong(request.getParameter("customerId"));
+					response.setContentType("text/plain");
+					if(CustomerService.isCustomer(id)) {
+						response.getWriter().write("success");					
+					}else {
+						response.getWriter().write("failed");
+					}					
+				}else {
+					Long id = Long.parseLong(request.getParameter("id"));
+					String accountType=(String)request.getParameter("accountType");
+					Long amount=Long.parseLong(request.getParameter("amount"));
+					Account account=new Account(id,amount,accountType);
+					//System.out.println(account.toString());
+					String accountNumber = CustomerService.createAccount(account);
+					if (accountNumber != null) {
+						response.setContentType("text/plain");
+						response.getWriter().write(accountNumber);
+					} else {
+						response.getWriter().write("failed");
+						}					
+				}				
+			} catch (Exception e) {}
 			break;
 		case "deleteAccount":
+			try {
+				String type=(String)request.getParameter("actionType");
+				if(type.contentEquals("fetch")) {
+				Long accountId=Long.parseLong(request.getParameter("accountId"));
+				Combined account = CustomerService.getAccount(accountId);
+				response.setContentType("application/json");
+				if (account != null) {
+					String customerJson = this.gson.toJson(account);
+					response.getWriter().print(customerJson);
+				} else {
+					response.getWriter().print("{}");
+				}
+				}				
+				else {
+					Long id=Long.parseLong(request.getParameter("id"));
+					response.setContentType("text/plain");
+					if (CustomerService.deleteAccount(id)) {
+						response.getWriter().write("success");
+					} else {
+						response.getWriter().write("failed");
+					}										
+				}
+			} catch (Exception e) {}
 
 			break;
 		case "viewAccounts":
 
 			break;
-		case "viewCustomers":
+		case "viewCustomer":
+			try {
+				String type = (String) request.getParameter("actionType");
+				if (type.contentEquals("fetch")) {
+
+					Long id = Long.parseLong(request.getParameter("customerId"));
+					Customer customer = null;
+
+					customer = CustomerService.getCustomer(id);
+					response.setContentType("application/json");
+					if (customer.getId() != 0) {
+						String customerJson = this.gson.toJson(customer);
+						response.getWriter().print(customerJson);
+					} else {
+						response.getWriter().print("{}");
+					}
+				}
+				
+			} catch (Exception e) {}
 
 			break;
 		default:

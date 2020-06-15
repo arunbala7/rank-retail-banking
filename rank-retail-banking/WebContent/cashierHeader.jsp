@@ -46,16 +46,6 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-primary dropdown-toggle"
 						data-toggle="dropdown"
-						style="background-color: #222831; border: 2px solid #222831;">Search</button>
-					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="#" class="dropdown-item btn btn-outline-light" >View
-							Customer Details</a>
-					</div>
-				</div>
-
-				<div class="btn-group">
-					<button type="button" class="btn btn-primary dropdown-toggle"
-						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Transaction</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
 						<a href="#" class="dropdown-item btn btn-outline-light">Deposit Money</a>
@@ -65,6 +55,16 @@
 						<a href="#" class="dropdown-item btn btn-outline-light">Transfer Money</a>
 						<div class="dropdown-divider"></div>
 						<a href="#" class="dropdown-item btn btn-outline-light">Print Account Statement</a>
+					</div>
+				</div>
+				
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary dropdown-toggle"
+						data-toggle="dropdown"
+						style="background-color: #222831; border: 2px solid #222831;">Search</button>
+					<div class="dropdown-menu" style="background-color: #dddddd;">
+						<a href="#" class="dropdown-item btn btn-outline-light" >View
+							Customer Details</a>
 					</div>
 				</div>
 

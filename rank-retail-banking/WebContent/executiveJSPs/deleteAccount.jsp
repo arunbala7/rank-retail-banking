@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Delete Customer</title>
+<title>Delete Account</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -47,15 +47,15 @@ $(document).ready(function() {
 		//   [ Validate ]
 		var input = $('.validate-input .input100');
 		
-		$("#customerId").click(function(){
+		$("#accountId").click(function(){
 			if (validate($("#id")) == false) {
 				showValidate($("#id"));				
 			}else{
-				var customerId="";
-				customerId=$("#id").val();
-				var action= 'deleteCustomer';
+				var accountId="";
+				accountId=$("#id").val();
+				var action= 'deleteAccount';
 				var actionType= 'fetch';
-				var obj={customerId,
+				var obj={accountId,
 		            	action,
 		            	actionType
 		            	};
@@ -67,26 +67,30 @@ $(document).ready(function() {
 		            cache:false,
 		            async: false,
 		            success:function(data){	
-		            	if(data.hasOwnProperty("id"))
-		            		{
+		            	if(data.hasOwnProperty("customer"))
+		            	{ 
 		            	$('#id').attr('readonly', true); 
-		            	$('#ssno').val(data.ssn);
-		            	$('#name').val(data.name);
-		            	$('#address').val(data.address);
-		            	$('#dob').val(data.dob);
+		            	$('#name').val(data.customer.name);
+		            	$('#dob').val(data.customer.dob);
+		            	$('#custId').val(data.account.customerId);
+		            	$('#balance').val(data.account.balance);
+		            	$('#accountType').val(data.account.type);
+		            	$('#status').val(data.account.status);
 		            	$(".after-id").css("display", "none");
 		            	$(".before-id").css("display", "block");
-		            	$('#ssno').attr('readonly', true);
+		            	$('#custId').attr('readonly', true);
+		            	$('#balance').attr('readonly', true);
+		            	$('#accountType').attr('readonly', true);
+		            	$('#status').attr('readonly', true);		            	
 		            	$('#name').attr('readonly', true);
-		            	$('#address').attr('readonly', true);
 		            	$('#dob').attr('readonly', true);
 		            		}else{
 		            			swal({
 				            		  title: "Failed",
-				            		  text: "Customer ID Not found",
+				            		  text: "Account Number Not found",
 				            		  icon: "error",
 				            		  button: "Okay",
-				            		});
+				            		});		            			
 		            		}
 		            },
 		            error:function(){
@@ -116,11 +120,11 @@ $(document).ready(function() {
 			
 			if(check){
 			var id="";
-			var action = "deleteCustomer";
+			var action = "deleteAccount";
 			var actionType="delete";
 			e.preventDefault();
 			id=$("#id").val();
-			var obj={actionType,action,id };
+			var obj={actionType,action,id};
 			swal({
 				  title: "Confirm Delete",
 				  text: "Once deleted, you will not be able to recover!",
@@ -138,14 +142,25 @@ $(document).ready(function() {
 					            cache:false,
 					            async: false,
 					            success:function(data){
+					            	if(data==="success")
+					            		{
 					            	swal({
 					            		  title: "Success",
-					            		  text: "Customer Deleted Successfully!",
+					            		  text: "Account Deleted Successfully!",
 					            		  icon: "success",
 					            		  button: "Okay",
 					            		}).then((value) => {
 					            			window.location.reload();
-					            		});	               
+					            		});
+					            		}else{
+					            			swal({
+							            		  title: "Failed",
+							            		  text: "Account Not Deleted! Try Again",
+							            		  icon: "error",
+							            		  button: "Okay",
+							            		});
+					            		}
+					            	
 					            },
 					            error:function(){
 					            	swal({
@@ -159,7 +174,7 @@ $(document).ready(function() {
 					         }
 					    );
 				  } else {
-				    swal("Customer Not Deleted");
+				    swal("Account Not Deleted");
 				  }
 				});
 			}
@@ -200,39 +215,37 @@ $(document).ready(function() {
 <body>
 	<%@ include file="../executiveHeader.jsp"%>
 	<div class="container-login100"
-		style="background-image: url('../CSS and JS/images/other.jpg');">
+		style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;background-attachment: fixed;">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
-				style="font-size: 30px; color: crimson;">Delete Customer</span><br />
+				style="font-size: 30px; color: crimson;">Delete Account</span><br />
 				
 				<div class="wrap-input100 validate-input m-b-23"
-					data-validate="Enter a Customer Id">
-					<span class="label-input100">Customer ID</span> <input autocomplete="off" 
-						class="input100 form-control" type="text" id="id" maxLength="10" name="customerId"
+					data-validate="Enter a account Id">
+					<span class="label-input100">Account Number</span> <input autocomplete="off" 
+						class="input100 form-control" type="text" id="id" maxLength="10" name="accountId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
 				<center>
 				<div  class="btn-group after-id justify-content-center">
 						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-						&ensp; <button class="btn btn-primary active" id="customerId">Find Customer</button>
+						&ensp; <button class="btn btn-primary active" id="accountId">Find account</button>
 				</div>
-				</center>			
+				</center>		
+				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
+					data-validate="Enter a valid Customer Id">
+					<span class="label-input100" id="ssn">Customer Id</span>
+					<input class="input100 form-inline form-control" type="text"
+						id="custId" name="custId" maxLength="10" placeholder="Enter the Customer Id..." />
+					<span class="focus-input100"></span>
+				</div>					
 				
-				
-			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
+			<form autocomplete="off" class="login100-form validate-form " id="accountForm">
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a valid Name">
 					<span class="label-input100">Name</span> <input
 						class="input100 form-control" type="text" id="name" name="name"
 						placeholder="Enter the name..." /> <span class="focus-input100"></span>
-				</div>
-
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
-					data-validate="Enter a valid SSN">
-					<span class="label-input100" id="ssn">Social Security Number</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="ssno" name="ssn" maxLength="9" placeholder="Enter the ssn..." />
-					<span class="focus-input100"></span>
 				</div>
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a valid DOB">
@@ -240,12 +253,27 @@ $(document).ready(function() {
 						class="input100 form-control" type="date" id="dob" name="dob" />
 					<span class="focus-input100"></span>
 				</div>
+				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
+					data-validate="Enter a type">
+					<span class="label-input100" id="ssn">Account Type</span>
+					<input class="input100 form-inline form-control" type="text"
+						id="accountType" name="accountType"  placeholder="Enter the ssn..." />
+					<span class="focus-input100"></span>
+				</div>
+				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
+					data-validate="Enter a type">
+					<span class="label-input100" id="ssn">Status</span>
+					<input class="input100 form-inline form-control" type="text"
+						id="status" name="status"  placeholder="Enter the ssn..." />
+					<span class="focus-input100"></span>
+				</div>
+				
 
 				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a Address">
-					<span class="label-input100">Address</span> <input
+					data-validate="Enter the balance">
+					<span class="label-input100">Balance</span> <input
 						class="input100 form-control" type="text"
-						placeholder="Enter the address..." id="address" name="address" />
+						placeholder="Enter the balance..." id="balance" name="balance" />
 					<span class="focus-input100"></span>
 				</div>
 				<center>
