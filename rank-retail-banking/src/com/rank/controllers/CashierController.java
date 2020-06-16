@@ -1,7 +1,10 @@
 package com.rank.controllers;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.services.AccountService;
 import com.rank.services.CustomerService;
@@ -45,8 +49,8 @@ public class CashierController extends HttpServlet {
 			response.sendRedirect("cashierJSPs/printStatement.jsp");
 			break;
 			
-		case "viewCustomers":
-			response.sendRedirect("cashierJSPs/viewCustomers.jsp");
+		case "Accounts":
+			response.sendRedirect("cashierJSPs/Accounts.jsp");
 			break;
 			
 		default:
@@ -144,11 +148,34 @@ public class CashierController extends HttpServlet {
 			break;
 			
 			
-		case "printStatement":			
+		case "Accounts":
+			try {
+				String type=(String)request.getParameter("actionType");			
+				if(type.contentEquals("fetch")) {
+					Long id=Long.parseLong(request.getParameter("id"));
+					String basedOn=(String)request.getParameter("basedOn");	
+				response.setContentType("text/plain");
+				if (AccountService.isValidId(basedOn,id)) {	
+					response.getWriter().write("success");
+				} else {
+					response.getWriter().write("failed");
+				}
+				}				
+				else {
+					response.setContentType("text/html");
+					Long id=Long.parseLong(request.getParameter("id"));
+					String basedOn=(String)request.getParameter("basedOn");	
+					List<Account> accounts=AccountService.getAccounts(basedOn,id);					
+					request.setAttribute("accounts",accounts);
+					RequestDispatcher rd=request.getRequestDispatcher("cashierJSPs/viewAccounts.jsp");
+					rd.forward(request, response);
+										
+				}
+			} catch (Exception e) {}
 			break;
 			
 			
-		case "viewCustomers":			
+		case "printStatement":			
 			break;
 			
 			

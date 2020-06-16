@@ -173,10 +173,11 @@ $(document).ready(function() {
 	});
 </script>
 </head>
-<body>
+<body style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;
+  background-size: cover;">
 	<%@ include file="../executiveHeader.jsp"%>
 	<div class="container-login100"
-		style="background-image: url('../CSS and JS/images/other.jpg');">
+		>
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">View Customer</span><br />

@@ -2,6 +2,8 @@ package com.rank.dao;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -209,6 +211,53 @@ public class BankingDAO {
 		ps.close();
 		if(row==1) return true;		
 		return false;
+	}
+
+
+	public boolean isVaildId(String basedOn, Long id) throws Exception {
+		String Idtype;
+		if(basedOn.contentEquals("customerId"))
+			Idtype="customer_id";
+		else Idtype="account_number";
+		
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT * FROM account WHERE `"+Idtype+"` = ?;";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);
+		ResultSet rs= ps.executeQuery();
+		if(rs.next()) {
+			DBConnection.closeConnection();
+			ps.close();
+			return true;	
+			}
+		DBConnection.closeConnection();
+		ps.close();
+		return false;
+	}
+
+	public List<Account> getAccounts(String basedOn, Long id) throws Exception {
+		String Idtype;
+		if(basedOn.contentEquals("customerId"))
+			Idtype="customer_id";
+		else Idtype="account_number";
+		List<Account> accounts=new ArrayList<Account>();
+		Account account = new Account();
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT * FROM account WHERE "+Idtype+" = ?;";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);
+		ResultSet rs=ps.executeQuery();
+		while(rs.next()) {
+			account.setCustomerId(rs.getLong("customer_id"));
+			account.setNumber(rs.getLong("account_number"));
+			account.setType(rs.getString("account_type"));
+			account.setStatus(rs.getString("account_status"));
+			account.setBalance(rs.getLong("account_balance"));
+			accounts.add(account);
+		}
+		DBConnection.closeConnection();
+		rs.close();
+		return accounts;
 	}
 
 }

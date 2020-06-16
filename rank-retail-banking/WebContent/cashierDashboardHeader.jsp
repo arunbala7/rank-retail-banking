@@ -62,7 +62,7 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Search</button>
 					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="CashierController?action=viewCustomers" class="dropdown-item btn btn-outline-light" >View
+						<a href="CashierController?action=Accounts" class="dropdown-item btn btn-outline-light" >View
 							Customer Details</a>
 					</div>
 				</div>

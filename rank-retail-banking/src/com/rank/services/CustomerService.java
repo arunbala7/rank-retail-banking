@@ -45,6 +45,6 @@ public class CustomerService {
 	public static boolean deleteAccount(Long id) throws Exception {
 		BankingDAO dao=new BankingDAO();	
 		return dao.deleteAccount(id);
-	}	
-	
+	}
+
 }

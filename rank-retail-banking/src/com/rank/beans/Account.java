@@ -2,7 +2,7 @@ package com.rank.beans;
 
 public class Account {
 	long number, customerId, balance;
-	String type, createdDateTime,status;
+	String type, createdDateTime,status,message;
 
 	public Account() {
 	}
@@ -11,6 +11,14 @@ public class Account {
 	public String toString() {
 		return "Account [number=" + number + ", customerId=" + customerId + ", balance=" + balance + ", type=" + type
 				+ ", createdDateTime=" + createdDateTime + ", status=" + status + "]";
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public String getStatus() {
