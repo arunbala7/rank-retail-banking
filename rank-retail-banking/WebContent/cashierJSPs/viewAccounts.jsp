@@ -1,3 +1,4 @@
+<%@page import="com.rank.beans.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -48,8 +49,12 @@ $(document).ready(function() {
 					<th>Balance</th>
 				</tr>
 			</thead>
+			<%
+			Account[] accounts2=(Account[])request.getAttribute("accounts");
+			%>
 			<tbody>
-				<c:forEach items="${accounts}" var="account">
+			<c:set var="accounts" value="accounts2"/>
+				<c:forEach items="${accounts2}" var="account">
 					<tr>
 						<td>${account.getNumber()}</td>
 						<td>${account.getCustomerId()}</td>

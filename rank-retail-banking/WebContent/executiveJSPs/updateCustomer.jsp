@@ -25,12 +25,7 @@
 <script>
 
 $(document).ready(function() {
-	$(document).keypress(function(event){
-	    var keycode = (event.keyCode ? event.keyCode : event.which);
-	    if(keycode == '13'){
-	        $('#customerId').click();  
-	    }
-	});
+	
 	
 	$('#Form').keydown(function (e) {
 	    if (e.keyCode == 13) {
@@ -145,6 +140,7 @@ $(document).ready(function() {
 	            cache:false,
 	            async: false,
 	            success:function(data){
+	            	if(data==="success"){
 	            	swal({
 	            		  title: "Success",
 	            		  text: "Customer Updated Successfully!",
@@ -152,7 +148,15 @@ $(document).ready(function() {
 	            		  button: "Okay",
 	            		}).then((value) => {
 	            			window.location.reload();
-	            		});	               
+	            		});	
+	            	}else{
+	            		swal({
+		            		  title: "Failed",
+		            		  text: "Customer Not Updated! Try Again",
+		            		  icon: "error",
+		            		  button: "Okay",
+		            		});	            		
+	            	}
 	            },
 	            error:function(){
 	            	swal({

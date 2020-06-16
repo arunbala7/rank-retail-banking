@@ -24,13 +24,6 @@
 <script>
 $(document).ready(function() {
 	
-	$(document).keypress(function(event){
-	    var keycode = (event.keyCode ? event.keyCode : event.which);
-	    if(keycode == '13'){
-	        $('#check').click();  
-	    }
-	});
-	
 	$('#Form').keydown(function (e) {
 	    if (e.keyCode == 13) {
 	        e.preventDefault();
@@ -38,13 +31,20 @@ $(document).ready(function() {
 	    }
 	});
 	
+	$('#customerForm').keydown(function (e) {
+	    if (e.keyCode == 13) {
+	        e.preventDefault();
+	        $("#submitForm").click();
+	    }
+	});
+	
+	
 		$("#reset1").click(function(){
 			$("#id").val("");
 		});
 		
 		$("#reset").click(function(){
 			location.reload(true);
-			
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		            		}else{
 		            			swal({
 				            		  title: "Failed",
-				            		  text: "Customer ID Not found",
+				            		  text: "Customer ID Not found!",
 				            		  icon: "error",
 				            		  button: "Okay",
 				            		});
@@ -181,7 +181,7 @@ $(document).ready(function() {
 		function validate(input) {
 			if ($(input).val().trim() == '')
 				return false;
-			switch ($(input).attr("name")) {		    
+			switch ($(input).attr("name")) {
 		    case "customerId":
 		      return validate_customer_id($(input).val().trim());
 		    case "amount":
@@ -218,7 +218,8 @@ $(document).ready(function() {
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Create Account</span><br />
-			<form autocomplete="off" class="login100-form validate-form " id="Form">
+			<form autocomplete="off" class="login100-form validate-form "
+				id="Form">
 			<div class="wrap-input100 validate-input m-b-23"
 				data-validate="Enter a Valid Customer Id">
 				<span class="label-input100">Customer ID</span> <input

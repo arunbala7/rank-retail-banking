@@ -25,12 +25,7 @@
 <script>
 $(document).ready(function() {
 	
-	$(document).keypress(function(event){
-	    var keycode = (event.keyCode ? event.keyCode : event.which);
-	    if(keycode == '13'){
-	        $('#accountId').click();  
-	    }
-	});
+	
 	
 	$('#Form').keydown(function (e) {
 	    if (e.keyCode == 13) {
@@ -205,22 +200,8 @@ $(document).ready(function() {
 			if ($(input).val().trim() == '')
 				return false;
 			switch ($(input).attr("name")) {
-		    case "name":
-		      return validate_name($(input).val().trim());
-		    case "ssn":
-		      return validate_ssno($(input).val().trim());
-		    case "dob":
-		      return validate_dob($(input).val().trim());
-		    case "address":
-		      return validate_address($(input).val().trim());
-		    case "customerId":
-		      return validate_customer_id($(input).val().trim());
 		    case "accountId":
 		      return validate_account_number($(input).val().trim());
-		    case "transactionId":
-		      return validate_transaction_id($(input).val().trim());
-		    case "depositAmount":
-		      return validate_depositAmount($(input).val().trim());
 			default:
 			  return;
 		  }

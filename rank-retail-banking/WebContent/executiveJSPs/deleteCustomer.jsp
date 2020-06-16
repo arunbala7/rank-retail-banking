@@ -25,13 +25,6 @@
 <script>
 $(document).ready(function() {
 	
-	$(document).keypress(function(event){
-	    var keycode = (event.keyCode ? event.keyCode : event.which);
-	    if(keycode == '13'){
-	        $('#customerId').click();  
-	    }
-	});
-	
 	$('#Form').keydown(function (e) {
 	    if (e.keyCode == 13) {
 	        e.preventDefault();
@@ -189,7 +182,6 @@ $(document).ready(function() {
 			if ($(input).val().trim() == '')
 				return false;
 			switch ($(input).attr("name")) {
-		      return validate_address($(input).val().trim());
 		    case "customerId":
 		      return validate_customer_id($(input).val().trim());		   
 			default:

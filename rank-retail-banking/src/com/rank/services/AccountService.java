@@ -1,7 +1,5 @@
 package com.rank.services;
 
-import java.util.List;
-
 import com.rank.beans.Account;
 import com.rank.dao.BankingDAO;
 
@@ -25,7 +23,7 @@ public class AccountService {
 		return dao.isVaildId(basedOn,id);	
 	}
 
-	public static List<Account> getAccounts(String basedOn, Long id) throws Exception {
+	public static Account[] getAccounts(String basedOn, Long id) throws Exception {
 		BankingDAO dao=new BankingDAO();
 		return dao.getAccounts(basedOn,id);
 	}
