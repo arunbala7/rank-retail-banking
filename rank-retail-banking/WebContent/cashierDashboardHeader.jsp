@@ -19,10 +19,12 @@
 </head>
 <body>
 	<%
-		//SESSION CHECK (LOGGED IN OR NOT)  	
+	//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
 	if (workGroup == null)
 		response.sendRedirect("index.jsp");
+	else if(!workGroup.contentEquals("cashier"))
+			response.sendRedirect("../Dashbord.jsp");
 
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1
