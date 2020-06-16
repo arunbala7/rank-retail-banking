@@ -47,13 +47,13 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Transaction</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="#" class="dropdown-item btn btn-outline-light">Deposit Money</a>
+						<a href="CashierController?action=depositMoney" class="dropdown-item btn btn-outline-light">Deposit Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Withdraw Money</a>
+						<a href="CashierController?action=withdrawMoney" class="dropdown-item btn btn-outline-light">Withdraw Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Transfer Money</a>
+						<a href="CashierController?action=transferMoney" class="dropdown-item btn btn-outline-light">Transfer Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item btn btn-outline-light">Print Account Statement</a>
+						<a href="CashierController?action=printStatement" class="dropdown-item btn btn-outline-light">Print Account Statement</a>
 					</div>
 				</div>
 				
@@ -62,7 +62,7 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Search</button>
 					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="#" class="dropdown-item btn btn-outline-light" >View
+						<a href="CashierController?action=viewCustomers" class="dropdown-item btn btn-outline-light" >View
 							Customer Details</a>
 					</div>
 				</div>

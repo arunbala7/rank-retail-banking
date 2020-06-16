@@ -23,7 +23,21 @@
 	src="../CSS and JS/js/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
+
 $(document).ready(function() {
+	$(document).keypress(function(event){
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13'){
+	        $('#customerId').click();  
+	    }
+	});
+	
+	$('#Form').keydown(function (e) {
+	    if (e.keyCode == 13) {
+	        e.preventDefault();
+	        $("#customerId").click();
+	    }
+	});
 	
 		$("#reset1").click(function(){
 			$("#id").val("");
@@ -31,10 +45,7 @@ $(document).ready(function() {
 			
 		
 		$("#reset").click(function(){
-			$("#name").val("");
-			$("#age").val("");
-			$("#address").val("");
-			$("#dob").val("");
+			location.reload(true);
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -48,7 +59,6 @@ $(document).ready(function() {
 			})
 		})
 		//   [ Validate ]
-		var input = $('.validate-input .input100');
 		
 		$("#customerId").click(function(){
 			if (validate($("#id")) == false) {
@@ -103,8 +113,9 @@ $(document).ready(function() {
 		   
 		  });
 		
+		var input = $('.validate-input .input100');
 
-		$('.validate-form').on('submit', function(e) {
+		$('#submitForm').click( function(e) {
 			var check = true;
 
 			for (var i = 0; i < input.length; i++) {
@@ -264,8 +275,9 @@ $(document).ready(function() {
 				<center>
 				<div style="display: none;" class="btn-group before-id">
 						<button class="btn btn-primary active" id="reset">Reset</button>
-						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Update" />
+						&ensp; <button class="btn btn-primary active"
+							id="submitForm">Update</button>
+							
 				</div>
 				</center>
 

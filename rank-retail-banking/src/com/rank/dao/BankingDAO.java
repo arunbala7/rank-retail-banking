@@ -136,7 +136,7 @@ public class BankingDAO {
 		rs = ps.getGeneratedKeys();
 		if(rs.next())
 			accountNumber=rs.getLong(1)+"";
-		query="INSERT INTO transactions (`account_number`, `transactions_descripton`,`transactions_date_time`,`transactions_amount`)VALUES (?,'DEPOSIT', now(),?);";
+		query="INSERT INTO transactions (`account_number`, `transactions_descripton`,`transactions_date_time`,`transactions_amount`)VALUES (?,'INITIAL DEPOSIT', now(),?);";
 		ps = (PreparedStatement) con.prepareStatement(query);
 		ps.setLong(1, Long.parseLong(accountNumber));
 		ps.setLong(2, account.getBalance());
@@ -182,6 +182,32 @@ public class BankingDAO {
 		DBConnection.closeConnection();
 		ps.close();
 		if(row==1) return true;
+		return false;
+	}
+
+	public boolean Transaction(Long id, Long amount,String description) throws Exception {
+		String action;
+		if(description.contentEquals("CREDIT")||description.contentEquals("DEPOSIT")) {
+			action="+";
+		}
+		else {
+			action="-";
+		}		
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "UPDATE account SET account_balance = account_balance "+action+" ? , account_update_datetime = now() WHERE account_number = ?;";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, amount);
+		ps.setLong(2, id);
+		ps.executeUpdate();	
+		query="INSERT INTO transactions ( `account_number`, `transactions_descripton`,`transactions_date_time`,`transactions_amount`) VALUES (?,?,now(),?);";
+		ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);
+		ps.setString(2, description);
+		ps.setLong(3, amount);
+		int row= ps.executeUpdate();		
+		DBConnection.closeConnection();
+		ps.close();
+		if(row==1) return true;		
 		return false;
 	}
 

@@ -25,14 +25,27 @@
 <script>
 $(document).ready(function() {
 	
+	$(document).keypress(function(event){
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13'){
+	        $('#accountId').click();  
+	    }
+	});
+	
+	$('#Form').keydown(function (e) {
+	    if (e.keyCode == 13) {
+	        e.preventDefault();
+	        $("#accountId").click();
+	    }
+	});
+	
+	
 		$("#reset1").click(function(){
 			$("#id").val("");
 		});
 		
 		$("#reset").click(function(){
-			$(".after-id").css("display", "block");
-        	$(".before-id").css("display", "none");
-        	$('#id').attr('readonly', false); 
+			location.reload(true);
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -88,7 +101,7 @@ $(document).ready(function() {
 		            		}else{
 		            			swal({
 				            		  title: "Failed",
-				            		  text: "Account Number Not found",
+				            		  text: "Account Number Not found!",
 				            		  icon: "error",
 				            		  button: "Okay",
 				            		});		            			
@@ -109,7 +122,7 @@ $(document).ready(function() {
 		  });
 		
 
-		$('.validate-form').on('submit', function(e) {
+		$('#submitForm').click( function(e) {
 			var check = true;
 
 			for (var i = 0; i < input.length; i++) {
@@ -301,8 +314,8 @@ $(document).ready(function() {
 				<center>
 				<div  style="display: none;" class="btn-group before-id ">
 						<input type="reset"  class="btn btn-primary active" id="reset" value="Cancel">
-						&ensp; <input type="submit"  class="btn btn-primary active"
-							id="submitForm" value="Delete" />
+						&ensp; <button class="btn btn-primary active"
+							id="submitForm" >Delete</button>
 				</div>
 				</center>
 			</form>

@@ -39,27 +39,33 @@ public class ExecutiveController extends HttpServlet {
 		case "createCustomer":
 			response.sendRedirect("executiveJSPs/createCustomer.jsp");
 			break;
+			
 		case "updateCustomer":
 			response.sendRedirect("executiveJSPs/updateCustomer.jsp");
 			break;
+			
 		case "deleteCustomer":
 			response.sendRedirect("executiveJSPs/deleteCustomer.jsp");
 			break;
-		case "customerStatus":
-
-			break;
+			
 		case "createAccount":
 			response.sendRedirect("executiveJSPs/createAccount.jsp");	
 			break;
+			
 		case "deleteAccount":
 			response.sendRedirect("executiveJSPs/deleteAccount.jsp");
 			break;
-		case "viewAccounts":
-
-			break;
+			
 		case "viewCustomer":
 			response.sendRedirect("executiveJSPs/viewCustomer.jsp");
+			break;		
+			
+		case "customerStatus":
 			break;
+			
+		case "viewAccounts":
+			break;
+			
 		default:
 			response.sendRedirect("Dashboard.jsp");
 		}
@@ -72,7 +78,6 @@ public class ExecutiveController extends HttpServlet {
 
 		switch (action) {
 		case "createCustomer":
-
 			try {
 				String name = (String) request.getParameter("name");
 				int ssn = Integer.parseInt(request.getParameter("ssn"));
@@ -93,6 +98,8 @@ public class ExecutiveController extends HttpServlet {
 			} catch (Exception e) {
 			}
 			break;
+			
+			
 		case "updateCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -136,6 +143,8 @@ public class ExecutiveController extends HttpServlet {
 			}
 
 			break;
+			
+			
 		case "deleteCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -165,10 +174,9 @@ public class ExecutiveController extends HttpServlet {
 					
 				}
 			} catch (Exception e) {}
-
 			break;
-		case "customerStatus":
-			break;
+			
+			
 		case "createAccount":	
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -195,6 +203,8 @@ public class ExecutiveController extends HttpServlet {
 				}				
 			} catch (Exception e) {}
 			break;
+			
+			
 		case "deleteAccount":
 			try {
 				String type=(String)request.getParameter("actionType");
@@ -219,11 +229,9 @@ public class ExecutiveController extends HttpServlet {
 					}										
 				}
 			} catch (Exception e) {}
-
 			break;
-		case "viewAccounts":
-
-			break;
+			
+		
 		case "viewCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -243,8 +251,17 @@ public class ExecutiveController extends HttpServlet {
 				}
 				
 			} catch (Exception e) {}
-
 			break;
+			
+			
+		case "customerStatus":
+			break;
+			
+			
+		case "viewAccounts":
+			break;
+			
+			
 		default:
 			response.sendRedirect("Dashboard.jsp");
 		}

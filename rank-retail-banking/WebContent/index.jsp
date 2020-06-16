@@ -69,7 +69,7 @@ $(document).ready(function() {
 	            		  button: "Okay",
 	            		}).then((value) => {
 	            			if(value){
-	            				location.reload(true)
+	            				location.reload(true);
 	            				}
 	            		});
 	            	}else{

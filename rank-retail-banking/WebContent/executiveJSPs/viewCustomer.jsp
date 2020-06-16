@@ -23,6 +23,12 @@
 	src="../CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
+$(document).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        $('#customerId').click();  
+    }
+});
 $(document).ready(function() {
 	
 		$("#reset1").click(function(){
@@ -30,9 +36,7 @@ $(document).ready(function() {
 		});
 		
 		$("#reset").click(function(){
-			$(".after-id").css("display", "block");
-        	$(".before-id").css("display", "none");
-        	$('#id').attr('readonly', false); 
+			location.reload(true);
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -70,6 +74,7 @@ $(document).ready(function() {
 		            success:function(data){	
 		            	if(data.hasOwnProperty("id"))
 		            		{
+		            		$( "#customerId" ).remove()
 		            	$('#id').attr('readonly', true); 
 		            	$('#ssno').val(data.ssn);
 		            	$('#name').val(data.name);
@@ -187,7 +192,7 @@ $(document).ready(function() {
 				<div  class="btn-group after-id">					
 						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
 						&ensp; <button class="btn btn-primary active"
-							id="customerId"  />Find Customer</button>					
+							id="customerId">Find Customer</button>					
 				</div>
 				</center>				
 				
@@ -222,7 +227,7 @@ $(document).ready(function() {
 				</div>
 				<center>
 				<div  style="display: none;" class="btn-group before-id">
-						<input type="reset"  class="btn btn-primary active" id="reset" value="Back">
+						<input type="reset"  class="btn btn-primary active" id="reset" value="Back"/>
 				</div>
 				</center>
 

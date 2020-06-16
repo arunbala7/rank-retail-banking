@@ -24,6 +24,7 @@
 	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
+	
 		"use strict";
 		//   [ Focus input ]
 		$('.input100').each(function() {

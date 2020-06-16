@@ -22,7 +22,7 @@
 		//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
 	if (workGroup == null)
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("../index.jsp");
 
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1

@@ -24,12 +24,27 @@
 <script>
 $(document).ready(function() {
 	
+	$(document).keypress(function(event){
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '13'){
+	        $('#check').click();  
+	    }
+	});
+	
+	$('#Form').keydown(function (e) {
+	    if (e.keyCode == 13) {
+	        e.preventDefault();
+	        $("#check").click();
+	    }
+	});
+	
 		$("#reset1").click(function(){
 			$("#id").val("");
 		});
 		
 		$("#reset").click(function(){
-			$("#amount").val(""); 
+			location.reload(true);
+			
 		});
 		"use strict";
 		//   [ Focus input ]
@@ -215,7 +230,7 @@ $(document).ready(function() {
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Create Account</span><br />
-
+			<form autocomplete="off" class="login100-form validate-form " id="Form">
 			<div class="wrap-input100 validate-input m-b-23"
 				data-validate="Enter a Valid Customer Id">
 				<span class="label-input100">Customer ID</span> <input
@@ -223,6 +238,7 @@ $(document).ready(function() {
 					id="id" maxLength="10" name="customerId"
 					placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 			</div>
+			</form>
 			<center>
 				<div class="btn-group after-id">
 					<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
@@ -256,7 +272,7 @@ $(document).ready(function() {
 			</form>
 			<center>
 					<div style="display: none;" class="btn-group before-id">
-						<button class="btn btn-primary active" id="reset">Reset</button>
+						<button class="btn btn-primary active" id="reset">Cancel</button>
 						&ensp; <button class="btn btn-primary active"
 							id="submitForm"  >Create Account</button>
 					</div>
