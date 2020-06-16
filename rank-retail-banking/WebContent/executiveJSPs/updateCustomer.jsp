@@ -274,10 +274,9 @@ $(document).ready(function() {
 				</div>
 				<center>
 				<div style="display: none;" class="btn-group before-id">
-						<button class="btn btn-primary active" id="reset">Reset</button>
+						<input type="reset"  class="btn btn-primary active" id="reset" value="Cancel">
 						&ensp; <button class="btn btn-primary active"
-							id="submitForm">Update</button>
-							
+							id="submitForm">Update</button>							
 				</div>
 				</center>
 
