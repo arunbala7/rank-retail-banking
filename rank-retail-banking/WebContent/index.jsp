@@ -134,7 +134,7 @@ $(document).keypress(function(event){
 </script>
 </head>
 
-<body style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;
+<body style="background-image: url('CSS and JS/images/other.jpg');background-repeat: no-repeat;
   background-size: cover;">
 	<%
 		//SESSION CHECK (LOGGED IN OR NOT)  	

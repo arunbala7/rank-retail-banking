@@ -196,7 +196,7 @@ $(document).ready(function() {
 		      return validate_account_number($(input).val().trim());
 		    case "transactionId":
 		      return validate_transaction_id($(input).val().trim());
-		    case "depositAmount":
+		    case "amount":
 		      return validate_depositAmount($(input).val().trim());
 			default:
 			  return;
