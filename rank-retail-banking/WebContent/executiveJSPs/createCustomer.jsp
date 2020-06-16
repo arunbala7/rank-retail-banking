@@ -121,15 +121,7 @@ $(document).ready(function() {
 		      return validate_dob($(input).val().trim());
 		    case "address":
 		      return validate_address($(input).val().trim());
-		    case "customerId":
-		      return validate_customer_id($(input).val().trim());
-		    case "accountId":
-		      return validate_account_number($(input).val().trim());
-		    case "transactionId":
-		      return validate_transaction_id($(input).val().trim());
-		    case "depositAmount":
-		      return validate_depositAmount($(input).val().trim());
-			default:
+		    default:
 			  return;
 		  }
 		}
