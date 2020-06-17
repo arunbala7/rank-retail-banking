@@ -22,13 +22,12 @@
 		//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
 	String __jspName = this.getClass().getSimpleName().replaceAll("_", ".");
-	if (workGroup == null){
+	if (workGroup == null) {
 		response.sendRedirect("/rank-retail-banking/index.jsp");
-	}else if(workGroup.contentEquals("cashier") && !(__jspName.contentEquals("Dashboard.jsp"))){
-		response.sendRedirect("/rank-retail-banking/Dashboard.jsp");	
+	} else if (workGroup.contentEquals("cashier") && !(__jspName.contentEquals("Dashboard.jsp"))) {
+		response.sendRedirect("/rank-retail-banking/Dashboard.jsp");
 	}
-	
-	
+
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1
 	response.setHeader("Pragma", "no-cache");//HTTP 1.0
@@ -44,7 +43,8 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="ExecutiveController?action=Dashboard" class="nav-item nav-link active">Home</a>
+					<a href="ExecutiveController?action=Dashboard"
+						class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
@@ -81,7 +81,8 @@
 							class="dropdown-item btn btn-outline-light">Delete Account</a>
 						<div class="dropdown-divider"></div>
 						<a href="ExecutiveController?action=accountStatus&currentPage=1"
-							class="dropdown-item btn btn-outline-light">View All Account Status</a>
+							class="dropdown-item btn btn-outline-light">View All Account
+							Status</a>
 					</div>
 				</div>
 
@@ -98,7 +99,9 @@
 
 				<form class="form-inline ml-auto" action="UserController"
 					method="get">
-					<input type="hidden" name="action" value="logout">
+					<span class="label-input100"
+						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;">${userName}</span>
+					&ensp;&ensp; <input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>
 				</form>
 			</div>

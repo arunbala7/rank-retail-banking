@@ -39,7 +39,8 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="ExecutiveController?action=Dashboard" class="nav-item nav-link active">Home</a>
+					<a href="ExecutiveController?action=Dashboard"
+						class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
@@ -75,7 +76,9 @@
 
 				<form class="form-inline ml-auto" action="UserController"
 					method="get">
-					<input type="hidden" name="action" value="logout">
+					<span class="label-input100"
+						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;">${userName}</span>
+					&ensp;&ensp; <input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>
 				</form>
 			</div>
