@@ -1,6 +1,7 @@
 package com.rank.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -163,7 +164,7 @@ public class CashierController extends HttpServlet {
 					response.setContentType("text/html;charset=UTF-8");
 					Long id=Long.parseLong(request.getParameter("id"));
 					String basedOn=(String)request.getParameter("basedOn");	
-					Account[] accounts=null;
+					List<Account> accounts=null;
 					accounts=AccountService.getAccounts(basedOn,id);					
 					request.setAttribute("accounts",accounts);
 					RequestDispatcher rd=request.getRequestDispatcher("cashierJSPs/viewAccounts.jsp");

@@ -19,9 +19,8 @@
 <link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript"
-	src="../CSS and JS/js/sweetalert.min.js"></script>
-	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -146,14 +145,15 @@ $(document).ready(function() {
 	});
 </script>
 </head>
-<body style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;
-  background-size: cover;">
+<body>
 	<%@ include file="../executiveHeader.jsp"%>
-	<div class="container-login100">
+	<div class="container-login100"
+		style="background-image: url('../CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Create Customer</span><br />
-			<form autocomplete="off" class="login100-form validate-form " id="customerForm">
+			<form autocomplete="off" class="login100-form validate-form "
+				id="customerForm">
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Valid Name">
 					<span class="label-input100">Name</span> <input
@@ -185,9 +185,9 @@ $(document).ready(function() {
 				<input type="hidden" id="action" name="action"
 					value="createCustomer" /> <br /> <br />
 				<div class="btn-group d-flex justify-content-center">
-						<button type="reset" class="btn btn-primary active" id="reset">Reset</button>
-						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Create" />
+					<button type="reset" class="btn btn-primary active" id="reset">Reset</button>
+					&ensp; <input type="submit" class="btn btn-primary active"
+						id="submitForm" value="Create" />
 				</div>
 
 			</form>
@@ -197,6 +197,6 @@ $(document).ready(function() {
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript"
 		src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-		<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 </body>
 </html>

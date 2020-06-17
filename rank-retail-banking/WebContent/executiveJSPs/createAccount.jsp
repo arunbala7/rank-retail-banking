@@ -220,13 +220,13 @@ $(document).ready(function() {
 				style="font-size: 30px; color: crimson;">Create Account</span><br />
 			<form autocomplete="off" class="login100-form validate-form "
 				id="Form">
-			<div class="wrap-input100 validate-input m-b-23"
-				data-validate="Enter a Valid Customer Id">
-				<span class="label-input100">Customer ID</span> <input
-					autocomplete="off" class="input100 form-control" type="text"
-					id="id" maxLength="10" name="customerId"
-					placeholder="Enter the ID..." /> <span class="focus-input100"></span>
-			</div>
+				<div class="wrap-input100 validate-input m-b-23"
+					data-validate="Enter a Valid Customer Id">
+					<span class="label-input100">Customer ID</span> <input
+						autocomplete="off" class="input100 form-control" type="text"
+						id="id" maxLength="10" name="customerId"
+						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
+				</div>
 			</form>
 			<center>
 				<div class="btn-group after-id">
@@ -241,37 +241,36 @@ $(document).ready(function() {
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Select a valid Account Type">
-					<span class="label-input100 ">Account Type</span>
-					<select id="accountType"
-						class="input100 form-control">
+					<span class="label-input100 ">Account Type</span> <select
+						id="accountType" class="input100 form-control">
 						<option value="Savings" selected>Savings</option>
-						<option value="Current">Current</option>											
-					</select>
-					<span class="focus-input100"></span>
+						<option value="Current">Current</option>
+					</select> <span class="focus-input100"></span>
 				</div>
 
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter the inital deposit amount">
+					data-validate="Enter a valid inital deposit amount">
 					<span class="label-input100">Initial Deposit Amount</span> <input
 						class="input100 form-control" type="text"
-						placeholder="Enter the address..." id="amount" name="amount" />
-					<span class="focus-input100"></span>
+						placeholder="Enter the address..." id="amount" name="amount" /> <span
+						class="focus-input100"></span>
 				</div>
 			</form>
 			<center>
-					<div style="display: none;" class="btn-group before-id">
-						<button class="btn btn-primary active" id="reset">Cancel</button>
-						&ensp; <button class="btn btn-primary active"
-							id="submitForm"  >Create Account</button>
-					</div>
-				</center>
+				<div style="display: none;" class="btn-group before-id">
+					<button class="btn btn-primary active" id="reset">Cancel</button>
+					&ensp;
+					<button class="btn btn-primary active" id="submitForm">Create
+						Account</button>
+				</div>
+			</center>
 		</div>
 	</div>
 
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript"
 		src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-		<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 </body>
 </html>

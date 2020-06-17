@@ -48,17 +48,18 @@
 						style="background-color: #222831; border: 2px solid #222831;">Customer
 						Management</button>
 					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="ExecutiveController?action=createCustomer" class="dropdown-item btn btn-outline-light">Create
-							Customer</a>
+						<a href="ExecutiveController?action=createCustomer"
+							class="dropdown-item btn btn-outline-light">Create Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="ExecutiveController?action=updateCustomer" class="dropdown-item btn btn-outline-light">Update
-							Customer</a>
+						<a href="ExecutiveController?action=updateCustomer"
+							class="dropdown-item btn btn-outline-light">Update Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="ExecutiveController?action=deleteCustomer" class="dropdown-item btn btn-outline-light">Delete
-							Customer</a>
+						<a href="ExecutiveController?action=deleteCustomer"
+							class="dropdown-item btn btn-outline-light">Delete Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="ExecutiveController?action=customerStatus" class="dropdown-item btn btn-outline-light">View
-							Customer Status</a>
+						<a href="ExecutiveController?action=customerStatus"
+							class="dropdown-item btn btn-outline-light">View All Customer
+							Status</a>
 					</div>
 				</div>
 
@@ -68,14 +69,14 @@
 						style="background-color: #222831; border: 2px solid #222831;">Account
 						Management</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="ExecutiveController?action=createAccount" class="dropdown-item btn btn-outline-light">Create
-							Account</a>
+						<a href="ExecutiveController?action=createAccount"
+							class="dropdown-item btn btn-outline-light">Create Account</a>
 						<div class="dropdown-divider"></div>
-						<a href="ExecutiveController?action=deleteAccount" class="dropdown-item btn btn-outline-light">Delete
-							Account</a>
+						<a href="ExecutiveController?action=deleteAccount"
+							class="dropdown-item btn btn-outline-light">Delete Account</a>
 						<div class="dropdown-divider"></div>
-						<a href="ExecutiveController?action=viewAccounts" class="dropdown-item btn btn-outline-light">View
-							All Account</a>
+						<a href="ExecutiveController?action=viewAccounts"
+							class="dropdown-item btn btn-outline-light">View All Account Status</a>
 					</div>
 				</div>
 
@@ -84,8 +85,9 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Search</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="ExecutiveController?action=viewCustomer" class="dropdown-item  btn btn-outline-light">View
-							Customer Details</a>
+						<a href="ExecutiveController?action=viewCustomer"
+							class="dropdown-item  btn btn-outline-light">View Customer
+							Details</a>
 					</div>
 				</div>
 

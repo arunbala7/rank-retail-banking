@@ -19,9 +19,8 @@
 <link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript"
-	src="../CSS and JS/js/sweetalert.min.js"></script>
-	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -227,65 +226,77 @@ $(document).ready(function() {
 	});
 </script>
 </head>
-<body style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;
-  background-size: cover;">
+<body
+	style="background-image: url('../CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
 	<%@ include file="../executiveHeader.jsp"%>
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
 				style="font-size: 30px; color: crimson;">Delete Account</span><br />
-				<form autocomplete="off" class="login100-form validate-form " id="Form">
+			<form autocomplete="off" class="login100-form validate-form "
+				id="Form">
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Valid Account Number">
-					<span class="label-input100">Account Number</span> <input autocomplete="off" 
-						class="input100 form-control" type="text" id="id" maxLength="10" name="accountId"
+					<span class="label-input100">Account Number</span> <input
+						autocomplete="off" class="input100 form-control" type="text"
+						id="id" maxLength="10" name="accountId"
 						placeholder="Enter the Number..." /> <span class="focus-input100"></span>
 				</div>
-				</form>
-				<center>
-				<div  class="btn-group after-id justify-content-center">
-						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-						&ensp; <button class="btn btn-primary active" id="accountId">Find account</button>
+			</form>
+			<center>
+				<div class="btn-group after-id justify-content-center">
+					<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
+					&ensp;
+					<button class="btn btn-primary active" id="accountId">Find
+						account</button>
 				</div>
-				</center>		
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
-					data-validate="Enter a Valid Customer Id">
-					<span class="label-input100" >Customer Id</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="custId" name="customerId" maxLength="10" placeholder="Enter the Customer Id..." />
-					<span class="focus-input100"></span>
-				</div>					
-				
-			<form autocomplete="off" class="login100-form validate-form " id="accountForm">
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
+			</center>
+			<div style="display: none;"
+				class="wrap-input100 validate-input m-b-23 before-id"
+				data-validate="Enter a Valid Customer Id">
+				<span class="label-input100">Customer Id</span> <input
+					class="input100 form-inline form-control" type="text" id="custId"
+					name="customerId" maxLength="10"
+					placeholder="Enter the Customer Id..." /> <span
+					class="focus-input100"></span>
+			</div>
+
+			<form autocomplete="off" class="login100-form validate-form "
+				id="accountForm">
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a Valid Name">
 					<span class="label-input100">Name</span> <input
 						class="input100 form-control" type="text" id="name" name="name"
 						placeholder="Enter the name..." /> <span class="focus-input100"></span>
 				</div>
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a Valid DOB">
 					<span class="label-input100 ">Date of Birth</span> <input
 						class="input100 form-control" type="date" id="dob" name="dob" />
 					<span class="focus-input100"></span>
 				</div>
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Select the Account Type">
-					<span class="label-input100" id="ssn">Account Type</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="accountType" name="accountType"  placeholder="Enter the ssn..." />
+					<span class="label-input100" id="ssn">Account Type</span> <input
+						class="input100 form-inline form-control" type="text"
+						id="accountType" name="accountType" placeholder="Enter the ssn..." />
 					<span class="focus-input100"></span>
 				</div>
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id" 
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a type">
-					<span class="label-input100" id="ssn">Status</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="status" name="status"  placeholder="Enter the Status..." />
-					<span class="focus-input100"></span>
+					<span class="label-input100" id="ssn">Status</span> <input
+						class="input100 form-inline form-control" type="text" id="status"
+						name="status" placeholder="Enter the Status..." /> <span
+						class="focus-input100"></span>
 				</div>
-				
 
-				<div style="display: none;" class="wrap-input100 validate-input m-b-23 before-id"
+
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter the balance">
 					<span class="label-input100">Balance</span> <input
 						class="input100 form-control" type="text"
@@ -293,11 +304,11 @@ $(document).ready(function() {
 					<span class="focus-input100"></span>
 				</div>
 				<center>
-				<div  style="display: none;" class="btn-group before-id ">
-						<input type="reset"  class="btn btn-primary active" id="reset" value="Cancel">
-						&ensp; <button class="btn btn-primary active"
-							id="submitForm" >Delete</button>
-				</div>
+					<div style="display: none;" class="btn-group before-id ">
+						<input type="reset" class="btn btn-primary active" id="reset"
+							value="Cancel"> &ensp;
+						<button class="btn btn-primary active" id="submitForm">Delete</button>
+					</div>
 				</center>
 			</form>
 		</div>

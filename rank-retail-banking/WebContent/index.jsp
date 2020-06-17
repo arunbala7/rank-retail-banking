@@ -18,8 +18,7 @@
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
 <script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript"
-	src="CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -134,8 +133,8 @@ $(document).keypress(function(event){
 </script>
 </head>
 
-<body style="background-image: url('CSS and JS/images/other.jpg');background-repeat: no-repeat;
-  background-size: cover;">
+<body
+	style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
 	<%
 		//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
@@ -148,13 +147,13 @@ $(document).keypress(function(event){
 	response.setHeader("Expires", "0");//Proxies
 	%>
 	<div class="limiter">
-		<div class="container-login100"
-			>
+		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<span class="login100-form-title"
 					style="font-size: 30px; color: crimson;">R.A.N.K Retail
 					Banking</span><br />
-				<form autocomplete="off" class="login100-form validate-form" id="LoginForm">
+				<form autocomplete="off" class="login100-form validate-form"
+					id="LoginForm">
 					<span class="login100-form-title p-b-49"
 						style="font-size: 25px; font-family: 'Lucida Console', Courier, monospace;">
 						Login </span>
@@ -178,7 +177,7 @@ $(document).keypress(function(event){
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button  class="login100-form-btn" id="login">Login</button>
+							<button class="login100-form-btn" id="login">Login</button>
 						</div>
 					</div>
 				</form>

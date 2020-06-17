@@ -22,22 +22,25 @@
 <script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/validation.js"></script>
+<script type="text/javascript" src="CSS and JS/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/tether.min.js"></script>
 <script>
-$(document).ready(function() {
-	
-	$("#reset").on("click", function () {
-		window.location ="/rank-retail-banking/cashierJSPs/Accounts.jsp";
+	$(document).ready(function() {
+
+		$("#reset").on("click", function() {
+			window.location = "/rank-retail-banking/cashierJSPs/Accounts.jsp";
+		});
 	});
-});
 </script>
 </head>
 <body
 	style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
 	<%@ include file="../cashierDashboardHeader.jsp"%>
-	<div class="container my-4  p-t-30 p-b-30 " style="background-color: white;">
+	<div class="container my-4  p-t-30 p-b-30 "
+		style="background-color: white;">
 		<div class=" p-l-55 p-r-55 p-t-60 p-b-5 ">
-		<span class="login100-form-title"
-			style="font-size: 30px; color: crimson;">Account Details</span><br />
+			<span class="login100-form-title"
+				style="font-size: 30px; color: crimson;">Account Details</span><br />
 		</div>
 		<table class="table table-striped">
 			<thead>
@@ -49,12 +52,8 @@ $(document).ready(function() {
 					<th>Balance</th>
 				</tr>
 			</thead>
-			<%
-			Account[] accounts2=(Account[])request.getAttribute("accounts");
-			%>
 			<tbody>
-			<c:set var="accounts" value="accounts2"/>
-				<c:forEach items="${accounts2}" var="account">
+				<c:forEach items="${accounts}" var="account">
 					<tr>
 						<td>${account.getNumber()}</td>
 						<td>${account.getCustomerId()}</td>
@@ -66,15 +65,17 @@ $(document).ready(function() {
 			</tbody>
 		</table>
 		<center>
-				<div  class="btn-group">					
-						<button class="btn btn-primary active" id="reset">Back</button>				
-				</div>
-				</center>
+			<div class="btn-group">
+				<button class="btn btn-primary active" id="reset">Back</button>
+			</div>
+		</center>
 	</div>
 
 
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/tether.min.js"></script>
 </body>
 </html>

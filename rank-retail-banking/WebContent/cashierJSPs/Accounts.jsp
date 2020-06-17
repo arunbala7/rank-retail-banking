@@ -19,8 +19,7 @@
 <link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
 <script type="text/javascript"
 	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript"
-	src="../CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="../CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
 <script>
 
@@ -165,41 +164,41 @@ $(document).ready(function() {
 	});
 </script>
 </head>
-<body style="background-image: url('../CSS and JS/images/other.jpg');background-repeat: no-repeat;
-  background-size: cover;">
+<body>
 	<%@ include file="../cashierHeader.jsp"%>
-	<div class="container-login100">
+	<div class="container-login100"
+		style="background-image: url('../CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 			<span class="login100-form-title"
-				style="font-size: 30px; color: crimson;">View Account</span><br />
-				<form autocomplete="off" class="login100-form validate-form " id="Form1" action="../CashierController" method="post" >
+				style="font-size: 30px; color: crimson;">View Accounts</span><br />
+			<form autocomplete="off" class="login100-form validate-form "
+				id="Form1" action="../CashierController" method="post">
 				<div class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Select a valid Account Type">
-					<span class="label-input100 ">Based On</span>
-					<select id="basedOn" name="basedOn"
-						class="input100 form-control">
+					<span class="label-input100 ">Based On</span> <select id="basedOn"
+						name="basedOn" class="input100 form-control">
 						<option value="accountId" selected>Account Number</option>
-						<option value="customerId">Customer ID</option>																	
-					</select>
-					<span class="focus-input100"></span>
+						<option value="customerId">Customer ID</option>
+					</select> <span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input m-b-23"
 					data-validate="Enter a Valid Id">
-					<span id="span" class="label-input100">Account Number</span> <input autocomplete="off" 
-						class="input100 form-control" type="text" id="id" name="accountId" maxLength="10"
-						placeholder="Enter the ID..." /> <span class="focus-input100"></span>						
+					<span id="span" class="label-input100">Account Number</span> <input
+						autocomplete="off" class="input100 form-control" type="text"
+						id="id" name="accountId" maxLength="10"
+						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
-				<input type="hidden" name="action" id="action" value="Accounts"/>
-				<input type="hidden" name="actionType" id="actionType" value="view"/>
+				<input type="hidden" name="action" id="action" value="Accounts" />
+				<input type="hidden" name="actionType" id="actionType" value="view" />
 				<center>
-				<div  class="btn-group after-id">					
-						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
+					<div class="btn-group after-id">
+						<button type="reset" class="btn btn-primary active" id="reset1">Cancel</button>
 						&ensp; <input type="submit" class="btn btn-primary active"
-							id="submitForm" value="Fetch"/>					
-				</div>
+							id="submitForm" value="Fetch" />
+					</div>
 				</center>
-				</form>
-								
+			</form>
+
 		</div>
 	</div>
 

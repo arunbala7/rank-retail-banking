@@ -190,7 +190,7 @@ public class ExecutiveController extends HttpServlet {
 					}					
 				}else {
 					Long id = Long.parseLong(request.getParameter("id"));
-					String accountType=(String)request.getParameter("accountType");
+					String accountType=(String)request.getParameter("accountType").toUpperCase();
 					Long amount=Long.parseLong(request.getParameter("amount"));
 					Account account=new Account(id,amount,accountType);
 					String accountNumber = CustomerService.createAccount(account);

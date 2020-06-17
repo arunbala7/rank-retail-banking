@@ -2,6 +2,8 @@ package com.rank.dao;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -233,29 +235,27 @@ public class BankingDAO {
 		return false;
 	}
 
-	public Account[] getAccounts(String basedOn, Long id) throws Exception {
+	public List<Account> getAccounts(String basedOn, Long id) throws Exception {
 		String Idtype;
 		if(basedOn.contentEquals("customerId"))
 			Idtype="customer_id";
 		else Idtype="account_number";
-		Account[] accounts=new Account[2];
-		Account account = new Account();
+		List<Account> accounts=new ArrayList<Account>();
+		Account account =null;
 		Connection con = (Connection) DBConnection.getConnection();
 		String query = "SELECT * FROM account WHERE "+Idtype+" = ?;";
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
 		ps.setLong(1, id);
 		ResultSet rs=ps.executeQuery();
-		int i=0;
 		while(rs.next()) {
-			
+			account=new Account();
 			account.setCustomerId(rs.getLong("customer_id"));
 			account.setNumber(rs.getLong("account_number"));
 			account.setType(rs.getString("account_type"));
 			account.setStatus(rs.getString("account_status"));
 			account.setBalance(rs.getLong("account_balance"));
 			System.out.println(account.toString());
-			accounts[i++]=account;
-			
+			accounts.add(account);			
 		}
 		DBConnection.closeConnection();
 		rs.close();
