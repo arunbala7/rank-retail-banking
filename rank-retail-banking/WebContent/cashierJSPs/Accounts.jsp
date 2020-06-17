@@ -192,7 +192,7 @@ $(document).ready(function() {
 				<input type="hidden" name="actionType" id="actionType" value="view" />
 				<center>
 					<div class="btn-group after-id">
-						<button type="reset" class="btn btn-primary active" id="reset1">Cancel</button>
+						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
 						&ensp; <input type="submit" class="btn btn-primary active"
 							id="submitForm" value="Fetch" />
 					</div>

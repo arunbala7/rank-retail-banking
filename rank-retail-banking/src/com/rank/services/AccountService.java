@@ -15,8 +15,8 @@ public class AccountService {
 	
 	public static boolean doubleTransaction(Long sender, Long receiver,Long amount) throws Exception {
 		BankingDAO dao=new BankingDAO();
-		if(dao.Transaction(sender,amount,"DEBIT")) {
-			if(dao.Transaction(receiver, amount,"CREDIT")) return true;
+		if(dao.Transaction(receiver, amount,"CREDIT")) {
+			if(dao.Transaction(sender,amount,"DEBIT")) return true;
 		};
 		return false;
 	}
@@ -36,7 +36,7 @@ public class AccountService {
 		return dao.getAllAccounts(start,recordsPerPage);
 	}
 
-	public static List<Transaction> getTransactions(Long accountId,String basedOn, int count, String start, String end) throws Exception {
+	public static List<Transaction> getTransactions(Long accountId,String basedOn, String count, String start, String end) throws Exception {
 		BankingDAO dao=new BankingDAO();
 		return dao.getTransactions(accountId,basedOn,count,start,end);
 	}

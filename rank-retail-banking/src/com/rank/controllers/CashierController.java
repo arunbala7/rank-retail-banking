@@ -192,17 +192,19 @@ public class CashierController extends HttpServlet {
 					} else {
 						response.getWriter().write("failed");
 					}
-				} else {
-					
+				} else {	
+
 					String basedOn=(String)request.getParameter("basedOn");
 					String start=(String)request.getParameter("start");
 					Long accountId=Long.parseLong(request.getParameter("accountId"));
-					String end=(String)request.getParameter("end");
-					int count=Integer.parseInt(request.getParameter("number"));
+					String end=(String)request.getParameter("end");					
+					String count=(String)request.getParameter("number");
 					List<Transaction> transactions=null;
 					transactions=AccountService.getTransactions(accountId,basedOn,count,start,end);
 					response.setContentType("text/html;charset=UTF-8");
+					String accountNumber=transactions.get(0).getAccountNumber()+"";
 					request.setAttribute("transactions", transactions);
+					request.setAttribute("accountNumber", accountNumber);
 					RequestDispatcher rd=request.getRequestDispatcher("cashierJSPs/viewTransactions.jsp");
 					rd.forward(request, response);
 				}

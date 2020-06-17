@@ -2,6 +2,11 @@ package com.rank.beans;
 
 public class Transaction {
 
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", accountNumber=" + accountNumber + ", amount=" + amount + ", description="
+				+ description + ", dateTime=" + dateTime + "]";
+	}
 	long id,accountNumber,amount;
 	String description,dateTime;
 	public long getId() {

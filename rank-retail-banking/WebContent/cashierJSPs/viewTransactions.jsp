@@ -24,12 +24,30 @@
 <script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 <script type="text/javascript" src="CSS and JS/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/tether.min.js"></script>
-<script>
-	$(document).ready(function() {
+<script type="text/javascript" src="CSS and JS/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/html2canvas.min.js"></script>
 
-		$("#reset").on("click", function() {
-			window.location = "/rank-retail-banking/CashierController?action=printStatement";
-		});
+<script>
+$(document).ready(function() {
+
+	$("#reset").on("click", function() {
+		window.location = "/rank-retail-banking/CashierController?action=printStatement";
+	});
+	
+	$("#pdf").on("click", function() {
+        html2canvas(document.getElementById('dataTable'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Account Statement for "+'${accountNumber}');
+            }
+        });
+    });
 	});
 </script>
 </head>
@@ -43,21 +61,21 @@
 				<span class="login100-form-title"
 					style="font-size: 30px; color: crimson;">Account Details</span><br />
 			</div>
-			<table class="table table-striped">
+			<table class="table table-hover" id="dataTable">
 				<thead>
 					<tr>
 						<th>Transaction ID</th>
 						<th>Description</th>
 						<th>Date Time</th>
-						<th>Amount (Rs.)</th>
+						<th>Amount</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${transactions}" var="transaction">
 						<tr>
 							<td>${transaction.getId()}</td>
-							<td>${transaction.getDescription()}</td>
-							<td>${transaction.getDateTime()}</td>
+							<td>${transaction.getDescription().trim()}</td>
+							<td>${transaction.getDateTime().trim()}</td>
 							<td>${transaction.getAmount()}</td>
 						</tr>
 					</c:forEach>
@@ -66,6 +84,9 @@
 			<center>
 				<div class="btn-group">
 					<button class="btn btn-primary active" id="reset">Back</button>
+					&ensp;
+					<button class="btn btn-primary active" id="pdf">Download
+						Report PDF</button>
 				</div>
 			</center>
 		</div>
@@ -73,8 +94,12 @@
 
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="CSS and JS/js/html2canvas.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/tether.min.js"></script>
+
+
 </body>
 </html>

@@ -270,7 +270,7 @@ $(document).ready(function() {
 					<div style="display: none;" class="btn-group before-id ">
 						<input type="reset" class="btn btn-primary active" id="reset"
 							value="Cancel"> &ensp;
-						<input type="submit" class="btn btn-primary active" id="submitForm" value="Print"/>
+						<input type="submit" class="btn btn-primary active" id="submitForm" value="Proceed"/>
 					</div>
 				</center>
 			</form>
