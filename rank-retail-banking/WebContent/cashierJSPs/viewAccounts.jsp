@@ -33,44 +33,45 @@
 	});
 </script>
 </head>
-<body
-	style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body>
 	<%@ include file="../cashierDashboardHeader.jsp"%>
-	<div class="container my-4  p-t-30 p-b-30 "
-		style="background-color: white;">
-		<div class=" p-l-55 p-r-55 p-t-60 p-b-5 ">
-			<span class="login100-form-title"
-				style="font-size: 30px; color: crimson;">Account Details</span><br />
-		</div>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Account Number</th>
-					<th>Customer ID</th>
-					<th>Account Type</th>
-					<th>Status</th>
-					<th>Balance</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${accounts}" var="account">
-					<tr>
-						<td>${account.getNumber()}</td>
-						<td>${account.getCustomerId()}</td>
-						<td>${account.getType()}</td>
-						<td>${account.getStatus()}</td>
-						<td>${account.getBalance()}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<center>
-			<div class="btn-group">
-				<button class="btn btn-primary active" id="reset">Back</button>
+	<div class="container-login100"
+		style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
+		<div class="container my-4  p-t-30 p-b-30 "
+			style="background-color: white;">
+			<div class=" p-l-55 p-r-55 p-t-60 p-b-5 ">
+				<span class="login100-form-title"
+					style="font-size: 30px; color: crimson;">Account Details</span><br />
 			</div>
-		</center>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Account Number</th>
+						<th>Customer ID</th>
+						<th>Account Type</th>
+						<th>Status</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${accounts}" var="account">
+						<tr>
+							<td>${account.getNumber()}</td>
+							<td>${account.getCustomerId()}</td>
+							<td>${account.getType()}</td>
+							<td>${account.getStatus()}</td>
+							<td>${account.getBalance()}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<center>
+				<div class="btn-group">
+					<button class="btn btn-primary active" id="reset">Back</button>
+				</div>
+			</center>
+		</div>
 	</div>
-
 
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>

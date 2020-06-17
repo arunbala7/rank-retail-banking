@@ -254,7 +254,6 @@ public class BankingDAO {
 			account.setType(rs.getString("account_type"));
 			account.setStatus(rs.getString("account_status"));
 			account.setBalance(rs.getLong("account_balance"));
-			System.out.println(account.toString());
 			accounts.add(account);			
 		}
 		DBConnection.closeConnection();
