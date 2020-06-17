@@ -59,7 +59,7 @@
 						<a href="../ExecutiveController?action=deleteCustomer"
 							class="dropdown-item btn btn-outline-light">Delete Customer</a>
 						<div class="dropdown-divider"></div>
-						<a href="../ExecutiveController?action=customerStatus"
+						<a href="../ExecutiveController?action=customerStatus&currentPage=1"
 							class="dropdown-item btn btn-outline-light">View All Customer
 							Status</a>
 					</div>
@@ -77,7 +77,7 @@
 						<a href="../ExecutiveController?action=deleteAccount"
 							class="dropdown-item btn btn-outline-light">Delete Account</a>
 						<div class="dropdown-divider"></div>
-						<a href="../ExecutiveController?action=viewAccounts"
+						<a href="../ExecutiveController?action=accountStatus&currentPage=1"
 							class="dropdown-item btn btn-outline-light">View All Account Status</a>
 					</div>
 				</div>

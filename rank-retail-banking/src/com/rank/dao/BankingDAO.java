@@ -257,7 +257,73 @@ public class BankingDAO {
 			accounts.add(account);			
 		}
 		DBConnection.closeConnection();
-		rs.close();
+		ps.close();
+		return accounts;
+	}
+
+	public List<Customer> getCustomers(int start, int recordsPerPage) throws Exception {
+		List<Customer> customers=new ArrayList<Customer>();
+		Customer customer=null;
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT * FROM customer LIMIT ?,?";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setInt(1, start);
+		ps.setInt(2, recordsPerPage);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			customer=new Customer();
+			customer.setId(rs.getLong(1));
+			customer.setSsn(rs.getInt(2));
+			customer.setName(rs.getString(3));
+			customer.setAddress(rs.getString(4));
+			customer.setDob(rs.getString(5));
+			customer.setAge(rs.getShort(6));
+			customer.setStatus(rs.getString(7));
+			customer.setMessage(rs.getString(8));
+			customer.setCreatedDateTime(rs.getString(9));
+			customer.setUpdatedDateTime(rs.getString(10));
+			customers.add(customer);
+		}
+		DBConnection.closeConnection();
+		ps.close();
+		return customers;
+	}
+
+	public int getNoOfRows(String tableName) throws Exception {
+		int rows=0;
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT COUNT(customer_id) FROM "+tableName+";";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ResultSet rs=ps.executeQuery();
+		if(rs.next()) rows=rs.getInt(1);
+		DBConnection.closeConnection();
+		ps.close();
+		return rows;
+	}
+
+	public List<Account> getAllAccounts(int start, int recordsPerPage) throws Exception {
+		List<Account> accounts=new ArrayList<Account>();
+		Account account=null;
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "SELECT * FROM account LIMIT ?,?";
+		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
+		ps.setInt(1, start);
+		ps.setInt(2, recordsPerPage);
+		ResultSet rs= ps.executeQuery();
+		while(rs.next()) {
+			account=new Account();
+			account.setNumber(rs.getLong(1));
+			account.setCustomerId(rs.getLong(2));
+			account.setType(rs.getString(3));
+			account.setStatus(rs.getString(4));
+			account.setMessage(rs.getString(5));
+			account.setBalance(rs.getLong(6));
+			account.setCreatedDateTime(rs.getString(7));
+			account.setUpdatedDateTime(rs.getString(8));
+			accounts.add(account);
+		}
+		DBConnection.closeConnection();
+		ps.close();
 		return accounts;
 	}
 

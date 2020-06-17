@@ -2,7 +2,15 @@ package com.rank.beans;
 
 public class Account {
 	long number, customerId, balance;
-	String type, createdDateTime,status,message;
+	String type, createdDateTime,updatedDateTime,status,message;
+
+	public String getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	public void setUpdatedDateTime(String updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
+	}
 
 	public Account() {
 	}

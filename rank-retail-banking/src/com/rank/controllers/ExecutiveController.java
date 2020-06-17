@@ -3,7 +3,9 @@ package com.rank.controllers;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import com.google.gson.Gson;
 import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.beans.Customer;
+import com.rank.services.AccountService;
 import com.rank.services.CustomerService;
 import com.rank.util.DateTime;
 
@@ -39,33 +42,75 @@ public class ExecutiveController extends HttpServlet {
 		case "createCustomer":
 			response.sendRedirect("executiveJSPs/createCustomer.jsp");
 			break;
-			
+
 		case "updateCustomer":
 			response.sendRedirect("executiveJSPs/updateCustomer.jsp");
 			break;
-			
+
 		case "deleteCustomer":
 			response.sendRedirect("executiveJSPs/deleteCustomer.jsp");
 			break;
-			
+
 		case "createAccount":
-			response.sendRedirect("executiveJSPs/createAccount.jsp");	
+			response.sendRedirect("executiveJSPs/createAccount.jsp");
 			break;
-			
+
 		case "deleteAccount":
 			response.sendRedirect("executiveJSPs/deleteAccount.jsp");
 			break;
-			
+
 		case "viewCustomer":
 			response.sendRedirect("executiveJSPs/viewCustomer.jsp");
-			break;		
-			
+			break;
+
 		case "customerStatus":
+			try {
+				int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				int recordsPerPage = 5;
+				List<Customer> customers = null;
+				customers = (List<Customer>) CustomerService.getCustomers(currentPage, recordsPerPage);
+				response.setContentType("text/html;charset=UTF-8");
+				request.setAttribute("customers", customers);
+				int rows = 0;
+				rows = CustomerService.getNoOfRows("customer");
+				int pages = rows / recordsPerPage;
+				if (rows % recordsPerPage > 0)
+					pages++;
+				request.setAttribute("pages", pages);
+				request.setAttribute("currentPage", currentPage);
+				request.setAttribute("recordsPerPage", recordsPerPage);
+				RequestDispatcher rd = request.getRequestDispatcher("executiveJSPs/viewCustomerStatus.jsp");
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+
+			}
 			break;
-			
-		case "viewAccounts":
+
+		case "accountStatus":
+			try {
+				int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				int recordsPerPage = 5;
+				List<Account> accounts = null;
+				accounts = (List<Account>) AccountService.getAllAccounts(currentPage, recordsPerPage);
+				response.setContentType("text/html;charset=UTF-8");
+				request.setAttribute("accounts", accounts);
+				int rows = 0;
+				rows = CustomerService.getNoOfRows("account");
+				int pages = rows / recordsPerPage;
+				if (rows % recordsPerPage > 0)
+					pages++;
+				request.setAttribute("pages", pages);
+				request.setAttribute("currentPage", currentPage);
+				request.setAttribute("recordsPerPage", recordsPerPage);
+				RequestDispatcher rd = request.getRequestDispatcher("executiveJSPs/viewAccountStatus.jsp");
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+
+			}
 			break;
-			
+
 		default:
 			response.sendRedirect("Dashboard.jsp");
 		}
@@ -98,8 +143,7 @@ public class ExecutiveController extends HttpServlet {
 			} catch (Exception e) {
 			}
 			break;
-			
-			
+
 		case "updateCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -130,7 +174,7 @@ public class ExecutiveController extends HttpServlet {
 					updateCustomer.setDob(dob);
 					updateCustomer.setAge(age);
 					updateCustomer.setId(id);
-					updateCustomer.setName(name);					
+					updateCustomer.setName(name);
 					response.setContentType("text/plain");
 					if (CustomerService.updateCustomer(updateCustomer)) {
 						response.getWriter().write("success");
@@ -143,8 +187,7 @@ public class ExecutiveController extends HttpServlet {
 			}
 
 			break;
-			
-			
+
 		case "deleteCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -162,76 +205,75 @@ public class ExecutiveController extends HttpServlet {
 						response.getWriter().print("{}");
 					}
 
-				}else {
-					
-					Long id=Long.parseLong(request.getParameter("id"));
+				} else {
+
+					Long id = Long.parseLong(request.getParameter("id"));
 					response.setContentType("text/plain");
 					if (CustomerService.deleteCustomer(id)) {
 						response.getWriter().write("success");
 					} else {
 						response.getWriter().write("failed");
 					}
-					
+
 				}
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 			break;
-			
-			
-		case "createAccount":	
+
+		case "createAccount":
 			try {
 				String type = (String) request.getParameter("actionType");
 				if (type.contentEquals("check")) {
 					Long id = Long.parseLong(request.getParameter("customerId"));
 					response.setContentType("text/plain");
-					if(CustomerService.isCustomer(id)) {
-						response.getWriter().write("success");					
-					}else {
+					if (CustomerService.isCustomer(id)) {
+						response.getWriter().write("success");
+					} else {
 						response.getWriter().write("failed");
-					}					
-				}else {
+					}
+				} else {
 					Long id = Long.parseLong(request.getParameter("id"));
-					String accountType=(String)request.getParameter("accountType").toUpperCase();
-					Long amount=Long.parseLong(request.getParameter("amount"));
-					Account account=new Account(id,amount,accountType);
+					String accountType = (String) request.getParameter("accountType").toUpperCase();
+					Long amount = Long.parseLong(request.getParameter("amount"));
+					Account account = new Account(id, amount, accountType);
 					String accountNumber = CustomerService.createAccount(account);
 					if (accountNumber != null) {
 						response.setContentType("text/plain");
 						response.getWriter().write(accountNumber);
 					} else {
 						response.getWriter().write("failed");
-						}					
-				}				
-			} catch (Exception e) {}
+					}
+				}
+			} catch (Exception e) {
+			}
 			break;
-			
-			
+
 		case "deleteAccount":
 			try {
-				String type=(String)request.getParameter("actionType");
-				if(type.contentEquals("fetch")) {
-				Long accountId=Long.parseLong(request.getParameter("accountId"));
-				Combined account = CustomerService.getAccount(accountId);
-				response.setContentType("application/json");
-				if (account != null) {
-					String customerJson = this.gson.toJson(account);
-					response.getWriter().print(customerJson);
+				String type = (String) request.getParameter("actionType");
+				if (type.contentEquals("fetch")) {
+					Long accountId = Long.parseLong(request.getParameter("accountId"));
+					Combined account = CustomerService.getAccount(accountId);
+					response.setContentType("application/json");
+					if (account != null) {
+						String customerJson = this.gson.toJson(account);
+						response.getWriter().print(customerJson);
+					} else {
+						response.getWriter().print("{}");
+					}
 				} else {
-					response.getWriter().print("{}");
-				}
-				}				
-				else {
-					Long id=Long.parseLong(request.getParameter("id"));
+					Long id = Long.parseLong(request.getParameter("id"));
 					response.setContentType("text/plain");
 					if (CustomerService.deleteAccount(id)) {
 						response.getWriter().write("success");
 					} else {
 						response.getWriter().write("failed");
-					}										
+					}
 				}
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 			break;
-			
-		
+
 		case "viewCustomer":
 			try {
 				String type = (String) request.getParameter("actionType");
@@ -249,19 +291,11 @@ public class ExecutiveController extends HttpServlet {
 						response.getWriter().print("{}");
 					}
 				}
-				
-			} catch (Exception e) {}
+
+			} catch (Exception e) {
+			}
 			break;
-			
-			
-		case "customerStatus":
-			break;
-			
-			
-		case "viewAccounts":
-			break;
-			
-			
+
 		default:
 			response.sendRedirect("Dashboard.jsp");
 		}

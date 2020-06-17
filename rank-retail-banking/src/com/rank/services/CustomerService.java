@@ -1,5 +1,7 @@
 package com.rank.services;
 
+import java.util.List;
+
 import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.beans.Customer;
@@ -45,6 +47,17 @@ public class CustomerService {
 	public static boolean deleteAccount(Long id) throws Exception {
 		BankingDAO dao=new BankingDAO();	
 		return dao.deleteAccount(id);
+	}
+
+	public static List<Customer> getCustomers(int currentPage, int recordsPerPage) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		int start=currentPage*recordsPerPage-recordsPerPage;
+		return dao.getCustomers(start,recordsPerPage);
+	}
+
+	public static int getNoOfRows(String tableName) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.getNoOfRows(tableName);
 	}
 
 }

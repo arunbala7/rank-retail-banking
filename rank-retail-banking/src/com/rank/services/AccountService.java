@@ -29,5 +29,12 @@ public class AccountService {
 		BankingDAO dao=new BankingDAO();
 		return dao.getAccounts(basedOn,id);
 	}
+	public static List<Account> getAllAccounts(int currentPage, int recordsPerPage) throws Exception {
+		int start=currentPage*recordsPerPage-recordsPerPage;
+		BankingDAO dao=new BankingDAO();
+		return dao.getAllAccounts(start,recordsPerPage);
+	}
+
+
 
 }
