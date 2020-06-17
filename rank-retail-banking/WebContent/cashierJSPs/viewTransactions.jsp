@@ -44,7 +44,9 @@ $(document).ready(function() {
                         width: 500
                     }]
                 };
-                pdfMake.createPdf(docDefinition).download("Account Statement for "+'${accountNumber}');
+                var d = new Date();
+                var date = String(d.getDate()) + "-" + String(d.getMonth()) +"-" + String(d.getFullYear());
+                pdfMake.createPdf(docDefinition).download("Account Statement for "+'${accountNumber}'+" "+date);
             }
         });
     });
