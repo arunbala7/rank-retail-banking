@@ -9,7 +9,7 @@ function validate_name(name) {
     // console.log(nameArray[i], ":", /^[a-z]+$/i.test(nameArray[i]));
     nameArray[i] = /^[a-z]+$/i.test(nameArray[i]);
   }
-  if (name.length > 3) nameArray.push(true);
+  if (name.length > 3 && name.length <20) nameArray.push(true);
   else nameArray.push(false);
   //   console.log(nameArray);
 
@@ -71,7 +71,7 @@ function validate_dob(dob) {
 // validate_address function
 function validate_address(address) {
   var nu_space = address.split(" ").length - 1;
-  if (address.length - nu_space >= 5) {
+  if (address.length - nu_space >= 5 && address.length < 100) {
     return;
   } else return false;
 }
