@@ -114,7 +114,7 @@ function validate_transaction_id(transaction_id) {
 
 // validate_depositAmount
 function validate_depositAmount(amount) {
-  if (Number(amount) > 99) return;
+  if (Number(amount) > 99 && Number(amount) < 100000000) return;
   else return false;
 }
 
