@@ -3,6 +3,7 @@ package com.rank.services;
 import java.util.List;
 
 import com.rank.beans.Account;
+import com.rank.beans.Transaction;
 import com.rank.dao.BankingDAO;
 
 public class AccountService {
@@ -33,6 +34,11 @@ public class AccountService {
 		int start=currentPage*recordsPerPage-recordsPerPage;
 		BankingDAO dao=new BankingDAO();
 		return dao.getAllAccounts(start,recordsPerPage);
+	}
+
+	public static List<Transaction> getTransactions(Long accountId,String basedOn, int count, String start, String end) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.getTransactions(accountId,basedOn,count,start,end);
 	}
 
 

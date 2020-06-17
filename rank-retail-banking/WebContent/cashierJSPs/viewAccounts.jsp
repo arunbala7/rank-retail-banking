@@ -28,7 +28,7 @@
 	$(document).ready(function() {
 
 		$("#reset").on("click", function() {
-			window.location = "/rank-retail-banking/cashierJSPs/Accounts.jsp";
+			window.location = "/rank-retail-banking/CashierController?action=Accounts";
 		});
 	});
 </script>

@@ -28,7 +28,7 @@
 	$(document).ready(function() {
 
 		$("#reset").on("click", function() {
-			window.location = "/rank-retail-banking/Dashboard.jsp";
+			window.location = "/rank-retail-banking/ExecutiveController?action=Dashboard";
 		});
 	});
 </script>

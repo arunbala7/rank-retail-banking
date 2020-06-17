@@ -10,6 +10,7 @@ import com.mysql.jdbc.PreparedStatement;
 import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.beans.Customer;
+import com.rank.beans.Transaction;
 import com.rank.beans.User;
 import com.rank.util.DBConnection;
 
@@ -325,6 +326,54 @@ public class BankingDAO {
 		DBConnection.closeConnection();
 		ps.close();
 		return accounts;
+	}
+
+	public List<Transaction> getTransactions(Long accountId,String basedOn, int count, String start, String end) throws Exception {
+		List<Transaction> transactions=new ArrayList<Transaction>();
+		Transaction transaction=null;
+		Connection con = (Connection) DBConnection.getConnection();
+		String query;
+		ResultSet rs;
+		PreparedStatement ps;
+		if(basedOn.contentEquals("date")) {
+			query = "SELECT * FROM transactions WHERE account_number = ?  AND  transactions_date_time BETWEEN '? 00:00:00' AND '? 23:59:00';";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setLong(1, accountId);
+			ps.setString(2, start);
+			ps.setString(3, end);
+			rs= ps.executeQuery();
+			while(rs.next()) {
+				transaction=new Transaction();
+				transaction.setId(rs.getLong(1));
+				transaction.setAccountNumber(rs.getLong(2));
+				transaction.setDescription(rs.getString(3));
+				transaction.setDateTime(rs.getString(4));
+				transaction.setAmount(rs.getLong(5));
+				transactions.add(transaction);
+			}
+			DBConnection.closeConnection();
+			ps.close();
+			
+		}
+		else if(basedOn.contentEquals("count")) {
+			query = "SELECT * FROM transactions WHERE account_number= ? LIMIT ?;";
+			ps = (PreparedStatement) con.prepareStatement(query);
+			ps.setLong(1, accountId);
+			ps.setInt(2, count);
+			rs= ps.executeQuery();
+			while(rs.next()) {
+				transaction=new Transaction();
+				transaction.setId(rs.getLong(1));
+				transaction.setAccountNumber(rs.getLong(2));
+				transaction.setDescription(rs.getString(3));
+				transaction.setDateTime(rs.getString(4));
+				transaction.setAmount(rs.getLong(5));
+				transactions.add(transaction);
+			}	
+			DBConnection.closeConnection();
+			ps.close();
+		}		
+		return transactions;
 	}
 
 }

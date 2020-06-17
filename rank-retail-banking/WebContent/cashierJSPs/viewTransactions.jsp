@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Customer Status</title>
+<title>Account Details</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -28,84 +28,47 @@
 	$(document).ready(function() {
 
 		$("#reset").on("click", function() {
-			window.location = "/rank-retail-banking/ExecutiveController?action=Dashboard";
+			window.location = "/rank-retail-banking/CashierController?action=printStatement";
 		});
 	});
 </script>
 </head>
 <body>
-	<%@ include file="../executiveHeader.jsp"%>
+	<%@ include file="../cashierHeader.jsp"%>
 	<div class="container-login100"
 		style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
 		<div class="container my-4  p-t-30 p-b-30 "
 			style="background-color: white;">
 			<div class=" p-l-55 p-r-55 p-t-60 p-b-5 ">
 				<span class="login100-form-title"
-					style="font-size: 30px; color: crimson;">Customer Status</span><br />
+					style="font-size: 30px; color: crimson;">Account Details</span><br />
 			</div>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Customer ID</th>
-						<th>Social Security Number</th>
-						<th>Name</th>
-						<th>Age</th>
-						<th>Status</th>
-						<th>Message</th>
+						<th>Transaction ID</th>
+						<th>Description</th>
+						<th>Date Time</th>
+						<th>Amount (Rs.)</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${customers}" var="customer">
+					<c:forEach items="${transactions}" var="transaction">
 						<tr>
-							<td>${customer.getId()}</td>
-							<td>${customer.getSsn()}</td>
-							<td>${customer.getName()}</td>
-							<td>${customer.getAge()}</td>
-							<td>${customer.getStatus()}</td>
-							<td>${customer.getMessage()}</td>
+							<td>${transaction.getId()}</td>
+							<td>${transaction.getDescription()}</td>
+							<td>${transaction.getDateTime()}</td>
+							<td>${transaction.getAmount()}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
-					
-			</table>	
-			<nav aria-label="Navigation for Customers" class="d-flex justify-content-center">
-    <ul class="pagination">
-        <c:if test="${currentPage != 1}">
-            <li class="page-item"><a class="page-link" 
-                href="ExecutiveController?action=customerStatus&currentPage=${currentPage-1}">Previous</a>
-            </li>
-        </c:if>
-
-        <c:forEach begin="1" end="${pages}" var="i">
-            <c:choose>
-                <c:when test="${currentPage eq i}">
-                    <li class="page-item active"><a class="page-link">
-                            ${i} <span class="sr-only">(current)</span></a>
-                    </li>
-                </c:when>
-                <c:otherwise>
-                    <li class="page-item"><a class="page-link" 
-                        href="ExecutiveController?action=customerStatus&currentPage=${i}">${i}</a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-
-        <c:if test="${currentPage lt pages}">
-            <li class="page-item"><a class="page-link" 
-                href="ExecutiveController?action=customerStatus&currentPage=${currentPage+1}">Next</a>
-            </li>
-        </c:if>              
-    </ul>
-</nav>
-				
+			</table>
 			<center>
 				<div class="btn-group">
 					<button class="btn btn-primary active" id="reset">Back</button>
 				</div>
 			</center>
 		</div>
-		
 	</div>
 
 	<%@ include file="../footer.jsp"%>

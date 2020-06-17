@@ -118,5 +118,33 @@ function validate_depositAmount(amount) {
   else return false;
 }
 
+//validate the dates range
+function validate_dates(startDate, endDate) {
+  startDate = new Date(startDate);
+  endDate = new Date(endDate);
+  console.log("startDate", startDate);
+  console.log("endDate", endDate);
+  if (startDate < endDate) {
+    console.log("valid");
+    return;
+  } else {
+    console.log("not valid");
+    return false;
+  }
+}
+
+//if valid date or not
+function validate_validDate(date) {
+  if (new Date(date) < new Date()) {
+    return;
+  }
+  return false;
+}
+
+function validate_count(count){
+	if(Number(count)>0)return;
+	else return false;
+}
+
 // validation support function
 let trueChecker = (arr) => arr.every((v) => v === true);
