@@ -6,11 +6,11 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="../CSS and JS/css/bootstrap.min.css">
-<link rel="stylesheet" href="../CSS and JS/css/font-awesome.min.css">
-<script src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script src="../CSS and JS/js/popper.min.js"></script>
-<script src="../CSS and JS/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="CSS and JS/css/bootstrap.min.css">
+<link rel="stylesheet" href="CSS and JS/css/font-awesome.min.css">
+<script src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script src="CSS and JS/js/popper.min.js"></script>
+<script src="CSS and JS/js/bootstrap.min.js"></script>
 <style type="text/css">
 .btn-group {
 	padding: 4px;
@@ -22,9 +22,7 @@
 		//SESSION CHECK (LOGGED IN OR NOT)  	
 	String workGroup = (String) session.getAttribute("workGroup");
 	if (workGroup == null)
-		response.sendRedirect("../index.jsp");
-	else if (workGroup.contentEquals("executive"))
-		response.sendRedirect("../Dashboard.jsp");
+		response.sendRedirect("/rank-retail-banking/index.jsp");
 
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1
@@ -41,7 +39,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<div class="navbar-nav btn-group">
-					<a href="../Dashboard.jsp" class="nav-item nav-link active">Home</a>
+					<a href="ExecutiveController?action=Dashboard" class="nav-item nav-link active">Home</a>
 
 				</div>
 				<div class="btn-group">
@@ -49,16 +47,16 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Transaction</button>
 					<div class="dropdown-menu" style="background-color: #dddddd">
-						<a href="../CashierController?action=depositMoney"
+						<a href="CashierController?action=depositMoney"
 							class="dropdown-item btn btn-outline-light">Deposit Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="../CashierController?action=withdrawMoney"
+						<a href="CashierController?action=withdrawMoney"
 							class="dropdown-item btn btn-outline-light">Withdraw Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="../CashierController?action=transferMoney"
+						<a href="CashierController?action=transferMoney"
 							class="dropdown-item btn btn-outline-light">Transfer Money</a>
 						<div class="dropdown-divider"></div>
-						<a href="../CashierController?action=printStatement"
+						<a href="CashierController?action=printStatement"
 							class="dropdown-item btn btn-outline-light">Print Account
 							Statement</a>
 					</div>
@@ -69,13 +67,13 @@
 						data-toggle="dropdown"
 						style="background-color: #222831; border: 2px solid #222831;">Search</button>
 					<div class="dropdown-menu" style="background-color: #dddddd;">
-						<a href="../CashierController?action=Accounts"
+						<a href="CashierController?action=Accounts"
 							class="dropdown-item btn btn-outline-light">View Account
 							Details</a>
 					</div>
 				</div>
 
-				<form class="form-inline ml-auto" action="../UserController"
+				<form class="form-inline ml-auto" action="UserController"
 					method="get">
 					<input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>

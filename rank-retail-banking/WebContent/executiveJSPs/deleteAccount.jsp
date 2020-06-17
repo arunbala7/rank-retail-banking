@@ -8,19 +8,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="icon" type="image/png"
-	href="../CSS and JS/images/icons/favicon.ico" />
+	href="CSS and JS/images/icons/favicon.ico" />
 <link rel="stylesheet" type="text/css"
-	href="../CSS and JS/vendor/bootstrap/css/bootstrap.min.css" />
+	href="CSS and JS/vendor/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="../CSS and JS/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	href="CSS and JS/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="../CSS and JS/fonts/iconic/css/material-design-iconic-font.min.css" />
-<link rel="stylesheet" type="text/css" href="../CSS and JS/css/util.css" />
-<link rel="stylesheet" type="text/css" href="../CSS and JS/css/main.css" />
+	href="CSS and JS/fonts/iconic/css/material-design-iconic-font.min.css" />
+<link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
+<link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
 <script type="text/javascript"
-	src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="../CSS and JS/js/sweetalert.min.js"></script>
-<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+	src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -69,7 +69,7 @@ $(document).ready(function() {
 		            	};
 				//alert(JSON.stringify(obj));
 				$.ajax({
-		            url:'../ExecutiveController',
+		            url:'ExecutiveController',
 		            data:obj,
 		            type:'post',
 		            cache:false,
@@ -144,7 +144,7 @@ $(document).ready(function() {
 				  if (willDelete) {
 				  
 					$.ajax({
-					            url:'../ExecutiveController',
+					            url:'ExecutiveController',
 					            data:obj,
 					            type:'post',
 					            cache:false,
@@ -227,7 +227,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body
-	style="background-image: url('../CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
+	style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
 	<%@ include file="../executiveHeader.jsp"%>
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -316,7 +316,7 @@ $(document).ready(function() {
 
 	<%@ include file="../footer.jsp"%>
 	<script type="text/javascript"
-		src="../CSS and JS/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="../CSS and JS/js/validation.js"></script>
+		src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@
 </script>
 </head>
 <body>
-	<%@ include file="../cashierDashboardHeader.jsp"%>
+	<%@ include file="../cashierHeader.jsp"%>
 	<div class="container-login100"
 		style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: repeat; background-size: cover;">
 		<div class="container my-4  p-t-30 p-b-30 "

@@ -30,18 +30,21 @@ public class CashierController extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		String action = "";
 		action = (String) request.getParameter("action");
-
+		RequestDispatcher rd;
 		switch (action) {
 		case "depositMoney":
-			response.sendRedirect("cashierJSPs/depositMoney.jsp");
+			rd = request.getRequestDispatcher("cashierJSPs/depositMoney.jsp");
+			rd.forward(request, response);
 			break;
 			
 		case "withdrawMoney":
-			response.sendRedirect("cashierJSPs/withdrawMoney.jsp");
+			rd = request.getRequestDispatcher("cashierJSPs/withdrawMoney.jsp");
+			rd.forward(request, response);
 			break;
 			
 		case "transferMoney":
-			response.sendRedirect("cashierJSPs/transferMoney.jsp");
+			rd = request.getRequestDispatcher("cashierJSPs/transferMoney.jsp");
+			rd.forward(request, response);
 			break;
 			
 		case "printStatement":
@@ -49,7 +52,8 @@ public class CashierController extends HttpServlet {
 			break;
 			
 		case "Accounts":
-			response.sendRedirect("cashierJSPs/Accounts.jsp");
+			rd = request.getRequestDispatcher("cashierJSPs/Accounts.jsp");
+			rd.forward(request, response);
 			break;
 			
 		default:

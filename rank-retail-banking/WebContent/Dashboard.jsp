@@ -26,10 +26,10 @@
 	<!-- Adding Header Based on the user  -->
 	<c:choose>
 		<c:when test="${workGroup =='cashier'}">
-			<%@ include file="cashierDashboardHeader.jsp"%>
+			<%@ include file="cashierHeader.jsp"%>
 		</c:when>
 		<c:otherwise>
-			<%@ include file="executiveDashboardHeader.jsp"%>
+			<%@ include file="executiveHeader.jsp"%>
 		</c:otherwise>
 	</c:choose>
 	<div class="limiter">

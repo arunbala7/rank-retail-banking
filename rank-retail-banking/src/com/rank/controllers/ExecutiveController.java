@@ -37,30 +37,36 @@ public class ExecutiveController extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		String action = "";
 		action = (String) request.getParameter("action");
-
+		RequestDispatcher rd;
 		switch (action) {
 		case "createCustomer":
-			response.sendRedirect("executiveJSPs/createCustomer.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/createCustomer.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "updateCustomer":
-			response.sendRedirect("executiveJSPs/updateCustomer.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/updateCustomer.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "deleteCustomer":
-			response.sendRedirect("executiveJSPs/deleteCustomer.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/deleteCustomer.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "createAccount":
-			response.sendRedirect("executiveJSPs/createAccount.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/createAccount.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "deleteAccount":
-			response.sendRedirect("executiveJSPs/deleteAccount.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/deleteAccount.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "viewCustomer":
-			response.sendRedirect("executiveJSPs/viewCustomer.jsp");
+			rd = request.getRequestDispatcher("executiveJSPs/viewCustomer.jsp");
+			rd.forward(request, response);
 			break;
 
 		case "customerStatus":
@@ -79,7 +85,7 @@ public class ExecutiveController extends HttpServlet {
 				request.setAttribute("pages", pages);
 				request.setAttribute("currentPage", currentPage);
 				request.setAttribute("recordsPerPage", recordsPerPage);
-				RequestDispatcher rd = request.getRequestDispatcher("executiveJSPs/viewCustomerStatus.jsp");
+				rd = request.getRequestDispatcher("executiveJSPs/viewCustomerStatus.jsp");
 				rd.forward(request, response);
 
 			} catch (Exception e) {
@@ -103,7 +109,7 @@ public class ExecutiveController extends HttpServlet {
 				request.setAttribute("pages", pages);
 				request.setAttribute("currentPage", currentPage);
 				request.setAttribute("recordsPerPage", recordsPerPage);
-				RequestDispatcher rd = request.getRequestDispatcher("executiveJSPs/viewAccountStatus.jsp");
+				rd  = request.getRequestDispatcher("executiveJSPs/viewAccountStatus.jsp");
 				rd.forward(request, response);
 
 			} catch (Exception e) {
