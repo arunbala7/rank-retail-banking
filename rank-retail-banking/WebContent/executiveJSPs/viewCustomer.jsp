@@ -17,8 +17,7 @@
 	href="CSS and JS/fonts/iconic/css/material-design-iconic-font.min.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
-<script type="text/javascript"
-	src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 <script>
@@ -32,7 +31,30 @@ $(document).ready(function() {
 	
 		$("#reset1").click(function(){
 			$("#id").val("");
+			  $('#basedOn').val("customerId");
+			    $('#span').text("Customer ID");
+			    $('#id').attr('name',"customerId");
 		});
+		
+		$( "#basedOn" ).change(function() {
+			  var basedOn="";
+		      basedOn=$('#basedOn').val(); 
+		      if(basedOn==="customerId"){		   
+		    	  $('#id').attr('name',"customerId");
+		    	  $("#span").text("Customer ID");
+		    	  $("#id").val("");
+		    	  $('#id').attr('maxLength',"10");
+		    	  $('#div1').attr('data-validate',"Enter a Valid Customer Id");
+		      }
+		      else{
+		    	  
+		    	  $('#id').attr('name',"ssn");
+		    	  $("#span").text("Social Securtiy Number");
+		    	  $("#id").val("");
+		    	  $('#id').attr('maxLength',"9");
+		    	  $('#div1').attr('data-validate',"Enter a Valid SSN");
+		      }
+			});
 		
 		$("#reset").click(function(){
 			location.reload(true);
@@ -55,12 +77,15 @@ $(document).ready(function() {
 			if (validate($("#id")) == false) {
 				showValidate($("#id"));				
 			}else{
-				var customerId="";
-				customerId=$("#id").val();
+				var id="";
+				var basedOn="";
+				basedOn=$('#basedOn').val();
+				id=$("#id").val();
 				var action= 'viewCustomer';
 				var actionType= 'fetch';
-				var obj={customerId,
+				var obj={id,
 		            	action,
+		            	basedOn,
 		            	actionType
 		            	};
 				//alert(JSON.stringify(obj));
@@ -85,13 +110,19 @@ $(document).ready(function() {
 		            	$('#name').attr('readonly', true);
 		            	$('#address').attr('readonly', true);
 		            	$('#dob').attr('readonly', true);
+		            	if(basedOn==="customerId")
+		            		{
+		            		$("#second").text("Social Security Number");
+		            		}else{
+		            			$("#second").text("Customer ID");	
+		            		}
 		            		}else{
 		            			swal({
-				            		  title: "Failed",
-				            		  text: "Customer ID Not found",
-				            		  icon: "error",
-				            		  button: "Okay",
-				            		});
+		 		            		  title: "Failed",
+		 		            		  text: "No Details to fetch with the data provided!",
+		 		            		  icon: "error",
+		 		            		  button: "Okay",		 		           
+		 		            		});
 		            		}
 		            },
 		            error:function(){
@@ -131,22 +162,10 @@ $(document).ready(function() {
 			if ($(input).val().trim() == '')
 				return false;
 			switch ($(input).attr("name")) {
-		    case "name":
-		      return validate_name($(input).val().trim());
 		    case "ssn":
 		      return validate_ssno($(input).val().trim());
-		    case "dob":
-		      return validate_dob($(input).val().trim());
-		    case "address":
-		      return validate_address($(input).val().trim());
 		    case "customerId":
 		      return validate_customer_id($(input).val().trim());
-		    case "accountId":
-		      return validate_account_number($(input).val().trim());
-		    case "transactionId":
-		      return validate_transaction_id($(input).val().trim());
-		    case "amount":
-		      return validate_depositAmount($(input).val().trim());
 			default:
 			  return;
 		  }
@@ -181,9 +200,18 @@ $(document).ready(function() {
 				style="font-size: 30px; color: crimson;">View Customer</span><br />
 			<form autocomplete="off" class="login100-form validate-form "
 				id="Form">
+				<div class="wrap-input100 validate-input m-b-23 after-id"
+					data-validate="Select a valid Account Type" id="div2">
+					<span class="label-input100 ">Based On</span> <select id="basedOn"
+						name="basedOn" class="input100 form-control">
+						<option value="customerId" selected>Customer ID</option>
+						<option value="accountId">Social Security Number</option>
+					</select> <span class="focus-input100"></span>
+				</div>
+
 				<div class="wrap-input100 validate-input m-b-23"
-					data-validate="Enter a Valid Customer Id">
-					<span class="label-input100">Customer ID</span> <input
+					data-validate="Enter a Valid Customer Id" id="div1">
+					<span id="span" class="label-input100">Customer ID</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
 						id="id" maxLength="10" name="customerId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
@@ -202,20 +230,21 @@ $(document).ready(function() {
 				id="customerForm">
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
+					data-validate="Enter a Valid SSN" >
+					<span class="label-input100" id="second">Social Security Number</span>
+					<input class="input100 form-inline form-control" type="text"
+						id="ssno" name="ssn" maxLength="9" placeholder="Enter the ssn..." />
+					<span class="focus-input100"></span>
+				</div>
+				<div style="display: none;"
+					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a Valid Name">
 					<span class="label-input100">Name</span> <input
 						class="input100 form-control" type="text" id="name" name="name"
 						placeholder="Enter the name..." /> <span class="focus-input100"></span>
 				</div>
 
-				<div style="display: none;"
-					class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a Valid SSN">
-					<span class="label-input100" id="ssn">Social Security Number</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="ssno" name="ssn" maxLength="9" placeholder="Enter the ssn..." />
-					<span class="focus-input100"></span>
-				</div>
+
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
 					data-validate="Enter a Valid DOB">
@@ -244,8 +273,7 @@ $(document).ready(function() {
 	</div>
 
 	<%@ include file="../footer.jsp"%>
-	<script type="text/javascript"
-		src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 </body>
 </html>

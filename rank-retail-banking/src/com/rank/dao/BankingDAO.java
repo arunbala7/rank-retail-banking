@@ -377,4 +377,46 @@ public class BankingDAO {
 		return transactions;
 	}
 
+	public Customer getCustomerBasedOn(String basedOn, Long id) throws Exception {
+		Customer customer=new Customer();
+		Connection con = (Connection) DBConnection.getConnection();
+		String query;
+		PreparedStatement ps;
+		ResultSet rsResultSet;
+		if(basedOn.contentEquals("customerId")) {
+		query="SELECT customer_name, customer_ssn, customer_address, customer_dob FROM customer WHERE customer_id = ?;";
+		ps= (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);		
+		rsResultSet = ps.executeQuery();
+		if (rsResultSet.next())
+		{
+		customer.setName(rsResultSet.getString("customer_name"));
+		customer.setId(id);
+		customer.setSsn(rsResultSet.getInt("customer_ssn"));
+		customer.setAddress(rsResultSet.getString("customer_address"));
+		customer.setDob(rsResultSet.getString("customer_dob"));   
+		}
+		DBConnection.closeConnection();
+		ps.close();	
+		}else {
+			
+			query="SELECT customer_name, customer_id, customer_address, customer_dob FROM customer WHERE customer_ssn = ?;";
+			ps= (PreparedStatement) con.prepareStatement(query);
+			ps.setLong(1, id);		
+			rsResultSet = ps.executeQuery();
+			if (rsResultSet.next())
+			{
+			customer.setName(rsResultSet.getString("customer_name"));
+			customer.setId(id);
+			customer.setSsn(rsResultSet.getInt("customer_id"));
+			customer.setAddress(rsResultSet.getString("customer_address"));
+			customer.setDob(rsResultSet.getString("customer_dob"));   
+			}
+			DBConnection.closeConnection();
+			ps.close();				
+		}		
+		
+		return customer;
+	}
+
 }

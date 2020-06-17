@@ -191,7 +191,6 @@ public class ExecutiveController extends HttpServlet {
 				}
 			} catch (Exception e) {
 			}
-
 			break;
 
 		case "deleteCustomer":
@@ -282,13 +281,12 @@ public class ExecutiveController extends HttpServlet {
 
 		case "viewCustomer":
 			try {
-				String type = (String) request.getParameter("actionType");
+				String type = (String) request.getParameter("actionType");				
 				if (type.contentEquals("fetch")) {
-
-					Long id = Long.parseLong(request.getParameter("customerId"));
+					String basedOn = (String) request.getParameter("basedOn");
+					Long id = Long.parseLong(request.getParameter("id"));
 					Customer customer = null;
-
-					customer = CustomerService.getCustomer(id);
+					customer = CustomerService.getCustomerBasedOn(basedOn,id);
 					response.setContentType("application/json");
 					if (customer.getId() != 0) {
 						String customerJson = this.gson.toJson(customer);
