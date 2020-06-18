@@ -146,7 +146,7 @@ p {
   <div class="column ">
     <div class="card">
       <div class="container">
-      <p class="title" style="color:black;font-size:30px">Developer</p>
+      <p class="title" style="color:black;font-size:30px">Support Developers</p>
         <p>Nivetha R CT20172231274<p>
          <p>Naveena L CT20172231210</p>
          <p>Kalakata Manasa CT20172231278</p>   
