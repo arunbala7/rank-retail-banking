@@ -351,6 +351,9 @@ public class BankingDAO {
 				transaction.setAmount(rs.getLong(5));
 				transactions.add(transaction);
 			}
+			if(transactions.isEmpty()) {
+				transactions.add(new Transaction());				
+			}			
 			DBConnection.closeConnection();
 			ps.close();
 			

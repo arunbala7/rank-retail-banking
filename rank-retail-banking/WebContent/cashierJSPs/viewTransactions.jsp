@@ -74,12 +74,16 @@ $(document).ready(function() {
 				</thead>
 				<tbody>
 					<c:forEach items="${transactions}" var="transaction">
+					
+
+					<c:if test="${transaction.getId() gt 0}">
 						<tr>
 							<td>${transaction.getId()}</td>
 							<td>${transaction.getDescription().trim()}</td>
 							<td>${transaction.getDateTime().trim()}</td>
 							<td>${transaction.getAmount()}</td>
 						</tr>
+					</c:if>
 					</c:forEach>
 				</tbody>
 			</table>
