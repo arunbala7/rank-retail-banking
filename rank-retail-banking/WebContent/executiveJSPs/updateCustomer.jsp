@@ -236,7 +236,7 @@ $(document).ready(function() {
 					data-validate="Enter a Valid Customer Id">
 					<span class="label-input100">Customer ID</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
-						id="id" maxLength="10" name="customerId"
+						id="id" maxLength="9" name="customerId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
 			</form>

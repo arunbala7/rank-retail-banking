@@ -19,7 +19,7 @@ public class BankingDAO {
 	public String isValidUser(User user) throws Exception {
 		String workGroup = null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "SELECT work_group FROM users WHERE user_name ='" + user.getUserName() + "' AND password='"
+		String query = "SELECT work_group FROM userstore WHERE user_name ='" + user.getUserName() + "' AND password='"
 				+ user.getPassword() + "'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);

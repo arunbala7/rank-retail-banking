@@ -185,7 +185,7 @@ $(document).ready(function() {
 					data-validate="Enter a Valid Id">
 					<span id="span" class="label-input100">Account Number</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
-						id="id" name="accountId" maxLength="10"
+						id="id" name="accountId" maxLength="9"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
 				<input type="hidden" name="action" id="action" value="Accounts" />

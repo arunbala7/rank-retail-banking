@@ -43,7 +43,7 @@ $(document).ready(function() {
 		    	  $('#id').attr('name',"customerId");
 		    	  $("#span").text("Customer ID");
 		    	  $("#id").val("");
-		    	  $('#id').attr('maxLength',"10");
+		    	  $('#id').attr('maxLength',"9");
 		    	  $('#div1').attr('data-validate',"Enter a Valid Customer Id");
 		      }
 		      else{
@@ -206,7 +206,7 @@ $(document).ready(function() {
 					data-validate="Enter a Valid Customer Id" id="div1">
 					<span id="span" class="label-input100">Customer ID</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
-						id="id" maxLength="10" name="customerId"
+						id="id" maxLength="9" name="customerId"
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
 			</form>

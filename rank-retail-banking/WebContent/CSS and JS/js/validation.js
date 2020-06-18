@@ -39,7 +39,7 @@ function validate_dob(dob) {
     switch (i) {
       // Year
       case 0:
-        if (dobArray[i].length == 4 && age > 18 && age < 80) {
+        if (dobArray[i].length == 4 && age > 18 && age < 130) {
           dobArray[i] = true;
         } else dobArray[i] = false;
         break;
@@ -79,9 +79,9 @@ function validate_address(address) {
 // This function validates customer_id
 function validate_customer_id(customer_id) {
   if (
-    customer_id.length == 10 &&
-    Number(customer_id) >= 1000000000 &&
-    Number(customer_id) < 2000000000 &&
+    customer_id.length == 9 &&
+    Number(customer_id) >= 100000000 &&
+    Number(customer_id) < 200000000 &&
     /^[0-9]+$/i.test(customer_id)
   )
     return;
@@ -91,9 +91,9 @@ function validate_customer_id(customer_id) {
 // This function validates account_number
 function validate_account_number(account_number) {
   if (
-    account_number.length == 10 &&
-    Number(account_number) >= 2000000000 &&
-    Number(account_number) < 3000000000 &&
+    account_number.length == 9 &&
+    Number(account_number) >= 200000000 &&
+    Number(account_number) < 300000000 &&
     /^[0-9]+$/i.test(account_number)
   )
     return;
@@ -103,9 +103,9 @@ function validate_account_number(account_number) {
 // This function validates transaction_id
 function validate_transaction_id(transaction_id) {
   if (
-    transaction_id.length == 10 &&
-    Number(transaction_id) >= 3000000000 &&
-    Number(transaction_id) < 4000000000 &&
+    transaction_id.length == 9 &&
+    Number(transaction_id) >= 300000000 &&
+    Number(transaction_id) < 400000000 &&
     /^[0-9]+$/i.test(transaction_id)
   )
     return;

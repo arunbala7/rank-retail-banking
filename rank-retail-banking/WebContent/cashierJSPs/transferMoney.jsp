@@ -267,7 +267,7 @@ $(document).ready(function() {
 					data-validate="Enter a Valid Account Number">
 					<span class="label-input100">Sender's Account Number</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
-						id="id" maxLength="10" name="accountId"
+						id="id" maxLength="9" name="accountId"
 						placeholder="Enter the Sender's Number..." /> <span
 						class="focus-input100"></span>
 				</div>
@@ -304,7 +304,7 @@ $(document).ready(function() {
 					data-validate="Enter a Valid Account Number">
 					<span class="label-input100">Receiver's Account Number</span> <input
 						autocomplete="off" class="input100 form-control" type="text"
-						id="id1" maxLength="10" name="accountId"
+						id="id1" maxLength="9" name="accountId"
 						placeholder="Enter the Reciever's Number..." /> <span
 						class="focus-input100"></span>
 				</div>
