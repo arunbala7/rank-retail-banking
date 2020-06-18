@@ -206,7 +206,6 @@ public class CashierController extends HttpServlet {
 					Long accountId = Long.parseLong(request.getParameter("accountId"));
 					String end = (String) request.getParameter("end");
 					String count = (String) request.getParameter("number");
-					System.out.println(basedOn+" "+start+" "+end+" "+count+" "+accountId);
 					List<Transaction> transactions = null;
 					transactions = AccountService.getTransactions(accountId, basedOn, count, start, end);
 					response.setContentType("text/html;charset=UTF-8");

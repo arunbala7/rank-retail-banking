@@ -61,7 +61,7 @@ $(document).ready(function() {
 			style="background-color: white;">
 			<div class=" p-l-55 p-r-55 p-t-60 p-b-5 ">
 				<span class="login100-form-title"
-					style="font-size: 30px; color: crimson;">Account Details</span><br />
+					style="font-size: 30px; color: crimson;">Account Statement</span><br />
 			</div>
 			<table class="table table-hover" id="dataTable">
 				<thead>

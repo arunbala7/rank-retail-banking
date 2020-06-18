@@ -359,7 +359,7 @@ public class BankingDAO {
 			
 		}
 		else if(basedOn.contentEquals("count")) {
-			query = "SELECT * FROM transactions WHERE account_number= ? LIMIT ?;";
+			query = "SELECT * FROM transactions WHERE account_number= ? ORDER BY transactions_date_time DESC LIMIT ?;";
 			ps = (PreparedStatement) con.prepareStatement(query);
 			ps.setLong(1, accountId);
 			ps.setInt(2, Integer.parseInt(count));
