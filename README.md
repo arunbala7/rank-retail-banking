@@ -4,8 +4,7 @@
 Banking Web Application using Java Model View Controller (MVC)
 
 
-Technologies Used:
-  
+    Technologies Used:  
                   1. Java
                   2. MySql
                   3. Java Servlet
