@@ -2,6 +2,7 @@ package com.rank.controllers;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,13 +48,19 @@ public class UserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd;
 		String action = (String) request.getParameter("action");
 		if (action.contentEquals("logout")) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("workGroup");
 			session.removeAttribute("userName");
 			session.invalidate();
-			response.sendRedirect("index.jsp");
+			rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}else {
+			
+			rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
 		}
 		doPost(request, response);
 
