@@ -25,14 +25,15 @@ public class CashierController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		RequestDispatcher rd;
 		HttpSession session = request.getSession();
 		String userName = (String) session.getAttribute("userName");
-		if (userName == null)
-			response.sendRedirect("index.jsp");
+		if (userName == null) {
+			rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
 		String action = "";
 		action = (String) request.getParameter("action");
-		RequestDispatcher rd;
 		switch (action) {
 		case "depositMoney":
 			rd = request.getRequestDispatcher("cashierJSPs/depositMoney.jsp");
@@ -58,10 +59,10 @@ public class CashierController extends HttpServlet {
 			rd = request.getRequestDispatcher("cashierJSPs/Accounts.jsp");
 			rd.forward(request, response);
 			break;
-			
+
 		case "about":
 			rd = request.getRequestDispatcher("about.jsp");
-			rd.forward(request, response);			
+			rd.forward(request, response);
 			break;
 
 		default:
@@ -71,6 +72,7 @@ public class CashierController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd;
 
 		String action = (String) request.getParameter("action");
 
@@ -177,7 +179,7 @@ public class CashierController extends HttpServlet {
 					List<Account> accounts = null;
 					accounts = AccountService.getAccounts(basedOn, id);
 					request.setAttribute("accounts", accounts);
-					RequestDispatcher rd = request.getRequestDispatcher("cashierJSPs/viewAccounts.jsp");
+					rd = request.getRequestDispatcher("cashierJSPs/viewAccounts.jsp");
 					rd.forward(request, response);
 
 				}
@@ -197,20 +199,20 @@ public class CashierController extends HttpServlet {
 					} else {
 						response.getWriter().write("failed");
 					}
-				} else {	
+				} else {
 
-					String basedOn=(String)request.getParameter("basedOn");
-					String start=(String)request.getParameter("start");
-					Long accountId=Long.parseLong(request.getParameter("accountId"));
-					String end=(String)request.getParameter("end");					
-					String count=(String)request.getParameter("number");
-					List<Transaction> transactions=null;
-					transactions=AccountService.getTransactions(accountId,basedOn,count,start,end);
+					String basedOn = (String) request.getParameter("basedOn");
+					String start = (String) request.getParameter("start");
+					Long accountId = Long.parseLong(request.getParameter("accountId"));
+					String end = (String) request.getParameter("end");
+					String count = (String) request.getParameter("number");
+					List<Transaction> transactions = null;
+					transactions = AccountService.getTransactions(accountId, basedOn, count, start, end);
 					response.setContentType("text/html;charset=UTF-8");
-					String accountNumber=transactions.get(0).getAccountNumber()+"";
+					String accountNumber = transactions.get(0).getAccountNumber() + "";
 					request.setAttribute("transactions", transactions);
 					request.setAttribute("accountNumber", accountNumber);
-					RequestDispatcher rd=request.getRequestDispatcher("cashierJSPs/viewTransactions.jsp");
+					rd = request.getRequestDispatcher("cashierJSPs/viewTransactions.jsp");
 					rd.forward(request, response);
 				}
 			} catch (Exception e) {
@@ -218,7 +220,8 @@ public class CashierController extends HttpServlet {
 			break;
 
 		default:
-			response.sendRedirect("Dashboard.jsp");
+			rd = request.getRequestDispatcher("Dashboard.jsp");
+			rd.forward(request, response);
 
 		}
 	}

@@ -31,13 +31,17 @@ public class ExecutiveController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd;
 		HttpSession session = request.getSession();
 		String userName = (String) session.getAttribute("userName");
-		if (userName == null)
-			response.sendRedirect("index.jsp");
+		if (userName == null) {
+			rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
+
 		String action = "";
 		action = (String) request.getParameter("action");
-		RequestDispatcher rd;
+
 		switch (action) {
 		case "createCustomer":
 			rd = request.getRequestDispatcher("executiveJSPs/createCustomer.jsp");
@@ -109,21 +113,22 @@ public class ExecutiveController extends HttpServlet {
 				request.setAttribute("pages", pages);
 				request.setAttribute("currentPage", currentPage);
 				request.setAttribute("recordsPerPage", recordsPerPage);
-				rd  = request.getRequestDispatcher("executiveJSPs/viewAccountStatus.jsp");
+				rd = request.getRequestDispatcher("executiveJSPs/viewAccountStatus.jsp");
 				rd.forward(request, response);
 
 			} catch (Exception e) {
 
 			}
 			break;
-			
+
 		case "about":
 			rd = request.getRequestDispatcher("about.jsp");
-			rd.forward(request, response);			
+			rd.forward(request, response);
 			break;
 
 		default:
-			response.sendRedirect("Dashboard.jsp");
+			rd = request.getRequestDispatcher("Dashboard.jsp");
+			rd.forward(request, response);
 		}
 
 	}
@@ -131,7 +136,7 @@ public class ExecutiveController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = (String) request.getParameter("action");
-
+		RequestDispatcher rd;
 		switch (action) {
 		case "createCustomer":
 			try {
@@ -286,12 +291,12 @@ public class ExecutiveController extends HttpServlet {
 
 		case "viewCustomer":
 			try {
-				String type = (String) request.getParameter("actionType");				
+				String type = (String) request.getParameter("actionType");
 				if (type.contentEquals("fetch")) {
 					String basedOn = (String) request.getParameter("basedOn");
 					Long id = Long.parseLong(request.getParameter("id"));
 					Customer customer = null;
-					customer = CustomerService.getCustomerBasedOn(basedOn,id);
+					customer = CustomerService.getCustomerBasedOn(basedOn, id);
 					response.setContentType("application/json");
 					if (customer.getId() != 0) {
 						String customerJson = this.gson.toJson(customer);
@@ -306,7 +311,8 @@ public class ExecutiveController extends HttpServlet {
 			break;
 
 		default:
-			response.sendRedirect("Dashboard.jsp");
+			rd = request.getRequestDispatcher("Dashboard.jsp");
+			rd.forward(request, response);
 		}
 
 	}
