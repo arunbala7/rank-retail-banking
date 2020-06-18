@@ -36,7 +36,7 @@
 		<div class="container-login100"
 			style="background-image: url('CSS and JS/images/home.jpg');">
 			<span class="login100-form-title"
-				style="font-family: 'Cambria'; font-weight: bold; font-size: 70px; color: #e71414;">Welcome
+				style="font-family: 'Cambria'; font-weight: bold; font-size: 70px; color: #e71414;text-transform: capitalize;">Welcome
 				${userName}!</span><br />
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54"
 				style="opacity: 0;"></div>

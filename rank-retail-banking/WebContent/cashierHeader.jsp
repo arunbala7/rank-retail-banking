@@ -73,6 +73,11 @@
 							Details</a>
 					</div>
 				</div>
+				<div class="navbar-nav btn-group">
+					<a href="ExecutiveController?action=about"
+						class="nav-item nav-link active">About</a>
+
+				</div>
 
 				<form class="form-inline ml-auto" action="UserController"
 					method="get">

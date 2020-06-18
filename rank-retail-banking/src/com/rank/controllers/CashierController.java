@@ -58,6 +58,11 @@ public class CashierController extends HttpServlet {
 			rd = request.getRequestDispatcher("cashierJSPs/Accounts.jsp");
 			rd.forward(request, response);
 			break;
+			
+		case "about":
+			rd = request.getRequestDispatcher("about.jsp");
+			rd.forward(request, response);			
+			break;
 
 		default:
 			response.sendRedirect("Dashboard.jsp");

@@ -116,6 +116,11 @@ public class ExecutiveController extends HttpServlet {
 
 			}
 			break;
+			
+		case "about":
+			rd = request.getRequestDispatcher("about.jsp");
+			rd.forward(request, response);			
+			break;
 
 		default:
 			response.sendRedirect("Dashboard.jsp");
