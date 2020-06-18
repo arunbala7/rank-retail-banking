@@ -49,8 +49,9 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
-		String action = (String) request.getParameter("action");
-		if (action.contentEquals("logout")) {
+		String action ="";
+		action = (String) request.getParameter("action");
+		if (action!=null && action.contentEquals("logout")) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("workGroup");
 			session.removeAttribute("userName");
@@ -58,11 +59,9 @@ public class UserController extends HttpServlet {
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}else {
-			
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("Dashboard.jsp");
 			rd.forward(request, response);
 		}
-		doPost(request, response);
 
 	}
 
