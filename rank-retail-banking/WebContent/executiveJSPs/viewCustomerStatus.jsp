@@ -60,6 +60,7 @@
 								<th>Age</th>
 								<th>Status</th>
 								<th>Message</th>
+								<th>Details</th>
 							</tr>
 						</thead>
 						<tbody>
