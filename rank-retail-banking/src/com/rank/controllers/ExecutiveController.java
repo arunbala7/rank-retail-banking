@@ -81,6 +81,7 @@ public class ExecutiveController extends HttpServlet {
 				customers = (List<Customer>) CustomerService.getCustomers(currentPage, recordsPerPage);
 				response.setContentType("text/html;charset=UTF-8");
 				request.setAttribute("customers", customers);
+				request.setAttribute("actionType", "show");
 				int rows = 0;
 				rows = CustomerService.getNoOfRows("customer");
 				int pages = rows / recordsPerPage;
@@ -308,6 +309,23 @@ public class ExecutiveController extends HttpServlet {
 
 			} catch (Exception e) {
 			}
+			break;
+
+		case "customerStatus":
+			try {
+				Long id = Long.parseLong(request.getParameter("id"));
+				int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+				Customer customer = null;
+				customer = CustomerService.getCustomerBasedOnId(id);
+				request.setAttribute("customer", customer);
+				request.setAttribute("currentPage", currentPage);
+				request.setAttribute("actionType", "view");
+				rd = request.getRequestDispatcher("executiveJSPs/viewCustomerStatus.jsp");
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+			}
+
 			break;
 
 		default:

@@ -65,4 +65,9 @@ public class CustomerService {
 		return dao.getCustomerBasedOn(basedOn,id);
 	}
 
+	public static Customer getCustomerBasedOnId(Long id) throws Exception {
+		BankingDAO dao=new BankingDAO();
+		return dao.getCustomerBasedOnId(id);
+	}
+
 }

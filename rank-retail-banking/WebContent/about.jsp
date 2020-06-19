@@ -108,7 +108,7 @@ p {
 			<%@ include file="executiveHeader.jsp"%>
 		</c:otherwise>
 	</c:choose>
-	</br>
+	<br>
 <div class="about-section">
   <h1 style="text-align:center;">Our Team</h1>
   

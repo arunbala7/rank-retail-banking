@@ -421,5 +421,33 @@ public class BankingDAO {
 		
 		return customer;
 	}
+	
+	public Customer getCustomerBasedOnId(Long id) throws Exception {
+		Customer customer=new Customer();
+		Connection con = (Connection) DBConnection.getConnection();
+		String query;
+		PreparedStatement ps;
+		ResultSet rs;
+		query="SELECT * FROM customer WHERE customer_id = ?;";
+		ps= (PreparedStatement) con.prepareStatement(query);
+		ps.setLong(1, id);		
+		rs = ps.executeQuery();
+		if (rs.next())
+		{
+			customer.setId(rs.getLong(1));
+			customer.setSsn(rs.getInt(2));
+			customer.setName(rs.getString(3));
+			customer.setAddress(rs.getString(4));
+			customer.setDob(rs.getString(5));
+			customer.setAge(rs.getShort(6));
+			customer.setStatus(rs.getString(7));
+			customer.setMessage(rs.getString(8));
+			customer.setCreatedDateTime(rs.getString(9));
+			customer.setUpdatedDateTime(rs.getString(10));  
+		}
+		DBConnection.closeConnection();
+		ps.close();			
+		return customer;
+	}
 
 }
