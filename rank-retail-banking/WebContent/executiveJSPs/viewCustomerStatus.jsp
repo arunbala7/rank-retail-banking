@@ -130,6 +130,8 @@
 			</c:when>
 			<c:otherwise>
 				<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<span class="login100-form-title"
+				style="font-size: 20px; color: crimson;">Viewing Customer ID: ${customer.getId()}</span><br />
 					<form autocomplete="off">
 						<div class="form-group row">
 							<div class="col-sm-6">
