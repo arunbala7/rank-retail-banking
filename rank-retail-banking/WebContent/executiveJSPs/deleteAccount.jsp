@@ -17,8 +17,7 @@
 	href="CSS and JS/fonts/iconic/css/material-design-iconic-font.min.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
-<script type="text/javascript"
-	src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 <script>
@@ -243,14 +242,14 @@ $(document).ready(function() {
 						placeholder="Enter the Number..." /> <span class="focus-input100"></span>
 				</div>
 			</form>
-			<center>
-				<div class="btn-group after-id justify-content-center">
-					<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-					&ensp;
-					<button class="btn btn-primary active" id="accountId">Find
-						account</button>
-				</div>
-			</center>
+
+			<div class="col-md-12 text-center after-id ">
+				<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
+				&ensp;
+				<button class="btn btn-primary active" id="accountId">Find
+					account</button>
+			</div>
+
 			<div style="display: none;"
 				class="wrap-input100 validate-input m-b-23 before-id"
 				data-validate="Enter a Valid Customer Id">
@@ -303,20 +302,17 @@ $(document).ready(function() {
 						placeholder="Enter the balance..." id="balance" name="balance" />
 					<span class="focus-input100"></span>
 				</div>
-				<center>
-					<div style="display: none;" class="btn-group before-id ">
-						<input type="reset" class="btn btn-primary active" id="reset"
-							value="Cancel"> &ensp;
-						<button class="btn btn-primary active" id="submitForm">Delete</button>
-					</div>
-				</center>
+				<div style="display: none;" class="col-md-12 text-center before-id ">
+					<input type="reset" class="btn btn-primary active" id="reset"
+						value="Cancel"> &ensp;
+					<button class="btn btn-primary active" id="submitForm">Delete</button>
+				</div>
 			</form>
 		</div>
 	</div>
 
 	<%@ include file="../footer.jsp"%>
-	<script type="text/javascript"
-		src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 </body>
 </html>

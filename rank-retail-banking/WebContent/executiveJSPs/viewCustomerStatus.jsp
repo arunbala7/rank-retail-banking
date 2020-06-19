@@ -120,19 +120,17 @@
 							</c:if>
 						</ul>
 					</nav>
-
-					<center>
-						<div class="btn-group">
+						<div class="col-md-12 text-center">
 							<button class="btn btn-primary active" id="reset">Back</button>
 						</div>
-					</center>
 				</div>
 
 			</c:when>
 			<c:otherwise>
 				<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<span class="login100-form-title"
-				style="font-size: 20px; color: crimson;">Viewing Customer ID: ${customer.getId()}</span><br />
+					<span class="login100-form-title"
+						style="font-size: 20px; color: crimson;">Viewing Customer
+						ID: ${customer.getId()}</span><br />
 					<form autocomplete="off">
 						<div class="form-group row">
 							<div class="col-sm-6">
@@ -191,18 +189,10 @@
 									value="${customer.getUpdatedDateTime()}" readonly />
 							</div>
 						</div>
-
-						<center>
-							<form action="ExecutiveController" method="get">
-											<input type="hidden" name="action" value="customerStatus">
-											<input type="hidden" name="currentPage"
-												value="${currentPage}"> 
-											<div class="btn-group">
-												<input type="submit" class="btn btn-primary active"
-													value="Back" />
-											</div>
-										</form>
-						</center>
+						<div class="col-md-12 text-center">
+							<a class="btn btn-primary active"
+								href="ExecutiveController?action=customerStatus&currentPage=${currentPage}">Back</a>
+						</div>
 					</form>
 				</div>
 			</c:otherwise>

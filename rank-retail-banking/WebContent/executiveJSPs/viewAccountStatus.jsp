@@ -25,12 +25,17 @@
 <script type="text/javascript" src="CSS and JS/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/tether.min.js"></script>
 <script>
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		$("#reset").on("click", function() {
-			window.location = "/rank-retail-banking/ExecutiveController?action=Dashboard";
-		});
-	});
+						$("#reset")
+								.on(
+										"click",
+										function() {
+											window.location = "/rank-retail-banking/ExecutiveController?action=Dashboard";
+										});
+					});
 </script>
 </head>
 <body>
@@ -99,12 +104,9 @@
 					</c:if>
 				</ul>
 			</nav>
-
-			<center>
-				<div class="btn-group">
-					<button class="btn btn-primary active" id="reset">Back</button>
-				</div>
-			</center>
+			<div class="col-md-12 text-center">
+				<button class="btn btn-primary active" id="reset">Back</button>
+			</div>
 		</div>
 
 	</div>

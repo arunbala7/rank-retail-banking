@@ -17,8 +17,7 @@
 	href="CSS and JS/fonts/iconic/css/material-design-iconic-font.min.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/util.css" />
 <link rel="stylesheet" type="text/css" href="CSS and JS/css/main.css" />
-<script type="text/javascript"
-	src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 <script>
@@ -183,20 +182,18 @@ $(document).ready(function() {
 					<span class="focus-input100"></span>
 				</div>
 				<input type="hidden" id="action" name="action"
-					value="createCustomer" /> <br /> <br />
-				<div class="btn-group d-flex justify-content-center">
+					value="createCustomer" />
+				<div class="col-md-12 text-center">
 					<button type="reset" class="btn btn-primary active" id="reset">Reset</button>
 					&ensp; <input type="submit" class="btn btn-primary active"
 						id="submitForm" value="Create" />
 				</div>
-
 			</form>
 		</div>
 	</div>
 
 	<%@ include file="../footer.jsp"%>
-	<script type="text/javascript"
-		src="CSS and JS/js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="CSS and JS/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="CSS and JS/js/validation.js"></script>
 </body>
 </html>

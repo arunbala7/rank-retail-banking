@@ -190,13 +190,11 @@ $(document).ready(function() {
 				</div>
 				<input type="hidden" name="action" id="action" value="Accounts" />
 				<input type="hidden" name="actionType" id="actionType" value="view" />
-				<center>
-					<div class="btn-group after-id">
+				<div class="col-md-12 text-center after-id">
 						<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
 						&ensp; <input type="submit" class="btn btn-primary active"
 							id="submitForm" value="Fetch" />
-					</div>
-				</center>
+				</div>
 			</form>
 
 		</div>

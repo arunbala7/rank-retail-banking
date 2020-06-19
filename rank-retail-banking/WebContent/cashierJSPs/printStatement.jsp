@@ -218,14 +218,12 @@ $(document).ready(function() {
 						placeholder="Enter the Number..." /> <span class="focus-input100"></span>
 				</div>
 			</form>
-			<center>
-				<div class="btn-group after-id justify-content-center">
-					<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-					&ensp;
-					<button class="btn btn-primary active" id="accountId">Find
-						account</button>
-				</div>
-			</center>
+			<div class="col-md-12 text-center after-id">
+				<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
+				&ensp;
+				<button class="btn btn-primary active" id="accountId">Find
+					account</button>
+			</div>
 
 			<form autocomplete="off" class="login100-form validate-form "
 				id="Form1" action="CashierController" method="post">
@@ -243,8 +241,8 @@ $(document).ready(function() {
 					data-validate="Enter a valid Number" id="count">
 					<span class="label-input100">Number of Transactions</span> <input
 						class="input100 form-control" type="text"
-						placeholder="Enter the Number..." id="number" name="number" />
-					<span class="focus-input100"></span>
+						placeholder="Enter the Number..." id="number" name="number" /> <span
+						class="focus-input100"></span>
 				</div>
 
 
@@ -262,17 +260,18 @@ $(document).ready(function() {
 						class="input100 form-control" type="date" id="end" name="end" />
 					<span class="focus-input100"></span>
 				</div>
-				<input type="hidden" name="action" id="action" value="printStatement" />
-				<input type="hidden" name="actionType" id="actionType" value="print" />
-				<input type="hidden" name="accountId" id="sendAccount"/>
+				<input type="hidden" name="action" id="action"
+					value="printStatement" /> <input type="hidden" name="actionType"
+					id="actionType" value="print" /> <input type="hidden"
+					name="accountId" id="sendAccount" />
 
-				<center>
-					<div style="display: none;" class="btn-group before-id ">
-						<input type="reset" class="btn btn-primary active" id="reset"
-							value="Cancel"> &ensp;
-						<input type="submit" class="btn btn-primary active" id="submitForm" value="Proceed"/>
-					</div>
-				</center>
+
+				<div style="display: none;" class="col-md-12 text-center before-id ">
+					<input type="reset" class="btn btn-primary active" id="reset"
+						value="Cancel"> &ensp; <input type="submit"
+						class="btn btn-primary active" id="submitForm" value="Proceed" />
+				</div>
+
 			</form>
 		</div>
 	</div>

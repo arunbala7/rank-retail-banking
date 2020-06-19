@@ -210,24 +210,22 @@ $(document).ready(function() {
 						placeholder="Enter the ID..." /> <span class="focus-input100"></span>
 				</div>
 			</form>
-			<center>
-				<div class="btn-group after-id">
-					<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
-					&ensp;
-					<button class="btn btn-primary active" id="customerId">Find
-						Customer</button>
-				</div>
-			</center>
+			<div class="col-md-12 text-center after-id">
+				<button type="reset" class="btn btn-primary active" id="reset1">Reset</button>
+				&ensp;
+				<button class="btn btn-primary active" id="customerId">Find
+					Customer</button>
+			</div>
 
 			<form autocomplete="off" class="login100-form validate-form "
 				id="customerForm">
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
-					data-validate="Enter a Valid SSN" >
-					<span class="label-input100" id="second">Social Security Number</span>
-					<input class="input100 form-inline form-control" type="text"
-						id="ssno" name="ssn" maxLength="9" placeholder="Enter the ssn..." />
-					<span class="focus-input100"></span>
+					data-validate="Enter a Valid SSN">
+					<span class="label-input100" id="second">Social Security
+						Number</span> <input class="input100 form-inline form-control"
+						type="text" id="ssno" name="ssn" maxLength="9"
+						placeholder="Enter the ssn..." /> <span class="focus-input100"></span>
 				</div>
 				<div style="display: none;"
 					class="wrap-input100 validate-input m-b-23 before-id"
@@ -254,12 +252,10 @@ $(document).ready(function() {
 						placeholder="Enter the address..." id="address" name="address" />
 					<span class="focus-input100"></span>
 				</div>
-				<center>
-					<div style="display: none;" class="btn-group before-id">
-						<input type="reset" class="btn btn-primary active" id="reset"
-							value="Back" />
-					</div>
-				</center>
+				<div style="display: none;" class="col-md-12 text-center before-id">
+					<input type="reset" class="btn btn-primary active" id="reset"
+						value="Back" />
+				</div>
 
 			</form>
 		</div>

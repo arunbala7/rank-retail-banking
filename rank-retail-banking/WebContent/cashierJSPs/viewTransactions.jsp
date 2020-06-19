@@ -87,14 +87,12 @@ $(document).ready(function() {
 					</c:forEach>
 				</tbody>
 			</table>
-			<center>
-				<div class="btn-group">
+				<div class="col-md-12 text-center">
 					<button class="btn btn-primary active" id="reset">Back</button>
 					&ensp;
 					<button class="btn btn-primary active" id="pdf">Download
 						Report PDF</button>
 				</div>
-			</center>
 		</div>
 	</div>
 
