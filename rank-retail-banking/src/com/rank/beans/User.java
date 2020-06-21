@@ -1,35 +1,41 @@
 package com.rank.beans;
 
 public class User {
-	String userName, password, work_group;
-	int user_id;
+	private String userName, password, workGroup;
+	private int userId;
 
-	public User(String userName, String password, String work_group, int user_id) {
+	public User(String userName, String password, String work_group, int userId) {
 		super();
 		this.userName = userName;
 		this.password = password;
-		this.work_group = work_group;
-		this.user_id = user_id;
+		this.workGroup = work_group;
+		this.userId = userId;
 	}
 
-	public String getWork_group() {
-		return work_group;
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", workGroup=" + workGroup + ", userId="
+				+ userId + "]";
 	}
 
-	public void setWork_group(String work_group) {
-		this.work_group = work_group;
+	public String getWorkGroup() {
+		return workGroup;
+	}
+
+	public void setWork_group(String workGroup) {
+		this.workGroup = workGroup;
 	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public void setUserName(String userName) {
