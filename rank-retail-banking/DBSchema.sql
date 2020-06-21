@@ -19,10 +19,11 @@ INSERT INTO userstore(`user_id`, `user_name`, `password`, `work_group`) VALUES (
 CREATE TABLE userstore_login_info (
   `log_id` 	INT NOT NULL AUTO_INCREMENT ,	
   `userstore_login_id` INT NOT NULL,
-  `userstore_login_datetime` DATETIME NOT NULL,
+  `userstoer_mode` VARCHAR(10), 
+  `userstore_datetime` DATETIME NOT NULL,
   PRIMARY KEY (`log_id`));
   
-ALTER TABLE userstore_login_info AUTO_INCREMENT = 99;
+ALTER TABLE userstore_login_info AUTO_INCREMENT = 100;
 
 -- 'customer' table creation
 CREATE TABLE customer (

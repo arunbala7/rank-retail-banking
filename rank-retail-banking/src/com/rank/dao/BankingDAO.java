@@ -16,24 +16,33 @@ import com.rank.util.DBConnection;
 
 public class BankingDAO {
 
-	public String isValidUser(User user) throws Exception {
-		String workGroup = null;
-		int user_id = 0;
+	public User isValidUser(User user) throws Exception {
+		User new_User = null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "SELECT work_group, user_id FROM userstore WHERE user_name ='" + user.getUserName()
+		String query = "SELECT * FROM userstore WHERE user_name ='" + user.getUserName()
 				+ "' AND password='" + user.getPassword() + "'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
+		
 		if (rs.next()) {
-			workGroup = rs.getString("work_group");
-			user_id = rs.getInt("user_id");
+			new_User = new User(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(1));
 		}
-		String updateLoginInfoString = "INSERT INTO userstore_login_info (`userstore_login_id`, `userstore_login_datetime`) "
-				+ "VALUES ('"+ user_id +"', now());";
+		String updateLoginInfoString = "INSERT INTO userstore_login_info (`userstore_login_id`,`userstoer_mode` ,`userstore_datetime`) "
+				+ "VALUES ('" + new_User.getUser_id() + "', 'LOGIN', now());";
 		st.executeUpdate(updateLoginInfoString);
 		DBConnection.closeConnection();
 		st.close();
-		return workGroup;
+		return new_User;
+	}
+
+	public void logOutInfoUpdate(int user_id) throws Exception {
+		Connection con = (Connection) DBConnection.getConnection();
+		String updateLogoutInfoString = "INSERT INTO userstore_login_info (`userstore_login_id`,`userstoer_mode` ,`userstore_datetime`) "
+				+ "VALUES ('" + user_id + "', 'LOGOUT', now());";
+		Statement st = con.createStatement();
+		st.executeUpdate(updateLogoutInfoString);
+		DBConnection.closeConnection();
+		st.close();
 	}
 
 	public String createCustomer(Customer customer) throws Exception {
@@ -386,7 +395,6 @@ public class BankingDAO {
 				transaction.setDateTime(rs.getString(4));
 				transaction.setAmount(rs.getLong(5));
 				transactions.add(transaction);
-
 			}
 			DBConnection.closeConnection();
 			ps.close();

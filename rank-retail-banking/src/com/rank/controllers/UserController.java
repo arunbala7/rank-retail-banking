@@ -24,14 +24,15 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
-		User newUser = new User(userName, password);
+		User newUser = new User(userName, password, null,0);
 		Login userLogin = new Login();
-		String workGroup;
+		User currentUser;
 		try {
-			workGroup = userLogin.isValidUser(newUser);
-			if (workGroup != null) {
+			currentUser = userLogin.isValidUser(newUser);
+			if (currentUser != null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("workGroup", workGroup);
+				session.setAttribute("currentUser", currentUser);
+				session.setAttribute("workGroup", currentUser.getWork_group());
 				session.setAttribute("userName", userName);
 				response.sendRedirect("Dashboard.jsp");
 				
@@ -52,7 +53,16 @@ public class UserController extends HttpServlet {
 		String action ="";
 		action = (String) request.getParameter("action");
 		if (action!=null && action.contentEquals("logout")) {
+			Login logOut = new Login();
 			HttpSession session = request.getSession();
+			try {
+			
+				User user = (User) session.getAttribute("currentUser");
+				logOut.updateLogoutInfo(user.getUser_id());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			session.removeAttribute("workGroup");
 			session.removeAttribute("userName");
 			session.invalidate();
