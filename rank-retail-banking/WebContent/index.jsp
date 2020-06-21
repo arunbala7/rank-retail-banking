@@ -1,3 +1,4 @@
+<%@page import="com.rank.beans.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -137,10 +138,18 @@ $(document).keypress(function(event){
 	style="background-image: url('CSS and JS/images/other.jpg'); background-repeat: no-repeat; background-size: cover;">
 	<%
 		//SESSION CHECK (LOGGED IN OR NOT)  	
-	String workGroup = (String) session.getAttribute("workGroup");
-	if (workGroup != null) {
+//	String workGroup = (String) session.getAttribute("workGroup");
+//	if (workGroup != null) {
+//		response.sendRedirect("Dashboard.jsp");
+//	}
+
+	User user = (User) session.getAttribute("currentUser");
+	
+	if (user!=null ){
 		response.sendRedirect("Dashboard.jsp");
 	}
+
+
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1
 	response.setHeader("Pragma", "no-cache");//HTTP 1.0

@@ -19,16 +19,15 @@ public class BankingDAO {
 	public User isValidUser(User user) throws Exception {
 		User new_User = null;
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "SELECT * FROM userstore WHERE user_name ='" + user.getUserName()
-				+ "' AND password='" + user.getPassword() + "'";
+		String query = "SELECT * FROM userstore WHERE user_name ='" + user.getUserName() + "' AND password='"
+				+ user.getPassword() + "'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
-		
 		if (rs.next()) {
-			new_User = new User(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(1));
+			new_User = new User(rs.getString(2), null, rs.getString(4), rs.getInt(1));
 		}
 		String updateLoginInfoString = "INSERT INTO userstore_login_info (`userstore_login_id`,`userstoer_mode` ,`userstore_datetime`) "
-				+ "VALUES ('" + new_User.getUser_id() + "', 'LOGIN', now());";
+				+ "VALUES ('" +  new_User.getUserId() + "', 'LOGIN', now());";
 		st.executeUpdate(updateLoginInfoString);
 		DBConnection.closeConnection();
 		st.close();

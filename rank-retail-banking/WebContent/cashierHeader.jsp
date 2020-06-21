@@ -1,3 +1,4 @@
+<%@page import="com.rank.beans.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,8 +21,8 @@
 <body>
 	<%
 		//SESSION CHECK (LOGGED IN OR NOT)  	
-	String workGroup = (String) session.getAttribute("workGroup");
-	if (workGroup == null)
+	User user = (User) session.getAttribute("currentUser");
+	if (user == null)
 		response.sendRedirect("/rank-retail-banking/index.jsp");
 
 	//Back Button Cache Security
@@ -74,7 +75,7 @@
 					</div>
 				</div>
 				<div class="navbar-nav btn-group">
-					<a href="ExecutiveController?action=about"
+					<a href="CashierController?action=about"
 						class="nav-item nav-link active">About</a>
 
 				</div>
@@ -82,7 +83,7 @@
 				<form class="form-inline ml-auto" action="UserController"
 					method="get">
 					<span class="label-input100"
-						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;">${userName}</span>
+						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;"> ${currentUser.getUserName()} </span>
 					&ensp;&ensp; <input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>
 				</form>

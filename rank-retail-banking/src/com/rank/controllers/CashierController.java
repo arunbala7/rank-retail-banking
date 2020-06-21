@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.beans.Transaction;
+import com.rank.beans.User;
 import com.rank.services.AccountService;
 import com.rank.services.CustomerService;
 
@@ -27,13 +28,21 @@ public class CashierController extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher rd;
 		HttpSession session = request.getSession();
-		String userName = (String) session.getAttribute("userName");
-		if (userName == null) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		if (currentUser == null) {
+			System.out.println("current user null");
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
+		System.out.println(currentUser.getWorkGroup());
+		if(!currentUser.getWorkGroup().contentEquals("cashier")) {
+			rd = request.getRequestDispatcher("Dashboard.jsp");
+			rd.forward(request, response);
+		}
+		
 		String action = "";
 		action = (String) request.getParameter("action");
+		
 		switch (action) {
 		case "depositMoney":
 			rd = request.getRequestDispatcher("cashierJSPs/depositMoney.jsp");
