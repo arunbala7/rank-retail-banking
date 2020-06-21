@@ -15,6 +15,15 @@ CREATE TABLE userstore (
 INSERT INTO userstore (`user_id`, `user_name`, `password`, `work_group`) VALUES ('101', 'alpha', 'alpha@RANK1', 'cashier');
 INSERT INTO userstore(`user_id`, `user_name`, `password`, `work_group`) VALUES ('102', 'beta', 'beta@RANK1', 'executive');
 
+-- 'userstoer_login_info' login log
+CREATE TABLE userstore_login_info (
+  `log_id` 	INT NOT NULL AUTO_INCREMENT ,	
+  `userstore_login_id` INT NOT NULL,
+  `userstore_login_datetime` DATETIME NOT NULL,
+  PRIMARY KEY (`log_id`));
+  
+ALTER TABLE userstore_login_info AUTO_INCREMENT = 99;
+
 -- 'customer' table creation
 CREATE TABLE customer (
   `customer_id` BIGINT NOT NULL AUTO_INCREMENT,
