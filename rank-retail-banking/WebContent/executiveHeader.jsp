@@ -1,3 +1,4 @@
+<%@page import="com.rank.beans.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,13 +21,15 @@
 <body>
 	<%
 		//SESSION CHECK (LOGGED IN OR NOT)  	
-	String workGroup = (String) session.getAttribute("workGroup");
+	User user = (User) session.getAttribute("currentUser");
 	String __jspName = this.getClass().getSimpleName().replaceAll("_", ".");
-	if (workGroup == null) {
+	
+	if ( user == null) {
 		response.sendRedirect("/rank-retail-banking/index.jsp");
-	} else if (workGroup.contentEquals("cashier") && !(__jspName.contentEquals("Dashboard.jsp"))) {
+	} else if ( user.getWorkGroup().contentEquals("cashier") && !(__jspName.contentEquals("Dashboard.jsp"))) {
 		response.sendRedirect("/rank-retail-banking/Dashboard.jsp");
 	}
+	
 
 	//Back Button Cache Security
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//HTTP 1.1
@@ -105,7 +108,7 @@
 				<form class="form-inline ml-auto" action="UserController"
 					method="get">
 					<span class="label-input100"
-						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;">${userName}</span>
+						style="font-weight: bold; font-size: 20px; color: white; text-transform: capitalize;">${currentUser.getUserName()}</span>
 					&ensp;&ensp; <input type="hidden" name="action" value="logout">
 					<button type="submit" class="btn btn-outline-light">Logout</button>
 				</form>

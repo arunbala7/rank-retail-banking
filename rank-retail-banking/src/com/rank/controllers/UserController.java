@@ -24,21 +24,20 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
-		User newUser = new User(userName, password);
+		User newUser = new User(userName, password, null, 0);
 		Login userLogin = new Login();
-		String workGroup;
+		
 		try {
-			workGroup = userLogin.isValidUser(newUser);
-			if (workGroup != null) {
+			newUser = userLogin.isValidUser(newUser);
+			if (newUser != null) {
 				HttpSession session = request.getSession();
-				session.setAttribute("workGroup", workGroup);
-				session.setAttribute("userName", userName);
+				session.setAttribute("currentUser", newUser);
+//				session.setAttribute("workGroup", newUser.getWorkGroup());
 				response.sendRedirect("Dashboard.jsp");
-				
 			} else {
 				response.setContentType("text/plain");
-				response.setCharacterEncoding("UTF-8"); 
-				response.getWriter().write("failed");;				
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write("failed");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,16 +48,23 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd;
-		String action ="";
+		String action = "";
 		action = (String) request.getParameter("action");
-		if (action!=null && action.contentEquals("logout")) {
+		if (action != null && action.contentEquals("logout")) {
+			Login logOut = new Login();
 			HttpSession session = request.getSession();
-			session.removeAttribute("workGroup");
-			session.removeAttribute("userName");
+			try {
+				User user = (User) session.getAttribute("currentUser");
+				logOut.updateLogoutInfo(user.getUserId());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			session.removeAttribute("currentUser");
 			session.invalidate();
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
-		}else {
+		} else {
 			rd = request.getRequestDispatcher("Dashboard.jsp");
 			rd.forward(request, response);
 		}

@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.rank.beans.Account;
 import com.rank.beans.Combined;
 import com.rank.beans.Customer;
+import com.rank.beans.User;
 import com.rank.services.AccountService;
 import com.rank.services.CustomerService;
 import com.rank.util.DateTime;
@@ -33,9 +34,13 @@ public class ExecutiveController extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher rd;
 		HttpSession session = request.getSession();
-		String userName = (String) session.getAttribute("userName");
-		if (userName == null) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		if (currentUser == null) {
 			rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
+		if(!currentUser.getWorkGroup().contentEquals("executive")) {
+			rd = request.getRequestDispatcher("Dashboard.jsp");
 			rd.forward(request, response);
 		}
 

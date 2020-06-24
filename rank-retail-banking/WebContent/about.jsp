@@ -100,12 +100,13 @@ p {
 </head>
 <body style="background-image: url('CSS and JS/images/other.jpg');background-size: cover;">
 	<!-- Adding Header Based on the user  -->
+	
 	<c:choose>
-		<c:when test="${workGroup =='cashier'}">
-			<%@ include file="cashierHeader.jsp"%>
+		<c:when test="${ currentUser.getWorkGroup() eq 'executive' }">
+			<%@ include file="executiveHeader.jsp"%>
 		</c:when>
 		<c:otherwise>
-			<%@ include file="executiveHeader.jsp"%>
+			<%@ include file="cashierHeader.jsp"%>
 		</c:otherwise>
 	</c:choose>
 	<br>
